@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -9,23 +9,23 @@
 #pragma once
 
 #include <utility> // declval, pair
-#include <nlohmann/detail/meta/detected.hpp>
-#include <nlohmann/thirdparty/hedley/hedley.hpp>
+#include <JSON/detail/meta/detected.hpp>
+#include <JSON/thirdparty/hedley/hedley.hpp>
 
 // This file contains all internal macro definitions (except those affecting ABI)
 // You MUST include macro_unscope.hpp at the end of json.hpp to undef all of them
 
-#include <nlohmann/detail/abi_macros.hpp>
+#include <JSON/detail/abi_macros.hpp>
 
 // exclude unsupported compilers
 #if !defined(JSON_SKIP_UNSUPPORTED_COMPILER_CHECK)
     #if defined(__clang__)
         #if (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__) < 30400
-            #error "unsupported Clang version - see https://github.com/nlohmann/json#supported-compilers"
+            #error "unsupported Clang version - see https://github.com/JSON/json#supported-compilers"
         #endif
     #elif defined(__GNUC__) && !(defined(__ICC) || defined(__INTEL_COMPILER))
         #if (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__) < 40800
-            #error "unsupported GCC version - see https://github.com/nlohmann/json#supported-compilers"
+            #error "unsupported GCC version - see https://github.com/JSON/json#supported-compilers"
         #endif
     #endif
 #endif

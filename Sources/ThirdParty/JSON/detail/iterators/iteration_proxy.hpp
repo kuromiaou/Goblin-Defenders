@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -17,10 +17,10 @@
     #include <ranges> // enable_borrowed_range
 #endif
 
-#include <nlohmann/detail/abi_macros.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
-#include <nlohmann/detail/string_utils.hpp>
-#include <nlohmann/detail/value_t.hpp>
+#include <JSON/detail/abi_macros.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
+#include <JSON/detail/string_utils.hpp>
+#include <JSON/detail/value_t.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -181,7 +181,7 @@ template<typename IteratorType> class iteration_proxy
 
 // Structured Bindings Support
 // For further reference see https://blog.tartanllama.xyz/structured-bindings/
-// And see https://github.com/nlohmann/json/pull/1391
+// And see https://github.com/JSON/json/pull/1391
 template<std::size_t N, typename IteratorType, enable_if_t<N == 0, int> = 0>
 auto get(const nlohmann::detail::iteration_proxy_value<IteratorType>& i) -> decltype(i.key())
 {
@@ -189,7 +189,7 @@ auto get(const nlohmann::detail::iteration_proxy_value<IteratorType>& i) -> decl
 }
 // Structured Bindings Support
 // For further reference see https://blog.tartanllama.xyz/structured-bindings/
-// And see https://github.com/nlohmann/json/pull/1391
+// And see https://github.com/JSON/json/pull/1391
 template<std::size_t N, typename IteratorType, enable_if_t<N == 1, int> = 0>
 auto get(const nlohmann::detail::iteration_proxy_value<IteratorType>& i) -> decltype(i.value())
 {
@@ -202,12 +202,12 @@ NLOHMANN_JSON_NAMESPACE_END
 // The Addition to the STD Namespace is required to add
 // Structured Bindings Support to the iteration_proxy_value class
 // For further reference see https://blog.tartanllama.xyz/structured-bindings/
-// And see https://github.com/nlohmann/json/pull/1391
+// And see https://github.com/JSON/json/pull/1391
 namespace std
 {
 
 #if defined(__clang__)
-    // Fix: https://github.com/nlohmann/json/issues/1401
+    // Fix: https://github.com/JSON/json/issues/1401
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wmismatched-tags"
 #endif

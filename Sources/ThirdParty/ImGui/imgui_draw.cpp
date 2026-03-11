@@ -6294,7 +6294,7 @@ static unsigned int stb_decompress(unsigned char *output, const unsigned char *i
 #ifndef IMGUI_DISABLE_DEFAULT_FONT
 
 // File: 'ProggyClean.ttf' (41208 bytes)
-// Exported using binary_to_compressed_c.exe -u8 "ProggyClean.ttf" proggy_clean_ttf
+// Exported using binary_to_compressed_c.exe -uint8 "ProggyClean.ttf" proggy_clean_ttf
 static const unsigned int proggy_clean_ttf_compressed_size = 9583;
 static const unsigned char proggy_clean_ttf_compressed_data[9583] =
 {
@@ -6480,7 +6480,7 @@ static const char* GetDefaultCompressedFontDataProggyClean(int* out_size)
 //-----------------------------------------------------------------------------
 
 // File: 'output/ProggyForever-Regular-minimal.ttf' (18556 bytes)
-// Exported using binary_to_compressed_c.exe -u8 "output/ProggyForever-Regular-minimal.ttf" proggy_forever_minimal_ttf
+// Exported using binary_to_compressed_c.exe -uint8 "output/ProggyForever-Regular-minimal.ttf" proggy_forever_minimal_ttf
 static const unsigned int proggy_forever_minimal_ttf_compressed_size = 14562;
 static const unsigned char proggy_forever_minimal_ttf_compressed_data[14562] =
 {

@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -17,20 +17,20 @@
 #include <string> // to_string
 #include <vector> // vector
 
-#include <nlohmann/detail/value_t.hpp>
-#include <nlohmann/detail/string_escape.hpp>
-#include <nlohmann/detail/input/position_t.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
-#include <nlohmann/detail/string_concat.hpp>
+#include <JSON/detail/value_t.hpp>
+#include <JSON/detail/string_escape.hpp>
+#include <JSON/detail/input/position_t.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
+#include <JSON/detail/string_concat.hpp>
 
 // With -Wweak-vtables, Clang will complain about the exception classes as they
 // have no out-of-line virtual method definitions and their vtable will be
 // emitted in every translation unit. This issue cannot be fixed with a
 // header-only library as there is no implementation file to move these
 // functions to. As a result, we suppress this warning here to avoid client
-// code stumbling over this. See https://github.com/nlohmann/json/issues/4087
+// code stumbling over this. See https://github.com/JSON/json/issues/4087
 // for a discussion.
 #if defined(__clang__)
     #pragma clang diagnostic push

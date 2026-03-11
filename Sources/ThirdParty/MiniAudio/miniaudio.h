@@ -2748,10 +2748,10 @@ ignored for conversions where dithering is not needed. Dithering is available fo
 conversions:
 
     ```
-    s16 -> u8
-    s24 -> u8
-    s32 -> u8
-    f32 -> u8
+    s16 -> uint8
+    s24 -> uint8
+    s32 -> uint8
+    f32 -> uint8
     s24 -> s16
     s32 -> s16
     f32 -> s16
@@ -40833,7 +40833,7 @@ static ma_result ma_SLDataFormat_PCM_init__opensl(ma_format format, ma_uint32 ch
     /*
     Android has a few restrictions on the format as documented here: https://developer.android.com/ndk/guides/audio/opensl-for-android.html
      - Only mono and stereo is supported.
-     - Only u8 and s16 formats are supported.
+     - Only uint8 and s16 formats are supported.
      - Maximum sample rate of 48000.
     */
 #ifdef MA_ANDROID
@@ -45116,7 +45116,7 @@ static MA_INLINE void ma_pcm_sample_s32_to_s24_no_scale(ma_int64 x, ma_uint8* s2
 }
 
 
-/* u8 */
+/* uint8 */
 MA_API void ma_pcm_u8_to_u8(void* dst, const void* src, ma_uint64 count, ma_dither_mode ditherMode)
 {
     (void)ditherMode;
@@ -59109,7 +59109,7 @@ MA_API ma_uint32 ma_get_bytes_per_sample(ma_format format)
 {
     ma_uint32 sizes[] = {
         0,  /* unknown */
-        1,  /* u8 */
+        1,  /* uint8 */
         2,  /* s16 */
         3,  /* s24 */
         4,  /* s32 */

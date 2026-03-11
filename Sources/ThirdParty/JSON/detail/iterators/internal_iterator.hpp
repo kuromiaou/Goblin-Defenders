@@ -1,15 +1,15 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
 
 #pragma once
 
-#include <nlohmann/detail/abi_macros.hpp>
-#include <nlohmann/detail/iterators/primitive_iterator.hpp>
+#include <JSON/detail/abi_macros.hpp>
+#include <JSON/detail/iterators/primitive_iterator.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -19,7 +19,7 @@ namespace detail
 @brief an iterator value
 
 @note This structure could easily be a union, but MSVC currently does not allow
-unions members with complex constructors, see https://github.com/nlohmann/json/pull/105.
+unions members with complex constructors, see https://github.com/JSON/json/pull/105.
 */
 template<typename BasicJsonType> struct internal_iterator
 {

@@ -88,7 +88,7 @@ export namespace glm {
 	using glm::lowp_u8;
 	using glm::mediump_u8;
 	using glm::highp_u8;
-	using glm::u8;
+	using glm::uint8;
 	using glm::lowp_uint8;
 	using glm::mediump_uint8;
 	using glm::highp_uint8;

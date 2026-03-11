@@ -25,7 +25,6 @@
 
 ## DAY 1
 
-- Plug DXC and shader compiler
 - Resizing and events
 - Plug ImGui and Im3D
 - Dockspace setup for editor

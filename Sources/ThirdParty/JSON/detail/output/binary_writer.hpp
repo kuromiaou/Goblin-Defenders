@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -19,10 +19,10 @@
 #include <utility> // move
 #include <vector> // vector
 
-#include <nlohmann/detail/input/binary_reader.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/output/output_adapters.hpp>
-#include <nlohmann/detail/string_concat.hpp>
+#include <JSON/detail/input/binary_reader.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/output/output_adapters.hpp>
+#include <JSON/detail/string_concat.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -1801,7 +1801,7 @@ class binary_writer
     // The following to_char_type functions are implement the conversion
     // between uint8_t and CharType. In case CharType is not unsigned,
     // such a conversion is required to allow values greater than 128.
-    // See <https://github.com/nlohmann/json/issues/1286> for a discussion.
+    // See <https://github.com/JSON/json/issues/1286> for a discussion.
     template < typename C = CharType,
                enable_if_t < std::is_signed<C>::value && std::is_signed<char>::value > * = nullptr >
     static constexpr CharType to_char_type(std::uint8_t x) noexcept
@@ -1819,7 +1819,7 @@ class binary_writer
         // but not all the std::is_trivially_* traits.
         // Since detecting full support across all libraries is difficult,
         // we use std::is_trivial unless we are using a standard where it has been deprecated.
-        // For more details, see: https://github.com/nlohmann/json/pull/4775#issuecomment-2884361627
+        // For more details, see: https://github.com/JSON/json/pull/4775#issuecomment-2884361627
 #ifdef JSON_HAS_CPP_26
         static_assert(std::is_trivially_copyable<CharType>::value, "CharType must be trivially copyable");
         static_assert(std::is_trivially_default_constructible<CharType>::value, "CharType must be trivially default constructible");

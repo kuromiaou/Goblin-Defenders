@@ -1,14 +1,14 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
 
 #pragma once
 
-#include <nlohmann/detail/macro_scope.hpp> // JSON_HAS_CPP_17
+#include <JSON/detail/macro_scope.hpp> // JSON_HAS_CPP_17
 #ifdef JSON_HAS_CPP_17
     #include <optional> // optional
 #endif
@@ -23,11 +23,11 @@
 #include <valarray> // valarray
 #include <vector> // vector
 
-#include <nlohmann/detail/iterators/iteration_proxy.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
-#include <nlohmann/detail/meta/std_fs.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
-#include <nlohmann/detail/value_t.hpp>
+#include <JSON/detail/iterators/iteration_proxy.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
+#include <JSON/detail/meta/std_fs.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
+#include <JSON/detail/value_t.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -41,7 +41,7 @@ namespace detail
  * Note all external_constructor<>::construct functions need to call
  * j.m_data.m_value.destroy(j.m_data.m_type) to avoid a memory leak in case j contains an
  * allocated value (e.g., a string). See bug issue
- * https://github.com/nlohmann/json/issues/2865 for more information.
+ * https://github.com/JSON/json/issues/2865 for more information.
  */
 
 template<value_t> struct external_constructor;
@@ -413,7 +413,7 @@ inline void to_json(BasicJsonType& j, const std::pair<T1, T2>& p)
     j = { p.first, p.second };
 }
 
-// for https://github.com/nlohmann/json/pull/1134
+// for https://github.com/JSON/json/pull/1134
 template<typename BasicJsonType, typename T,
          enable_if_t<std::is_same<T, iteration_proxy_value<typename BasicJsonType::iterator>>::value, int> = 0>
 inline void to_json(BasicJsonType& j, const T& b)

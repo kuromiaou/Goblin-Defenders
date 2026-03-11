@@ -392,7 +392,7 @@ namespace glm
 
 	/// Default qualifier 8 bit unsigned integer type.
 	/// @see gtc_type_precision
-	typedef detail::uint8 u8;
+	typedef detail::uint8 uint8;
 
 	/// Default qualifier 16 bit unsigned integer type.
 	/// @see gtc_type_precision
@@ -1578,53 +1578,53 @@ namespace glm
 
 	/// Low qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, lowp>		lowp_u8vec1;
+	typedef vec<1, uint8, lowp>		lowp_u8vec1;
 
 	/// Low qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, lowp>		lowp_u8vec2;
+	typedef vec<2, uint8, lowp>		lowp_u8vec2;
 
 	/// Low qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, lowp>		lowp_u8vec3;
+	typedef vec<3, uint8, lowp>		lowp_u8vec3;
 
 	/// Low qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, lowp>		lowp_u8vec4;
+	typedef vec<4, uint8, lowp>		lowp_u8vec4;
 
 
 	/// Medium qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, mediump>		mediump_u8vec1;
+	typedef vec<1, uint8, mediump>		mediump_u8vec1;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, mediump>		mediump_u8vec2;
+	typedef vec<2, uint8, mediump>		mediump_u8vec2;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, mediump>		mediump_u8vec3;
+	typedef vec<3, uint8, mediump>		mediump_u8vec3;
 
 	/// Medium qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, mediump>		mediump_u8vec4;
+	typedef vec<4, uint8, mediump>		mediump_u8vec4;
 
 
 	/// High qualifier 8 bit unsigned integer scalar type.
 	/// @see gtc_type_precision
-	typedef vec<1, u8, highp>		highp_u8vec1;
+	typedef vec<1, uint8, highp>		highp_u8vec1;
 
 	/// High qualifier 8 bit unsigned integer vector of 2 components type.
 	/// @see gtc_type_precision
-	typedef vec<2, u8, highp>		highp_u8vec2;
+	typedef vec<2, uint8, highp>		highp_u8vec2;
 
 	/// High qualifier 8 bit unsigned integer vector of 3 components type.
 	/// @see gtc_type_precision
-	typedef vec<3, u8, highp>		highp_u8vec3;
+	typedef vec<3, uint8, highp>		highp_u8vec3;
 
 	/// High qualifier 8 bit unsigned integer vector of 4 components type.
 	/// @see gtc_type_precision
-	typedef vec<4, u8, highp>		highp_u8vec4;
+	typedef vec<4, uint8, highp>		highp_u8vec4;
 
 
 	/// Low qualifier 16 bit unsigned integer scalar type.

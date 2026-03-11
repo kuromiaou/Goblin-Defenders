@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -12,9 +12,9 @@
 #include <utility> // declval
 #include <string> // string
 
-#include <nlohmann/detail/abi_macros.hpp>
-#include <nlohmann/detail/meta/detected.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
+#include <JSON/detail/abi_macros.hpp>
+#include <JSON/detail/meta/detected.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail

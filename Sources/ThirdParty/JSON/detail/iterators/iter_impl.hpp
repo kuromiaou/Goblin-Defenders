@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -11,13 +11,13 @@
 #include <iterator> // iterator, random_access_iterator_tag, bidirectional_iterator_tag, advance, next
 #include <type_traits> // conditional, is_const, remove_const
 
-#include <nlohmann/detail/exceptions.hpp>
-#include <nlohmann/detail/iterators/internal_iterator.hpp>
-#include <nlohmann/detail/iterators/primitive_iterator.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
-#include <nlohmann/detail/value_t.hpp>
+#include <JSON/detail/exceptions.hpp>
+#include <JSON/detail/iterators/internal_iterator.hpp>
+#include <JSON/detail/iterators/primitive_iterator.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
+#include <JSON/detail/value_t.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -41,7 +41,7 @@ This class implements a both iterators (iterator and const_iterator) for the
   The iterator that can be moved can be moved in both directions (i.e.
   incremented and decremented).
 @since version 1.0.0, simplified in version 2.0.9, change to bidirectional
-       iterators in version 3.0.0 (see https://github.com/nlohmann/json/issues/593)
+       iterators in version 3.0.0 (see https://github.com/JSON/json/issues/593)
 */
 template<typename BasicJsonType>
 class iter_impl // NOLINT(cppcoreguidelines-special-member-functions,hicpp-special-member-functions)
@@ -145,7 +145,7 @@ class iter_impl // NOLINT(cppcoreguidelines-special-member-functions,hicpp-speci
     @param[in] other const iterator to copy from
     @note This copy constructor had to be defined explicitly to circumvent a bug
           occurring on msvc v19.0 compiler (VS 2015) debug build. For more
-          information refer to: https://github.com/nlohmann/json/issues/1608
+          information refer to: https://github.com/JSON/json/issues/1608
     */
     iter_impl(const iter_impl<const BasicJsonType>& other) noexcept
         : m_object(other.m_object), m_it(other.m_it)

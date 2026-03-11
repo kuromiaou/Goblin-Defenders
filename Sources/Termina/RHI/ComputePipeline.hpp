@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Termina/Core/Common.hpp>
-#include <Termina/Shader/ShaderCompiler.h>
-#include <Termina/Shader/ShaderTypes.h>
+#include <Termina/Shader/ShaderCompiler.hpp>
+#include <Termina/Shader/ShaderTypes.hpp>
 
 #include "Pipeline.hpp"
 

@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -44,4 +44,4 @@
     #undef JSON_USE_LEGACY_DISCARDED_VALUE_COMPARISON
 #endif
 
-#include <nlohmann/thirdparty/hedley/hedley_undef.hpp>
+#include <JSON/thirdparty/hedley/hedley_undef.hpp>

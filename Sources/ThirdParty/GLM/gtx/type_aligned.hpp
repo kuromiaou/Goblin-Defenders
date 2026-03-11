@@ -512,7 +512,7 @@ namespace glm
 
 	/// Default qualifier 8 bit unsigned integer aligned scalar type.
 	/// @see gtx_type_aligned
-	GLM_ALIGNED_TYPEDEF(u8, aligned_u8, 1);
+	GLM_ALIGNED_TYPEDEF(uint8, aligned_u8, 1);
 
 	/// Default qualifier 16 bit unsigned integer aligned scalar type.
 	/// @see gtx_type_aligned

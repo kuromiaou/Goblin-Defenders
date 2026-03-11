@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -20,15 +20,15 @@
 #include <utility> // pair, declval
 #include <valarray> // valarray
 
-#include <nlohmann/detail/exceptions.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
-#include <nlohmann/detail/meta/identity_tag.hpp>
-#include <nlohmann/detail/meta/std_fs.hpp>
-#include <nlohmann/detail/meta/type_traits.hpp>
-#include <nlohmann/detail/meta/logic.hpp>
-#include <nlohmann/detail/string_concat.hpp>
-#include <nlohmann/detail/value_t.hpp>
+#include <JSON/detail/exceptions.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
+#include <JSON/detail/meta/identity_tag.hpp>
+#include <JSON/detail/meta/std_fs.hpp>
+#include <JSON/detail/meta/type_traits.hpp>
+#include <JSON/detail/meta/logic.hpp>
+#include <JSON/detail/string_concat.hpp>
+#include <JSON/detail/value_t.hpp>
 
 // include after macro_scope.hpp
 #ifdef JSON_HAS_CPP_17

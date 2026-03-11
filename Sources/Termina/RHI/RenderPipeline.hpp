@@ -5,8 +5,8 @@
 #include "Texture.hpp"
 #include "Pipeline.hpp"
 
-#include <Termina/Shader/ShaderCompiler.h>
-#include <Termina/Shader/ShaderTypes.h>
+#include <Termina/Shader/ShaderCompiler.hpp>
+#include <Termina/Shader/ShaderTypes.hpp>
 
 #include <unordered_map>
 #include <vector>
@@ -61,7 +61,7 @@ namespace Termina {
         TextureFormat DepthAttachmentFormat = TextureFormat::UNDEFINED;
     
         std::unordered_map<ShaderType, ShaderModule> ShaderModules;
-        uint64 PushConstantSize = 0;
+        uint64 PushConstantSize = 128;
     
         std::string Name = "Render Pipeline";
     

@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -10,9 +10,9 @@
 
 #include <iterator> // random_access_iterator_tag
 
-#include <nlohmann/detail/abi_macros.hpp>
-#include <nlohmann/detail/meta/void_t.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
+#include <JSON/detail/abi_macros.hpp>
+#include <JSON/detail/meta/void_t.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
@@ -35,7 +35,7 @@ struct iterator_types <
 };
 
 // This is required as some compilers implement std::iterator_traits in a way that
-// doesn't work with SFINAE. See https://github.com/nlohmann/json/issues/1341.
+// doesn't work with SFINAE. See https://github.com/JSON/json/issues/1341.
 template<typename T, typename = void>
 struct iterator_traits
 {

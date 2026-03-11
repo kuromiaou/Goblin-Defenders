@@ -1,6 +1,6 @@
 #pragma once
 
-#include "System.h"
+#include "System.hpp"
 
 #include <typeindex>
 #include <unordered_map>
@@ -23,7 +23,7 @@ namespace Termina {
         template<typename T>
         T* GetSystem()
         {
-            return m_Subsystems[typeid(T)];
+            return reinterpret_cast<T*>(m_Subsystems[typeid(T)]);
         }
         
         void Begin();

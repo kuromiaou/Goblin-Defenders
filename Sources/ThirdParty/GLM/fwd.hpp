@@ -79,7 +79,7 @@ namespace glm
 	typedef uint8					lowp_u8;
 	typedef uint8					mediump_u8;
 	typedef uint8					highp_u8;
-	typedef uint8					u8;
+	typedef uint8					uint8;
 
 	typedef uint8					lowp_uint8;
 	typedef uint8					mediump_uint8;
@@ -311,25 +311,25 @@ namespace glm
 	typedef vec<3, uint, defaultp>	uvec3;
 	typedef vec<4, uint, defaultp>	uvec4;
 
-	typedef vec<1, u8, lowp>		lowp_u8vec1;
-	typedef vec<2, u8, lowp>		lowp_u8vec2;
-	typedef vec<3, u8, lowp>		lowp_u8vec3;
-	typedef vec<4, u8, lowp>		lowp_u8vec4;
+	typedef vec<1, uint8, lowp>		lowp_u8vec1;
+	typedef vec<2, uint8, lowp>		lowp_u8vec2;
+	typedef vec<3, uint8, lowp>		lowp_u8vec3;
+	typedef vec<4, uint8, lowp>		lowp_u8vec4;
 
-	typedef vec<1, u8, mediump>		mediump_u8vec1;
-	typedef vec<2, u8, mediump>		mediump_u8vec2;
-	typedef vec<3, u8, mediump>		mediump_u8vec3;
-	typedef vec<4, u8, mediump>		mediump_u8vec4;
+	typedef vec<1, uint8, mediump>		mediump_u8vec1;
+	typedef vec<2, uint8, mediump>		mediump_u8vec2;
+	typedef vec<3, uint8, mediump>		mediump_u8vec3;
+	typedef vec<4, uint8, mediump>		mediump_u8vec4;
 
-	typedef vec<1, u8, highp>		highp_u8vec1;
-	typedef vec<2, u8, highp>		highp_u8vec2;
-	typedef vec<3, u8, highp>		highp_u8vec3;
-	typedef vec<4, u8, highp>		highp_u8vec4;
+	typedef vec<1, uint8, highp>		highp_u8vec1;
+	typedef vec<2, uint8, highp>		highp_u8vec2;
+	typedef vec<3, uint8, highp>		highp_u8vec3;
+	typedef vec<4, uint8, highp>		highp_u8vec4;
 
-	typedef vec<1, u8, defaultp>	u8vec1;
-	typedef vec<2, u8, defaultp>	u8vec2;
-	typedef vec<3, u8, defaultp>	u8vec3;
-	typedef vec<4, u8, defaultp>	u8vec4;
+	typedef vec<1, uint8, defaultp>	u8vec1;
+	typedef vec<2, uint8, defaultp>	u8vec2;
+	typedef vec<3, uint8, defaultp>	u8vec3;
+	typedef vec<4, uint8, defaultp>	u8vec4;
 
 	typedef vec<1, u16, lowp>		lowp_u16vec1;
 	typedef vec<2, u16, lowp>		lowp_u16vec2;

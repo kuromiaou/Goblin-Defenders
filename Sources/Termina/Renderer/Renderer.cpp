@@ -22,13 +22,9 @@ namespace Termina {
         uint32 frameIndex = m_Surface->GetFrameIndex();
 
         RenderContext* context = m_Surface->BeginFrame();
-
-        RenderEncoderInfo rei = RenderEncoderInfo().AddColorAttachment(m_Surface->GetCurrentTextureView(), true, glm::vec4(0.2f, 0.8f, 0.5f, 1.0f))
-                                                   .SetName("Clear Color")
-                                                   .SetDimensions(m_Window->GetWidth(), m_Window->GetHeight());
-        RenderEncoder* re = context->CreateRenderEncoder(rei);
-        re->End();
-
+        for (const auto& callback : m_RenderCallbacks) {
+            callback(m_Device, m_Surface, deltaTime);
+        }
         m_Surface->EndFrame();
     }
 }

@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -21,11 +21,11 @@
 #include <utility> // move
 #include <vector> // vector
 
-#include <nlohmann/detail/exceptions.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/string_concat.hpp>
-#include <nlohmann/detail/string_escape.hpp>
-#include <nlohmann/detail/value_t.hpp>
+#include <JSON/detail/exceptions.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/string_concat.hpp>
+#include <JSON/detail/string_escape.hpp>
+#include <JSON/detail/value_t.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 
@@ -239,7 +239,7 @@ class json_pointer
         }
 
         // only triggered on special platforms (like 32bit), see also
-        // https://github.com/nlohmann/json/pull/2203
+        // https://github.com/JSON/json/pull/2203
         if (res >= static_cast<unsigned long long>((std::numeric_limits<size_type>::max)()))  // NOLINT(runtime/int)
         {
             JSON_THROW(detail::out_of_range::create(410, detail::concat("array index ", s, " exceeds size_type"), nullptr));   // LCOV_EXCL_LINE

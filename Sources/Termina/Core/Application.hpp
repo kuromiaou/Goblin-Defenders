@@ -14,6 +14,12 @@ namespace Termina {
         void Close() { m_Running = false; }
 
         static Application& Get() { return *s_Instance; }
+        
+        template <typename T>
+        static T* GetSystem()
+        {
+            return Get().m_SystemManager.GetSystem<T>();
+        }
     private:
         void PreUpdate(float dt);
         void Update(float dt);

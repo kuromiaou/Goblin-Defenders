@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -14,10 +14,10 @@
 #include <utility> // move
 #include <vector> // vector
 
-#include <nlohmann/detail/exceptions.hpp>
-#include <nlohmann/detail/input/lexer.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/string_concat.hpp>
+#include <JSON/detail/exceptions.hpp>
+#include <JSON/detail/input/lexer.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/string_concat.hpp>
 NLOHMANN_JSON_NAMESPACE_BEGIN
 
 /*!
@@ -851,7 +851,7 @@ class json_sax_dom_callback_parser
         }
 
         // skip this value if we already decided to skip the parent
-        // (https://github.com/nlohmann/json/issues/971#issuecomment-413678360)
+        // (https://github.com/JSON/json/issues/971#issuecomment-413678360)
         if (!ref_stack.back())
         {
             return {false, nullptr};

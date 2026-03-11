@@ -1,7 +1,7 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++
 // |  |  |__   |  |  | | | |  version 3.12.0
-// |_____|_____|_____|_|___|  https://github.com/nlohmann/json
+// |_____|_____|_____|_|___|  https://github.com/JSON/json
 //
 // SPDX-FileCopyrightText: 2013-2026 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
@@ -16,13 +16,13 @@
 #if defined(__cpp_lib_byte) && __cpp_lib_byte >= 201603L
     #include <cstddef> // byte
 #endif
-#include <nlohmann/detail/iterators/iterator_traits.hpp>
-#include <nlohmann/detail/macro_scope.hpp>
-#include <nlohmann/detail/meta/call_std/begin.hpp>
-#include <nlohmann/detail/meta/call_std/end.hpp>
-#include <nlohmann/detail/meta/cpp_future.hpp>
-#include <nlohmann/detail/meta/detected.hpp>
-#include <nlohmann/json_fwd.hpp>
+#include <JSON/detail/iterators/iterator_traits.hpp>
+#include <JSON/detail/macro_scope.hpp>
+#include <JSON/detail/meta/call_std/begin.hpp>
+#include <JSON/detail/meta/call_std/end.hpp>
+#include <JSON/detail/meta/cpp_future.hpp>
+#include <JSON/detail/meta/detected.hpp>
+#include <JSON/json_fwd.hpp>
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 /*!
@@ -118,7 +118,7 @@ struct has_from_json : std::false_type {};
 // trait checking if j.get<T> is valid
 // use this trait instead of std::is_constructible or std::is_convertible,
 // both rely on, or make use of implicit conversions, and thus fail when T
-// has several constructors/operator= (see https://github.com/nlohmann/json/issues/958)
+// has several constructors/operator= (see https://github.com/JSON/json/issues/958)
 template <typename BasicJsonType, typename T>
 struct is_getable
 {
@@ -460,7 +460,7 @@ struct is_compatible_array_type_impl <
     is_detected<iterator_t, CompatibleArrayType>::value&&
     is_iterator_traits<iterator_traits<detected_t<iterator_t, CompatibleArrayType>>>::value&&
 // special case for types like std::filesystem::path whose iterator's value_type are themselves
-// c.f. https://github.com/nlohmann/json/pull/3073
+// c.f. https://github.com/JSON/json/pull/3073
     !std::is_same<CompatibleArrayType, detected_t<range_value_t, CompatibleArrayType>>::value >>
 {
     static constexpr bool value =
@@ -495,7 +495,7 @@ is_detected<iterator_t, ConstructibleArrayType>::value&&
 is_iterator_traits<iterator_traits<detected_t<iterator_t, ConstructibleArrayType>>>::value&&
 is_detected<range_value_t, ConstructibleArrayType>::value&&
 // special case for types like std::filesystem::path whose iterator's value_type are themselves
-// c.f. https://github.com/nlohmann/json/pull/3073
+// c.f. https://github.com/JSON/json/pull/3073
 !std::is_same<ConstructibleArrayType, detected_t<range_value_t, ConstructibleArrayType>>::value&&
 is_complete_type <
 detected_t<range_value_t, ConstructibleArrayType >>::value >>
@@ -623,7 +623,7 @@ struct is_comparable : std::false_type {};
 
 // We exclude json_pointer here, because the checks using Compare(A, B) will
 // use json_pointer::operator string_t() which triggers a deprecation warning
-// for GCC. See https://github.com/nlohmann/json/issues/4621. The call to
+// for GCC. See https://github.com/JSON/json/issues/4621. The call to
 // is_json_pointer_of can be removed once the deprecated function has been
 // removed.
 template<typename Compare, typename A, typename B>
@@ -698,7 +698,7 @@ struct is_ordered_map
     enum { value = sizeof(test<T>(nullptr)) == sizeof(char) }; // NOLINT(cppcoreguidelines-pro-type-vararg,hicpp-vararg,cppcoreguidelines-use-enum-class)
 };
 
-// to avoid useless casts (see https://github.com/nlohmann/json/issues/2893#issuecomment-889152324)
+// to avoid useless casts (see https://github.com/JSON/json/issues/2893#issuecomment-889152324)
 template < typename T, typename U, enable_if_t < !std::is_same<T, U>::value, int > = 0 >
 T conditional_static_cast(U value)
 {

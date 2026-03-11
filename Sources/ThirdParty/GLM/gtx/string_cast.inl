@@ -96,7 +96,7 @@ namespace detail
 	template<>
 	struct prefix<uint8_t>
 	{
-		GLM_FUNC_QUALIFIER static char const * value() {return "u8";}
+		GLM_FUNC_QUALIFIER static char const * value() {return "uint8";}
 	};
 
 	template<>

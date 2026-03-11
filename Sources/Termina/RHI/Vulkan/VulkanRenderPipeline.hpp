@@ -81,6 +81,7 @@ namespace Termina {
         case ShaderType::COMPUTE:  return vk::ShaderStageFlagBits::eCompute;
         case ShaderType::MESH:     return vk::ShaderStageFlagBits::eMeshEXT;
         case ShaderType::TASK:     return vk::ShaderStageFlagBits::eTaskEXT;
+        case ShaderType::GEOMETRY: return vk::ShaderStageFlagBits::eGeometry;
         default:                   return vk::ShaderStageFlagBits::eVertex;
         }
     }
