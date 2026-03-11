@@ -4,8 +4,8 @@ target("Termina")
     set_kind("static")
     set_group("Termina")
 
-    add_files("*.cpp")
-    add_headerfiles("*.hpp")
+    add_files("**.cpp")
+    add_headerfiles("**.hpp")
     add_includedirs(".")
     add_deps(
         "CGLTF",
