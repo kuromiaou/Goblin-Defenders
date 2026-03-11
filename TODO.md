@@ -25,7 +25,7 @@
 
 ## DAY 2
 
-- World system
+- Simple HDR forward pass + tonemap
 - Cube renderer with entities from the world
 - Asset system
 - Start physics?
