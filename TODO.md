@@ -28,12 +28,13 @@
 - Simple HDR forward pass + tonemap
 - Cube renderer with entities from the world
 - Asset system
-- Start physics?
+- Input system
+- Audio system
 
 ## DAY 3
 
+- Rendering 3D models
 - Physics system
-- Audio system
 
 ## DAY 4
 

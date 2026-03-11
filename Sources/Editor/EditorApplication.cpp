@@ -10,12 +10,14 @@
 #include <Termina/Shader/ShaderManager.hpp>
 
 #include "ImGui/imgui.h"
+#include "Termina/Audio/AudioSystem.hpp"
 
 EditorApplication::EditorApplication()
     : Application("Editor")
 {
     m_SystemManager.AddSystem<Termina::RendererSystem>(m_Window);
     m_SystemManager.AddSystem<Termina::ShaderManager>();
+    m_SystemManager.AddSystem<Termina::AudioSystem>();
 
     RegisterPanel<ViewportPanel>();
     RegisterPanel<WorldHierarchyPanel>();
