@@ -7,6 +7,7 @@
 #include "World.hpp"
 
 namespace Termina {
+    /// Manages the current world, including loading, saving, and transitioning between worlds.
     class WorldSystem : public ISystem {
     public:
         WorldSystem();

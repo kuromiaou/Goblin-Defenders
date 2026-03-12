@@ -3,13 +3,16 @@
 #include <Termina/RHI/Device.hpp>
 
 namespace Termina {
+    /// Manages a GPU bump allocator, providing a simple way to allocate memory from a buffer.
     class GPUBumpAllocator
     {
     public:
         GPUBumpAllocator(RendererDevice* device, uint64 totalSize);
         ~GPUBumpAllocator();
 
+        /// Allocates memory from the buffer, aligned to the specified alignment.
         uint64 Allocate(uint64 size, uint64 alignment);
+        /// Resets the allocator, freeing all allocated memory and resetting the offset.
         void Reset();
 
         void* GetPointerAtOffset(uint64 offset) const { return static_cast<uint8*>(m_MappedPtr) + offset; }

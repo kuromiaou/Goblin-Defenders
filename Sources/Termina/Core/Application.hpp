@@ -4,12 +4,14 @@
 #include "Window.hpp"
 
 namespace Termina {
+    /// Represents the main application instance.
     class Application
     {
     public:
         Application(const std::string& gameName);
         virtual ~Application();
 
+        /// Runs the application loop.
         void Run();
         void Close() { m_Running = false; }
 

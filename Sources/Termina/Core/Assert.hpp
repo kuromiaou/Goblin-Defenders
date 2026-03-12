@@ -5,6 +5,7 @@
 namespace Termina {
     class Assert {
     public:
+        /// Reports a failure assertion with the given condition, file, line, and format string.
         static void ReportFailure(const char* condition, const char* file, int line, const char* format, ...);
     };
 }

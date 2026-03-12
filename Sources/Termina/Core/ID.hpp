@@ -6,6 +6,8 @@
 #include <random>
 
 namespace Termina {
+
+    /// A simple ID generator that generates unique 64-bit IDs.
     class IDGenerator
     {
     public:
@@ -15,10 +17,16 @@ namespace Termina {
             return instance;
         }
 
+        /// Generates a new unique ID.
         uint64 Generate();
+
+        /// Reserves an ID for future use, preventing it from being generated again.
         void Reserve(uint64 id);
+        /// Releases an ID, allowing it to be generated again.
         void Release(uint64 id);
+        /// Returns `true` if the ID is currently in use.
         bool IsUsed(uint64 id) const;
+        /// Clears all reserved IDs, allowing all IDs to be generated again.
         void Clear();
 
     private:

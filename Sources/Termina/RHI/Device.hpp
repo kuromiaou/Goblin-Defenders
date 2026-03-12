@@ -13,6 +13,7 @@
 #include "ComputePipeline.hpp"
 
 namespace Termina {
+    /// Represents the backend renderer used by the device.
     enum class RendererBackend
     {
         Vulkan,
@@ -20,6 +21,7 @@ namespace Termina {
         D3D12
     };
 
+    /// Represents a renderer device that provides access to rendering resources and execution.
     class RendererDevice
     {
     public:

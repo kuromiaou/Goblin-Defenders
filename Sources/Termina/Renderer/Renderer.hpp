@@ -14,8 +14,10 @@
 #include "Camera.hpp"
 
 namespace Termina {
+    /// A callback function for rendering.
     using RenderCallback = std::function<void(RendererDevice*, RendererSurface*, float)>;
 
+    /// The main renderer system that handles rendering of entities.
     class RendererSystem : public ISystem
     {
     public:
@@ -45,6 +47,7 @@ namespace Termina {
         SamplerCache* GetSamplerCache() const { return m_SamplerCache; }
         PassIO* GetPassIO() { return &m_PassIO; }
     private:
+        /// Bakes the render timeline by creating render passes.
         void BakeTimeline();
 
         Window* m_Window;

@@ -7,6 +7,7 @@
 #include <unordered_map>
 
 namespace Termina {
+    /// Represents the input/output resources for a render pass, shared across multiple passes.
     class PassIO
     {
     public:

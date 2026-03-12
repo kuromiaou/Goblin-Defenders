@@ -7,6 +7,7 @@
 namespace Termina {
     using ResourceViewKey = uint64;
 
+    /// A cache of resource views for reuse.
     class ResourceViewCache
     {
     public:

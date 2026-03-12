@@ -3,6 +3,7 @@
 #include <ImGui/imgui.h>
 
 namespace Termina {
+    /// Utility functions for UI rendering.
     class UIUtils
     {
     public:

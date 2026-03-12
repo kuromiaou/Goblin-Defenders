@@ -6,6 +6,7 @@
 #include <Termina/Core/Common.hpp>
 
 namespace Termina {
+    /// Manages the window and its properties.
     class Window
     {
     public:
@@ -15,10 +16,14 @@ namespace Termina {
         bool IsOpen();
         void Update();
 
+        /// Returns the window width in pixels.
         int32 GetWidth() const { return m_Width; }
+        /// Returns the window height in pixels.
         int32 GetHeight() const { return m_Height; }
 
+        /// Returns the framebuffer width in pixels.
         int32 GetPixelWidth() const { return m_PixelWidth; }
+        /// Returns the framebuffer height in pixels.
         int32 GetPixelHeight() const { return m_PixelHeight; }
 
         GLFWwindow* GetHandle() const { return m_Window; }

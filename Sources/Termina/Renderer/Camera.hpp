@@ -5,6 +5,7 @@
 #include <Termina/Core/Common.hpp>
 
 namespace Termina {
+    /// POD struct representing a camera in the scene, providing projection and view matrices.
     struct Camera
     {
         glm::mat4 Projection = glm::mat4(1.0f);

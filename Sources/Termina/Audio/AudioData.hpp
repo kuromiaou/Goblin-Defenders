@@ -6,9 +6,11 @@
 #include <string>
 
 namespace Termina {
+    /// Represents an audio file loaded into memory for playback.
     class AudioData
     {
     public:
+        /// Constructs an AudioData object from a file path.
         AudioData(ma_engine& engine, const std::string& path);
         ~AudioData();
 

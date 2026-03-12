@@ -3,6 +3,7 @@
 #include <Termina/Input/InputSystem.hpp>
 
 namespace TerminaScript {
+    /// Provides access to input-related functionality.
     class Input
     {
     public:
@@ -28,4 +29,3 @@ namespace TerminaScript {
         static float     GetAxis(const std::string& name);
     };
 }
-

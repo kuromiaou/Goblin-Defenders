@@ -5,6 +5,7 @@
 #include <ImGui/imgui.h>
 
 namespace Termina {
+    /// Renders ImGui UI elements using the given render pass execute info.
     class ImGuiPass : public RenderPass
     {
     public:
@@ -12,7 +13,7 @@ namespace Termina {
         ~ImGuiPass();
 
         void Execute(RenderPassExecuteInfo& Info) override;
-    
+
     private:
         void UpdateTexture(ImDrawData* data, RenderPassExecuteInfo& Info);
 

@@ -7,7 +7,9 @@
 #include <vector>
 
 namespace Termina {
-    class SystemManager {
+    /// Manages the registration and update of systems.
+    class SystemManager
+    {
     public:
         SystemManager() = default;
         ~SystemManager();
@@ -27,7 +29,10 @@ namespace Termina {
             return reinterpret_cast<T*>(m_Subsystems[typeid(T)]);
         }
 
+        /// Begins the update cycle, sorting systems by priority.
         void Begin();
+
+        /// Cleans up all registered systems.
         void Clean();
 
         void PreUpdate(float deltaTime);
@@ -40,6 +45,7 @@ namespace Termina {
         void Render(float deltaTime);
         void PostRender(float deltaTime);
 
+        /// Sets whether the editor is active, affecting system update behavior.
         void SetIsInEditor(bool isInEditor);
     private:
         std::unordered_map<std::type_index, ISystem*> m_Subsystems;

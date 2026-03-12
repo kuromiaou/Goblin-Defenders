@@ -3,14 +3,18 @@
 #include "AudioData.hpp"
 
 namespace Termina {
+    /// Represents an audio source that can be played back and spatialized.
     class AudioSource
     {
     public:
         AudioSource(ma_engine& engine, AudioData* data, bool looping = false);
         ~AudioSource();
 
+        /// Plays the audio source.
         void Play();
+        /// Stops the audio source.
         void Stop();
+        /// Updates the audio source's properties
         void Update();
 
         bool IsValid() const { return m_Data != nullptr; }

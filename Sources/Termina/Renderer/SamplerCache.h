@@ -8,6 +8,7 @@ namespace Termina
 {
     using SamplerKey = uint64;
 
+    /// A cache of samplers for reuse.
     class SamplerCache
     {
     public:

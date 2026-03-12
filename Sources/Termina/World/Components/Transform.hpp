@@ -7,6 +7,7 @@
 #include <GLM/gtc/matrix_transform.hpp>
 
 namespace Termina {
+    /// Represents the transform (position, rotation, scale) of an actor.
     class Transform : public Component
     {
     public:

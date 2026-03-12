@@ -13,6 +13,7 @@
 namespace Termina {
     class World;
 
+    /// Represents an entity in the world with components.
     class Actor
     {
     public:

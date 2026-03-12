@@ -13,10 +13,15 @@ namespace Termina {
     public:
         ~World();
 
+        /// Spawns a new actor with a transform component.
         Actor* SpawnActor();
+        /// Spawns a new actor from an existing actor, copying its components.
         Actor* SpawnActorFrom(Actor* actor);
+        /// Destroys an actor, removing it from the world.
         void DestroyActor(Actor* actor);
+        /// Returns an actor by its unique ID.
         Actor* GetActorById(uint64 id);
+        /// Returns an actor by its name.
         Actor* GetActorByName(const std::string& name);
 
         void OnInit();

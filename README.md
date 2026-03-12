@@ -3,3 +3,29 @@
 ![](.github/logo.png)
 
 Termina is a game engine made in about a week.
+
+## Features
+
+- Vulkan/Metal rendering
+- macOS/Windows/Linux support
+- Audio system
+- Input system (keyboard, mouse, gamepad)
+- C++ scripting with hot-reload
+- Shader hot reload
+- Actor model and world serialization/deserialization
+
+## Dependencies
+
+- cgltf
+- DirectX Shader Compiler
+- glfw
+- GLM
+- ImGui
+- Jolt
+- nlohmann/json
+- Metal Shader Converter
+- MikkTSpace
+- miniaudio
+- stb_image
+- Vulkan Memory Allocator
+- Volk

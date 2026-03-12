@@ -5,6 +5,8 @@
 #include <string>
 
 namespace Termina {
+
+    /// Logging level for the logger.
     enum class ELogLevel : uint8_t
     {
         kDebug,
@@ -18,7 +20,10 @@ namespace Termina {
     class Logger
     {
     public:
+        /// Initializes the logger with the given log path and log level.
         static void Initialize(const std::string& logPath, ELogLevel logLevel);
+
+        /// Flushes the log file and console buffers.
         static void Flush();
 
         static void Info(const char* file, int line, const char* format, ...);

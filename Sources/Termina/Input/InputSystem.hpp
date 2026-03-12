@@ -14,6 +14,7 @@ struct GLFWwindow;
 
 namespace Termina {
 
+    /// Represents a binding for an action (key, mouse button, or gamepad button).
     struct ActionBinding {
         enum class Type { Key, MouseButton, GamepadButton } BindingType;
         Key          KeyCode    = Key::Space;
@@ -22,6 +23,7 @@ namespace Termina {
         int32        GamepadId  = 0;
     };
 
+    /// Represents a binding for an axis (key, mouse delta, scroll, or gamepad axis).
     struct AxisBinding {
         enum class Type { Key, MouseDeltaX, MouseDeltaY, ScrollX, ScrollY, GamepadAxis } BindingType;
         Key          KeyCode         = Key::Space;
@@ -30,13 +32,16 @@ namespace Termina {
         float        Scale           = 1.0f;
     };
 
+    /// Represents the input system, handling keyboard, mouse, and gamepad input.
     class InputSystem : public ISystem
     {
     public:
         InputSystem(GLFWwindow* window);
         ~InputSystem();
 
+        /// Called before the update phase, used for input polling.
         void PreUpdate(float deltaTime) override;
+        /// Called after the update phase, used for input processing.
         void PostUpdate(float deltaTime) override;
 
         static bool     IsKeyPressed(Key key);
@@ -59,14 +64,22 @@ namespace Termina {
         static bool     IsGamepadButtonReleased(int32 gamepadId, GamepadButton button);
         static float    GetGamepadAxis(int32 gamepadId, GamepadAxis axis, float deadzone = 0.1f);
 
+        /// Maps an action to a set of bindings (key, mouse button, or gamepad button).
         void MapAction(const std::string& name, std::vector<ActionBinding> bindings);
+        /// Maps an axis to a set of bindings (key, mouse delta, scroll, or gamepad axis).
         void MapAxis(const std::string& name, std::vector<AxisBinding> bindings);
+        /// Unmaps an action by name.
         void UnmapAction(const std::string& name);
+        /// Unmaps an axis by name.
         void UnmapAxis(const std::string& name);
 
+        /// Returns true if the action is currently pressed.
         static bool     IsActionPressed(const std::string& name);
+        /// Returns true if the action is currently held.
         static bool     IsActionHeld(const std::string& name);
+        /// Returns true if the action is currently released.
         static bool     IsActionReleased(const std::string& name);
+        /// Returns the value of the axis (0.0 to 1.0).
         static float    GetAxis(const std::string& name);
 
         using KeyCallback         = std::function<void(Key, bool)>;
@@ -78,6 +91,7 @@ namespace Termina {
         std::string GetName()        const override { return "Input System"; }
         int         GetPriority()    const override { return 10; }
 
+        /// Shows the debug window for input system state.
         static void         ShowDebugWindow(bool* open = nullptr);
 
         static InputSystem* Get() { return s_Instance; }

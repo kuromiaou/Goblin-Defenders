@@ -7,6 +7,7 @@
 #include <vector>
 
 namespace Termina {
+    /// Describes the layout and format of a texture for upload operations.
 	struct TextureUploadDesc
 	{
 		uint32 MipLevel = 0;
@@ -17,6 +18,7 @@ namespace Termina {
 		TextureFormat Format;
 	};
 
+	/// Manages GPU upload operations, including texture and buffer uploads.
 	class GPUUploader
 	{
 	public:

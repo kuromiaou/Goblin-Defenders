@@ -12,12 +12,13 @@
 #include "PassIO.hpp"
 
 namespace Termina {
+    /// Contains the information needed to execute a render pass.
     struct RenderPassExecuteInfo
     {
         RendererDevice* Device;
         RendererSurface* Surface;
         RenderContext* Ctx;
-        
+
         GPUUploader* Uploader;
         GPUBumpAllocator* Allocator;
         ResourceViewCache* ViewCache;
@@ -32,6 +33,7 @@ namespace Termina {
         int32 Height;
     };
 
+    /// Represents a render pass that can be executed.
     class RenderPass
     {
     public:

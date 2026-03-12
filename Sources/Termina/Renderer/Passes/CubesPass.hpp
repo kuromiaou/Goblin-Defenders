@@ -3,6 +3,7 @@
 #include <Termina/Renderer/RenderPass.hpp>
 
 namespace Termina {
+    /// Renders cubes using the given render pass execute info.
     class CubesPass : public RenderPass
     {
     public:

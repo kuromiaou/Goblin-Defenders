@@ -1,7 +1,9 @@
 #pragma once
 
 namespace Termina {
-    class DLL {
+    /// Represents a dynamically loaded library (DLL or shared object).
+    class DLL
+    {
     public:
         DLL() = default;
         DLL(const char* path);
