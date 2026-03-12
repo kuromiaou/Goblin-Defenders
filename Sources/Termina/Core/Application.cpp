@@ -18,25 +18,27 @@ namespace Termina {
     void Application::Run()
     {
         while (m_Running && m_Window->IsOpen()) {
-            float currentTime = static_cast<float>(glfwGetTime());
-            float dt = currentTime - m_LastFrameTime;
-            m_LastFrameTime = currentTime;
+            FRAME_LOOP {
+                float currentTime = static_cast<float>(glfwGetTime());
+                float dt = currentTime - m_LastFrameTime;
+                m_LastFrameTime = currentTime;
 
-            m_SystemManager.Begin();
+                m_SystemManager.Begin();
 
-            PreUpdate(dt);
-            Update(dt);
-            PostUpdate(dt);
+                PreUpdate(dt);
+                Update(dt);
+                PostUpdate(dt);
 
-            PrePhysics(dt);
-            Physics(dt);
-            PostPhysics(dt);
+                PrePhysics(dt);
+                Physics(dt);
+                PostPhysics(dt);
 
-            PreRender(dt);
-            Render(dt);
-            PostRender(dt);
+                PreRender(dt);
+                Render(dt);
+                PostRender(dt);
 
-            m_Window->Update();
+                m_Window->Update();
+            }
         }
     }
 

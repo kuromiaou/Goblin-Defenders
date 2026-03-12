@@ -766,6 +766,14 @@ void IRCompilerSetDepthFeedbackConfiguration(IRCompiler* compiler, IRDepthFeedba
 void IRCompilerSetIntRTMask(IRCompiler* compiler, uint8_t intRTMask);
 
 /**
+ * Set fragment shader output sample mask.
+ * @param compiler compiler to configure.
+ * @param sampleMask bitmask to inform which samples get updated in active render targets. Defaults to 0xffffffff to update all samples
+ * This parameter is reset after each compilation.
+ */
+void IRCompilerSetSampleMask(IRCompiler* compiler, uint32_t sampleMask);
+
+/**
  * Synthesize an ray dispatch function that indirectly dispatches ray generation shaders.
  * @param compiler compiler configuration to use.
  * @param binary pointer to a binary into which to write the synthesized MetalIR.
@@ -795,6 +803,7 @@ typedef enum IRGPUFamily
     IRGPUFamilyApple7  = 1007,
     IRGPUFamilyApple8  = 1008,
     IRGPUFamilyApple9  = 1009,
+    IRGPUFamilyApple10 = 1010,
     
     IRGPUFamilyMetal3  = 5001
 } IRGPUFamily;

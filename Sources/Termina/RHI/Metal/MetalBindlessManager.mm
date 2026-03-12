@@ -45,7 +45,7 @@ namespace Termina {
     uint32 MetalBindlessManager::WriteBufferView(MetalBufferView* view)
     {
         IRDescriptorTableEntry entry;
-        IRDescriptorTableSetBuffer(&entry, view->GetDesc().Buffer->GetGPUAddress(), view->GetDesc().Buffer->GetSize());
+        IRDescriptorTableSetBuffer(&entry, view->GetDesc().Buffer->GetGPUAddress(), 0);
 
         uint index = m_FreeList.Allocate();
         memcpy((char*)m_MappedData + index * sizeof(IRDescriptorTableEntry), &entry, sizeof(IRDescriptorTableEntry));

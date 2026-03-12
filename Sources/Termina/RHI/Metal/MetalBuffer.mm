@@ -9,6 +9,7 @@ namespace Termina {
 
         m_Buffer = [device->GetDevice() newBufferWithLength:desc.Size options:MTLResourceStorageModeShared];
         [device->GetResidencySet() addAllocation:m_Buffer];
+        [device->GetResidencySet() commit];
     }
 
     MetalBuffer::~MetalBuffer()

@@ -3,6 +3,10 @@
 #include <Termina/Core/Application.hpp>
 #include <Termina/Renderer/Renderer.hpp>
 
+#if defined(TRMN_MACOS)
+    #include "Metal/Metal_ShaderConverter.hpp"
+#endif
+
 namespace Termina {
     ShaderManager::ShaderManager()
     {
@@ -15,6 +19,10 @@ namespace Termina {
 
         m_Library.Load(libraryPath.c_str());
         m_ShaderServer.ConnectDevice(Application::GetSystem<RendererSystem>()->GetDevice());
+
+    #if defined(TRMN_MACOS)
+        MetalShaderConverter::Initialize();
+    #endif
     }
 
     ShaderManager::~ShaderManager()

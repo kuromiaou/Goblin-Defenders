@@ -53,7 +53,7 @@ typedef double float64;
         using UnderlyingType = std::underlying_type<EnumType>::type;     \
         return (static_cast<UnderlyingType>(value) &                    \
                 static_cast<UnderlyingType>(flag)) != 0;                 \
-    }                                                                     
+    }
 
 template<typename T>
 inline T AlignUp(T value, T alignment)
@@ -64,3 +64,9 @@ inline T AlignUp(T value, T alignment)
 #define KILOBYTES(x) ((x)*1024)
 #define MEGABYTES(x) (KILOBYTES(x) * 1024)
 #define GIGABYTES(x) (MEGABYTES(x) * 1024)
+
+#if defined(TRMN_MACOS)
+    #define FRAME_LOOP @autoreleasepool
+#else
+    #define FRAME_LOOP
+#endif

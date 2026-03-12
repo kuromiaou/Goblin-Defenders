@@ -20,6 +20,7 @@ namespace Termina {
 
         m_Texture = [device->GetDevice() newTextureWithDescriptor:descriptor];
         [device->GetResidencySet() addAllocation:m_Texture];
+        [device->GetResidencySet() commit];
     }
 
     MetalTexture::~MetalTexture()

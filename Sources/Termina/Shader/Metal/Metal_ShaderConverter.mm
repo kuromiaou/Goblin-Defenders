@@ -14,7 +14,7 @@ namespace Termina {
             .Constants = {
                 .ShaderRegister = 0,
                 .RegisterSpace = 0,
-                .Num32BitValues = 164 / sizeof(uint32_t)
+                .Num32BitValues = 128 / sizeof(uint32_t)
             },
             .ShaderVisibility = IRShaderVisibilityAll
         };

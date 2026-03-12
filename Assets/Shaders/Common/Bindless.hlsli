@@ -4,7 +4,7 @@
 static const int INVALID_DESCRIPTOR = -1;
 
 // Push constants
-#if D3D12 || METAL
+#if METAL
     #define PUSH_CONSTANTS(Type) ConstantBuffer<Type> PUSH : register(b0)
 #elif VULKAN
     #define PUSH_CONSTANTS(Type) [[vk::push_constant]] ConstantBuffer<Type> PUSH : register(b0)
@@ -20,7 +20,7 @@ RaytracingAccelerationStructure GetAccelerationStructure(uint index)
 {
     return ASArray[index];
 }
-#elif D3D12 || METAL
+#elif METAL
 RaytracingAccelerationStructure GetAccelerationStructure(uint index)
 {
     return ResourceDescriptorHeap[index];
@@ -29,7 +29,7 @@ RaytracingAccelerationStructure GetAccelerationStructure(uint index)
 #endif
 
 // Draw ID
-#if D3D12 || METAL
+#if METAL
 struct DrawIDStruct { uint id; };
 cbuffer gDrawID : register(b1) { DrawIDStruct DrawID; }
 uint GetDrawID() { return DrawID.id; }
