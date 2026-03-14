@@ -41,7 +41,7 @@ namespace Termina {
             .SetDepthAttachmentFormat(TextureFormat::D32_FLOAT)
             .AddColorAttachmentFormat(TextureFormat::BGRA8_UNORM);
 
-        server.WatchPipeline("Assets/Shaders/Debug.hlsl", pipelineDesc, PipelineType::Graphics);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/Debug.hlsl", pipelineDesc, PipelineType::Graphics);
 
         // Initialize frame resources
         m_FrameResources.resize(FRAMES_IN_FLIGHT);
@@ -116,7 +116,7 @@ namespace Termina {
         RenderEncoder* encoder = info.Ctx->CreateRenderEncoder(encoderInfo);
 
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
-        RenderPipeline* pipeline = server.GetPipeline("Assets/Shaders/Debug.hlsl");
+        RenderPipeline* pipeline = server.GetPipeline("__TERMINA__/CORE_SHADERS/Debug.hlsl");
 
         encoder->SetPipeline(pipeline);
         encoder->SetViewport(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));

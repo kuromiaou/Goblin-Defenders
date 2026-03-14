@@ -73,6 +73,12 @@ void EditorApplication::OnUpdate(float dt)
     if (m_DebugWindows.Assets)        GetSystem<Termina::AssetSystem>()->ShowDebugWindow(&m_DebugWindows.Assets);
 }
 
+void EditorApplication::OnPostRender(float dt)
+{
+    Termina::AssetSystem* assetSystem = GetSystem<Termina::AssetSystem>();
+    assetSystem->Clean(0);
+}
+
 bool EditorApplication::SaveWorld(bool forceDialog)
 {
     auto* worldSystem = GetSystem<Termina::WorldSystem>();

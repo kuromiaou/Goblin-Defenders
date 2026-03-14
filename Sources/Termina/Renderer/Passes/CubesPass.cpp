@@ -40,7 +40,7 @@ namespace Termina {
                                                         .SetDepthCompareOp(PipelineCompareOp::LESS)
                                                         .SetDepthReadEnabled(true)
                                                         .SetDepthWriteEnabled(true);
-        server.WatchPipeline("Assets/Shaders/Cubes.hlsl", rpDesc, PipelineType::Graphics);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/Cubes.hlsl", rpDesc, PipelineType::Graphics);
     }
 
     CubesPass::~CubesPass()
@@ -69,7 +69,7 @@ namespace Termina {
                                                    .SetName("Cubes Pass")
                                                    .SetDimensions(info.Width, info.Height);
         RenderEncoder* re = info.Ctx->CreateRenderEncoder(rei);
-        re->SetPipeline(server.GetPipeline("Assets/Shaders/Cubes.hlsl"));
+        re->SetPipeline(server.GetPipeline("__TERMINA__/CORE_SHADERS/Cubes.hlsl"));
         re->SetViewport(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));
         re->SetScissorRect(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));
         for (auto& entity : info.CurrentWorld->GetActors()) {

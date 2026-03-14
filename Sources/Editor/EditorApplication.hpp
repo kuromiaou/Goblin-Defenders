@@ -17,6 +17,7 @@ public:
     ~EditorApplication();
 
     void OnUpdate(float dt) override;
+    void OnPostRender(float dt) override;
 
     template<typename T>
     void RegisterPanel()

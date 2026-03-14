@@ -21,7 +21,7 @@ namespace Termina {
         m_LDRTexture->SetName("LDR Output");
 
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
-        server.WatchPipeline("Assets/Shaders/Tonemap.hlsl", PipelineType::Compute);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/Tonemap.hlsl", PipelineType::Compute);
     }
 
     TonemapPass::~TonemapPass()
@@ -60,7 +60,7 @@ namespace Termina {
         pc.Height      = info.Height;
 
         ComputeEncoder* ce = info.Ctx->CreateComputeEncoder("Tonemap Pass");
-        ce->SetPipeline(server.GetComputePipeline("Assets/Shaders/Tonemap.hlsl"));
+        ce->SetPipeline(server.GetComputePipeline("__TERMINA__/CORE_SHADERS/Tonemap.hlsl"));
         ce->SetConstants(sizeof(pc), &pc);
         ce->Dispatch(info.Width, info.Height, 1, 8, 8, 1);
         ce->End();

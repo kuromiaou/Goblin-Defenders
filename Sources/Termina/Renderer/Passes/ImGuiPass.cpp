@@ -17,7 +17,8 @@ namespace Termina {
         int VertexOffset;
     };
 
-    ImGuiPass::ImGuiPass()
+    ImGuiPass::ImGuiPass(bool shouldClear)
+        : m_ShouldClear(shouldClear)
     {
         RendererDevice* device = Application::GetSystem<RendererSystem>()->GetDevice();
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
@@ -26,7 +27,7 @@ namespace Termina {
                                      .SetCullMode(PipelineCullMode::NONE)
                                      .SetEnableBlending(true)
                                      .AddColorAttachmentFormat(TextureFormat::BGRA8_UNORM);
-        server.WatchPipeline("Assets/Shaders/ImGui.hlsl", pipelineDesc, PipelineType::Graphics);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/ImGui.hlsl", pipelineDesc, PipelineType::Graphics);
 
         m_FontSampler = device->CreateSampler(SamplerDesc()
                                         .SetFilter(SamplerFilter::LINEAR)
@@ -127,9 +128,9 @@ namespace Termina {
 
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
 
-        RenderPipeline* pipeline = server.GetPipeline("Assets/Shaders/ImGui.hlsl");
+        RenderPipeline* pipeline = server.GetPipeline("__TERMINA__/CORE_SHADERS/ImGui.hlsl");
 
-        RenderEncoderInfo encoderInfo = RenderEncoderInfo().AddColorAttachment(info.Surface->GetCurrentTextureView(), false)
+        RenderEncoderInfo encoderInfo = RenderEncoderInfo().AddColorAttachment(info.Surface->GetCurrentTextureView(), m_ShouldClear)
                                                            .SetDimensions((int)(data->DisplaySize.x * data->FramebufferScale.x), (int)(data->DisplaySize.y * data->FramebufferScale.y))
                                                            .SetName("ImGui Pass");
 

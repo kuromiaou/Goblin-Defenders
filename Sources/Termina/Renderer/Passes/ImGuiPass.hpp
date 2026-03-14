@@ -9,7 +9,7 @@ namespace Termina {
     class ImGuiPass : public RenderPass
     {
     public:
-        ImGuiPass();
+        ImGuiPass(bool shouldClear);
         ~ImGuiPass();
 
         void Execute(RenderPassExecuteInfo& Info) override;
@@ -35,5 +35,6 @@ namespace Termina {
         Sampler* m_FontSampler = nullptr;
 
         std::vector<FrameResource> m_FrameResources;
+        bool m_ShouldClear;
     };
 }

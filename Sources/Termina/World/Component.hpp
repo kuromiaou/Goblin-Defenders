@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Termina/Core/System.hpp>
-#include <ThirdParty/JSON/json.hpp>
+#include <JSON/json.hpp>
 
 namespace Termina {
     class Actor;

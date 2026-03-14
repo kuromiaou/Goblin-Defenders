@@ -33,7 +33,7 @@ RuntimeApplication::RuntimeApplication()
     Termina::RenderPipelineDesc rpDesc = Termina::RenderPipelineDesc().AddColorAttachmentFormat(Termina::TextureFormat::BGRA8_UNORM)
                                                                           .SetName("Triangle Pipeline")
                                                                           .SetCullMode(Termina::PipelineCullMode::NONE);
-    shaderManager->GetShaderServer().WatchPipeline("Assets/Shaders/FullscreenPass.hlsl", rpDesc, Termina::PipelineType::Graphics);
+    shaderManager->GetShaderServer().WatchPipeline("__TERMINA__/CORE_SHADERS/FullscreenPass.hlsl", rpDesc, Termina::PipelineType::Graphics);
 
     Termina::RendererSystem* rendererSystem = m_SystemManager.GetSystem<Termina::RendererSystem>();
     rendererSystem->RegisterRenderCallback([this, shaderManager, rendererSystem](Termina::RendererDevice* device, Termina::RendererSurface* surface, float){
@@ -45,7 +45,7 @@ RuntimeApplication::RuntimeApplication()
             .AddColorAttachment(surface->GetCurrentTextureView(), true, glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
 
         Termina::RenderEncoder* re = context->CreateRenderEncoder(rei);
-        re->SetPipeline(shaderManager->GetShaderServer().GetPipeline("Assets/Shaders/FullscreenPass.hlsl"));
+        re->SetPipeline(shaderManager->GetShaderServer().GetPipeline("__TERMINA__/CORE_SHADERS/FullscreenPass.hlsl"));
 
         Termina::TextureViewDesc viewDesc = Termina::TextureViewDesc().CreateDefault(rendererSystem->GetPassIO()->GetTexture("RendererOutput"), Termina::TextureViewType::SHADER_READ, Termina::TextureViewDimension::TEXTURE_2D);
         Termina::TextureView* outputView = rendererSystem->GetResourceViewCache()->GetTextureView(viewDesc);

@@ -152,7 +152,7 @@ namespace Termina {
             new DeferredPass(),
             new TonemapPass(),
             new DebugPass(),
-            new ImGuiPass()
+            new ImGuiPass(m_ShouldImGuiClear)
         };
     }
 

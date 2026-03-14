@@ -80,7 +80,7 @@ namespace Termina {
             .SetPushConstantSize(128);
 
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
-        server.WatchPipeline("Assets/Shaders/GBuffer.hlsl", rpDesc, PipelineType::Graphics);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/GBuffer.hlsl", rpDesc, PipelineType::Graphics);
     }
 
     GBufferPass::~GBufferPass()
@@ -132,7 +132,7 @@ namespace Termina {
             .SetDepthAttachment(depthDTV);
 
         RenderEncoder* re = info.Ctx->CreateRenderEncoder(rei);
-        re->SetPipeline(server.GetPipeline("Assets/Shaders/GBuffer.hlsl"));
+        re->SetPipeline(server.GetPipeline("__TERMINA__/CORE_SHADERS/GBuffer.hlsl"));
         re->SetViewport(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));
         re->SetScissorRect(0, 0, info.Width, info.Height);
 

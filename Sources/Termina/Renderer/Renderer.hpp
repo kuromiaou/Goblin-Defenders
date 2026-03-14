@@ -50,6 +50,8 @@ namespace Termina {
         SamplerCache* GetSamplerCache() const { return m_SamplerCache; }
         PassIO* GetPassIO() { return &m_PassIO; }
 
+        void SetShouldImGuiClear(bool clear) { m_ShouldImGuiClear = clear; }
+
         void ShowDebugWindow(bool* open = nullptr);
     private:
         /// Bakes the render timeline by creating render passes.
@@ -58,6 +60,8 @@ namespace Termina {
         Window* m_Window;
 	    RendererDevice* m_Device = nullptr;
 	    RendererSurface* m_Surface = nullptr;
+
+		bool m_ShouldImGuiClear = false;
 
         Camera m_CurrentCamera;
 

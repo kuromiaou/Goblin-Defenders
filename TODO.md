@@ -26,8 +26,8 @@
 ## TODO
 
 ### Saturday
-- Physics system (implement different types of colliders)
 - Project system
+- Physics system (implement different types of colliders)
 - Scene transition API
 - Spawn from Prefab API
 - Asset compression and packing on export

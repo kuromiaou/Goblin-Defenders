@@ -12,7 +12,7 @@ namespace Termina {
         RenderPipelineDesc rpDesc = RenderPipelineDesc().AddColorAttachmentFormat(TextureFormat::BGRA8_UNORM)
                                                         .SetName("Triangle Pipeline")
                                                         .SetCullMode(PipelineCullMode::NONE);
-        server.WatchPipeline("Assets/Shaders/Triangle.hlsl", rpDesc, PipelineType::Graphics);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/Triangle.hlsl", rpDesc, PipelineType::Graphics);
     }
 
     void TrianglePass::Execute(RenderPassExecuteInfo& info)
@@ -23,7 +23,7 @@ namespace Termina {
                                                    .SetName("Clear Color")
                                                    .SetDimensions(info.Width, info.Height);
         RenderEncoder* re = info.Ctx->CreateRenderEncoder(rei);
-        re->SetPipeline(server.GetPipeline("Assets/Shaders/Triangle.hlsl"));
+        re->SetPipeline(server.GetPipeline("__TERMINA__/CORE_SHADERS/Triangle.hlsl"));
         re->SetViewport(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));
         re->SetScissorRect(0.0f, 0.0f, static_cast<float>(info.Width), static_cast<float>(info.Height));
         re->Draw(3, 1, 0, 0);

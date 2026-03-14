@@ -21,7 +21,7 @@ namespace Termina {
         m_HDRTexture->SetName("HDR Color");
 
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
-        server.WatchPipeline("Assets/Shaders/Deferred.hlsl", PipelineType::Compute);
+        server.WatchPipeline("__TERMINA__/CORE_SHADERS/Deferred.hlsl", PipelineType::Compute);
     }
 
     DeferredPass::~DeferredPass()
@@ -67,7 +67,7 @@ namespace Termina {
         pc.Height        = info.Height;
 
         ComputeEncoder* ce = info.Ctx->CreateComputeEncoder("Deferred Pass");
-        ce->SetPipeline(server.GetComputePipeline("Assets/Shaders/Deferred.hlsl"));
+        ce->SetPipeline(server.GetComputePipeline("__TERMINA__/CORE_SHADERS/Deferred.hlsl"));
         ce->SetConstants(sizeof(pc), &pc);
         ce->Dispatch(info.Width, info.Height, 1, 8, 8, 1);
         ce->End();
