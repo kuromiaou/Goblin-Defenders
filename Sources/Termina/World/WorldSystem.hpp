@@ -46,6 +46,10 @@ namespace Termina {
         void Stop();
         bool IsPlaying() const { return m_IsPlaying; }
 
+        // Request a scene transition by path. The transition is deferred until the
+        // start of the next frame. Only valid during play mode; ignored in editor.
+        void RequestSceneTransition(const std::string& path);
+
         UpdateFlags GetUpdateFlags() const override { return UpdateFlags::UpdateDuringEditor | UpdateFlags::RenderUpdateDuringEditor | UpdateFlags::PhysicsUpdateDuringEditor; }
         std::string GetName() const override { return "World System"; }
         int GetPriority() const override { return 0; }
@@ -59,5 +63,6 @@ namespace Termina {
 
         std::string m_PrePlayPath;    // world path before entering play mode
         std::string m_PlaySnapshot;   // temp file used to snapshot world state on play
+        std::string m_PendingScene;   // non-empty when a script has requested a scene transition
     };
 }

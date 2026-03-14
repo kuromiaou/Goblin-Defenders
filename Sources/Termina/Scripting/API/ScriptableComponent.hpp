@@ -2,6 +2,7 @@
 
 #include <Termina/World/World.hpp>
 #include "Prefab.hpp"
+#include "Scene.hpp"
 
 namespace TerminaScript {
     /// Represents a scriptable component that can be attached to an actor.
@@ -58,6 +59,13 @@ namespace TerminaScript {
         Termina::Actor* Instantiate(const Prefab& prefab);
         /// Destroys the given actor.
         void Destroy(Termina::Actor* actor);
+
+        /// Requests a transition to the scene at the given path.
+        /// The transition is deferred until the start of the next frame.
+        void LoadScene(const Scene& scene);
+        /// Requests a transition to the scene at the given path.
+        /// The transition is deferred until the start of the next frame.
+        void LoadScene(const std::string& path);
 
         /// The transform component of this actor.
         Termina::Transform* m_Transform;

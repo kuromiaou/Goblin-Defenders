@@ -26,7 +26,6 @@
 ## TODO
 
 ### Saturday
-- Scene transition API
 - Physics system (implement different types of colliders)
 - Asset compression and packing on export
 

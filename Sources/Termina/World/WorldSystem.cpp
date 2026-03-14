@@ -114,12 +114,43 @@ namespace Termina {
         }
     }
 
+    void WorldSystem::RequestSceneTransition(const std::string& path)
+    {
+        if (!m_IsPlaying || path.empty())
+            return;
+        m_PendingScene = path;
+    }
+
     // ---------------------------------------------------------------------------
     // ISystem lifecycle forwarded to the current world
     // ---------------------------------------------------------------------------
 
     void WorldSystem::PreUpdate(float deltaTime)
     {
+        // Apply any deferred scene transition requested by scripts last frame.
+        if (!m_PendingScene.empty())
+        {
+            std::string path = std::move(m_PendingScene);
+            m_PendingScene.clear();
+
+            auto candidate = std::make_unique<World>();
+            bool loaded = false;
+            try
+            {
+                candidate->LoadFromFile(path);
+                loaded = true;
+            }
+            catch (const std::exception&) {}
+
+            if (loaded)
+            {
+                TransitionTo(std::move(candidate));
+                m_CurrentWorld->OnInit();
+                m_IsPlaying = true;
+                m_CurrentWorld->OnPlay();
+            }
+        }
+
         if (m_CurrentWorld)
             m_CurrentWorld->OnPreUpdate(deltaTime);
     }

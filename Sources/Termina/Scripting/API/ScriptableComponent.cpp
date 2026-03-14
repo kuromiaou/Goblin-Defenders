@@ -1,4 +1,6 @@
 #include "ScriptableComponent.hpp"
+#include <Termina/Core/Application.hpp>
+#include <Termina/World/WorldSystem.hpp>
 
 namespace TerminaScript {
     void ScriptableComponent::OnInit()
@@ -23,5 +25,17 @@ namespace TerminaScript {
     void ScriptableComponent::Destroy(Termina::Actor* actor)
     {
         m_Owner->GetParentWorld()->DestroyActor(actor);
+    }
+
+    void ScriptableComponent::LoadScene(const Scene& scene)
+    {
+        LoadScene(scene.Path);
+    }
+
+    void ScriptableComponent::LoadScene(const std::string& path)
+    {
+        Termina::WorldSystem* ws = Termina::Application::GetSystem<Termina::WorldSystem>();
+        if (ws)
+            ws->RequestSceneTransition(path);
     }
 }
