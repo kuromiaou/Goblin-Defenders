@@ -34,14 +34,11 @@
 - First release of the engine to a standalone executable
 
 ## Sunday
-- Bindless scene buffer setup
-- Microfacet BRDF
-- Skybox
-- IBL
+- Cook torrance BRDF
+- Directional lights
+- Point lights
+- Spot lights
 - CSM
-- TAA
-- Bloom
-- Shadow atlas
 
 ## Monday
 - Walk around demo, change levels, pick up item, scripted particle system

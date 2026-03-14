@@ -11,6 +11,9 @@
 #include <Termina/Audio/AudioSystem.hpp>
 #include <Termina/World/WorldSystem.hpp>
 #include <Termina/World/ComponentRegistry.hpp>
+#include <Termina/Core/Project.hpp>
+
+#include <filesystem>
 
 RuntimeApplication::RuntimeApplication()
     : Application("Runtime")
@@ -26,8 +29,12 @@ RuntimeApplication::RuntimeApplication()
 
     Termina::ComponentRegistry::Get().Report();
 
+    Termina::Project project;
+    project.LoadProject("Root.terminaproj");
+    std::filesystem::current_path(project.Path);
+
     Termina::WorldSystem* worldSystem = m_SystemManager.GetSystem<Termina::WorldSystem>();
-    worldSystem->LoadWorld("Assets/Worlds/Sponza.trw");
+    worldSystem->LoadWorld(project.FirstSceneToLoad);
 
     Termina::ShaderManager* shaderManager = m_SystemManager.GetSystem<Termina::ShaderManager>();
     Termina::RenderPipelineDesc rpDesc = Termina::RenderPipelineDesc().AddColorAttachmentFormat(Termina::TextureFormat::BGRA8_UNORM)

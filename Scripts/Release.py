@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import platform
 import sys
@@ -59,10 +60,10 @@ def main():
 
     os_name, xmake_arch, plat_dir, exe_ext, lib_prefix, lib_ext = get_platform_info()
 
-    build_dir = Path(f"build/{os_name}/{xmake_arch}/release")
+    build_dir = Path(f"build/{os_name}/{xmake_arch}/releasedbg")
     if not build_dir.exists():
         print(
-            f"Error: Build directory '{build_dir}' does not exist. Please run `xmake build -m release` first."
+            f"Error: Build directory '{build_dir}' does not exist. Please run `xmake build -m releasedbg` first."
         )
         sys.exit(1)
 
@@ -71,7 +72,7 @@ def main():
         print(f"Warning: ReleaseAssets/{plat_dir} directory not found.")
 
     zip_filename = f"Termina-Release-{plat_dir}-{xmake_arch}.zip"
-    print(f"Creating release archive: {zip_filename}")
+    print(f"Creating releasedbg archive: {zip_filename}")
 
     # Explicitly requested binaries
     binaries = ["Editor", "Launcher", "Runtime"]

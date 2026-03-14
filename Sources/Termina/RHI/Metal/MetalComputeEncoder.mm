@@ -99,5 +99,6 @@ namespace Termina {
             [m_CommandEncoder updateFence:fence];
         }
         [m_CommandEncoder endEncoding];
+        delete this;
     }
 } // namespace Termina
