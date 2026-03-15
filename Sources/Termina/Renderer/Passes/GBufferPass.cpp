@@ -12,11 +12,79 @@
 #include <Termina/Shader/ShaderServer.hpp>
 #include "World/Components/Transform.hpp"
 #include "RHI/TextureView.hpp"
+#include "Renderer/Passes/DebugPass.hpp"
+#include "ImGui/imgui.h"
 
 #include <GLM/glm.hpp>
 
 #include <unordered_map>
 #include <cstring>
+
+namespace {
+
+    // Extract 6 frustum planes from a view-projection matrix.
+    // Plane equation: dot(plane.xyz, p) + plane.w >= 0 means inside.
+    // Uses Gribb-Hartmann method; assumes Vulkan NDC (z in [0,1]).
+    void ExtractFrustumPlanes(const glm::mat4& vp, glm::vec4 planes[6])
+    {
+        // GLM is column-major: vp[col][row]
+        auto row = [&](int i) { return glm::vec4(vp[0][i], vp[1][i], vp[2][i], vp[3][i]); };
+        glm::vec4 r0 = row(0), r1 = row(1), r2 = row(2), r3 = row(3);
+
+        planes[0] = r3 + r0; // Left
+        planes[1] = r3 - r0; // Right
+        planes[2] = r3 + r1; // Bottom
+        planes[3] = r3 - r1; // Top
+        planes[4] = r2;       // Near  (Vulkan: z >= 0)
+        planes[5] = r3 - r2;  // Far   (Vulkan: z <= 1)
+
+        for (int i = 0; i < 6; ++i)
+        {
+            float len = glm::length(glm::vec3(planes[i]));
+            if (len > 1e-6f) planes[i] /= len;
+        }
+    }
+
+    // Returns true if the world-space AABB intersects or is inside the frustum.
+    bool IsAABBVisible(const glm::vec4 planes[6], const glm::vec3& aabbMin, const glm::vec3& aabbMax)
+    {
+        for (int i = 0; i < 6; ++i)
+        {
+            const glm::vec4& p = planes[i];
+            glm::vec3 pv(
+                p.x >= 0.f ? aabbMax.x : aabbMin.x,
+                p.y >= 0.f ? aabbMax.y : aabbMin.y,
+                p.z >= 0.f ? aabbMax.z : aabbMin.z
+            );
+            if (p.x * pv.x + p.y * pv.y + p.z * pv.z + p.w < 0.f)
+                return false;
+        }
+        return true;
+    }
+
+    // Transform an AABB by a matrix, returning the tightest enclosing world-space AABB.
+    Termina::AABB TransformAABB(const Termina::AABB& aabb, const glm::mat4& m)
+    {
+        Termina::AABB result;
+        glm::vec3 corners[8] = {
+            { aabb.Min.x, aabb.Min.y, aabb.Min.z },
+            { aabb.Max.x, aabb.Min.y, aabb.Min.z },
+            { aabb.Min.x, aabb.Max.y, aabb.Min.z },
+            { aabb.Max.x, aabb.Max.y, aabb.Min.z },
+            { aabb.Min.x, aabb.Min.y, aabb.Max.z },
+            { aabb.Max.x, aabb.Min.y, aabb.Max.z },
+            { aabb.Min.x, aabb.Max.y, aabb.Max.z },
+            { aabb.Max.x, aabb.Max.y, aabb.Max.z },
+        };
+        for (const auto& c : corners)
+        {
+            glm::vec4 wc = m * glm::vec4(c, 1.0f);
+            result.Expand(glm::vec3(wc));
+        }
+        return result;
+    }
+
+} // anonymous namespace
 
 namespace Termina {
 
@@ -151,12 +219,30 @@ namespace Termina {
     {
         ShaderServer& server = Application::GetSystem<ShaderManager>()->GetShaderServer();
 
+        // --- Frustum culling setup ---
+        // When frozen, use the stored VP for culling; otherwise use the current camera.
+        if (!m_FreezeFrustum)
+            m_FrustumFrozen = false;
+
+        const glm::mat4& cullVP = m_FrustumFrozen ? m_FrozenViewProj : info.CurrentCamera.ViewProjection;
+
+        // Snapshot the current VP the first frame freeze is activated.
+        if (m_FreezeFrustum && !m_FrustumFrozen)
+        {
+            m_FrozenViewProj = info.CurrentCamera.ViewProjection;
+            m_FrustumFrozen  = true;
+        }
+
+        glm::vec4 frustumPlanes[6];
+        ExtractFrustumPlanes(cullVP, frustumPlanes);
+
         // --- Build instance and material lists, writing directly into mapped buffers ---
         GPUInstance* instanceDst = static_cast<GPUInstance*>(m_InstanceMapped);
         GPUMaterial* materialDst = static_cast<GPUMaterial*>(m_MaterialMapped);
 
         int32 instanceCount = 0;
         int32 materialCount = 0;
+        int32 totalCount    = 0;
 
         std::unordered_map<MaterialAsset*, int32> materialMap;
 
@@ -172,7 +258,7 @@ namespace Termina {
         };
 
         // Collect draw calls while filling scene buffers
-        struct DrawCall { int32 instanceID; RendererBuffer* indexBuffer; uint32 indexCount; uint32 indexOffset; };
+        struct DrawCall { int32 instanceID; RendererBuffer* indexBuffer; uint32 indexCount; uint32 indexOffset; AABB worldBounds; };
         std::vector<DrawCall> draws;
 
         for (auto& actor : info.CurrentWorld->GetActors())
@@ -191,6 +277,13 @@ namespace Termina {
             {
                 if (inst.LODs.empty()) continue;
                 if (instanceCount >= MAX_INSTANCES) break;
+
+                ++totalCount;
+
+                // CPU frustum cull: transform the mesh's local AABB into world space and test.
+                AABB worldBounds = TransformAABB(inst.Bounds, actorWorld);
+                if (!IsAABBVisible(frustumPlanes, worldBounds.Min, worldBounds.Max))
+                    continue;
 
                 // Material deduplication
                 MaterialAsset* matAsset = (inst.MaterialIndex < model->Materials.size())
@@ -230,7 +323,25 @@ namespace Termina {
                 gpuInst._pad              = 0;
 
                 const MeshLOD& lod = inst.LODs[0];
-                draws.push_back({ instID, model->IndexBuffer, lod.IndexCount, lod.IndexOffset });
+                draws.push_back({ instID, model->IndexBuffer, lod.IndexCount, lod.IndexOffset, worldBounds });
+            }
+        }
+
+        m_LastTotalCount  = totalCount;
+        m_LastCulledCount = totalCount - instanceCount;
+
+        // --- Debug visualization when frustum is frozen ---
+        if (m_FrustumFrozen)
+        {
+            // Draw the frozen frustum in yellow
+            DebugPass::DrawFrustum(m_FrozenViewProj, glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+
+            // Draw world-space AABBs of all unculled instances in green
+            for (const DrawCall& dc : draws)
+            {
+                glm::vec3 center  = dc.worldBounds.Center();
+                glm::vec3 extents = dc.worldBounds.Extents();
+                DebugPass::DrawBox(center, extents, glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
             }
         }
 
@@ -309,6 +420,27 @@ namespace Termina {
         colorBarrier(m_ORMTexture);
         colorBarrier(m_EmissiveTexture);
         colorBarrier(m_MotionVecTexture);
+    }
+
+    void GBufferPass::Inspect()
+    {
+        ImGui::Text("Instances: %d / %d (culled: %d)",
+            m_LastTotalCount - m_LastCulledCount,
+            m_LastTotalCount,
+            m_LastCulledCount);
+
+        if (ImGui::Checkbox("Freeze Frustum", &m_FreezeFrustum))
+        {
+            // When re-enabling, let Execute() snapshot the new VP on the next frame.
+            if (m_FreezeFrustum)
+                m_FrustumFrozen = false;
+        }
+
+        if (m_FrustumFrozen)
+        {
+            ImGui::SameLine();
+            ImGui::TextDisabled("(frozen)");
+        }
     }
 
 } // namespace Termina

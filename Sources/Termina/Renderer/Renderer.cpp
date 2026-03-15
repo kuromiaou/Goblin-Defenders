@@ -211,7 +211,15 @@ namespace Termina {
         {
             ImGui::Text("Passes: %zu", m_RenderPasses.size());
             for (size_t i = 0; i < m_RenderPasses.size(); ++i)
-                ImGui::BulletText("[%zu] %p", i, static_cast<void*>(m_RenderPasses[i]));
+            {
+                ImGui::PushID(static_cast<int>(i));
+                if (ImGui::TreeNode("pass", "[%zu] %p", i, static_cast<void*>(m_RenderPasses[i])))
+                {
+                    m_RenderPasses[i]->Inspect();
+                    ImGui::TreePop();
+                }
+                ImGui::PopID();
+            }
         }
 
         ImGui::End();

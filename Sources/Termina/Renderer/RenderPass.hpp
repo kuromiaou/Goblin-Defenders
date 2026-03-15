@@ -46,5 +46,8 @@ namespace Termina {
 
         virtual void Resize(int32 width, int32 height) {};
         virtual void Execute(RenderPassExecuteInfo& Info) = 0;
+
+        /// Called by the renderer debug window to expose per-pass ImGui settings.
+        virtual void Inspect() {}
     };
 }

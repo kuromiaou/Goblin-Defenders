@@ -49,9 +49,6 @@ namespace Termina {
 
         // Draw cone at the outer angle
         DebugPass::DrawCone(pos, dir, Range, glm::radians(OuterAngleDeg), col);
-        // Draw smaller inner cone
-        DebugPass::DrawCone(pos, dir, Range, glm::radians(InnerAngleDeg),
-                            glm::vec4(Color * 0.5f, 0.6f));
     }
 
     void SpotLightComponent::Inspect()

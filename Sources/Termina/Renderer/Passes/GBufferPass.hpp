@@ -4,6 +4,8 @@
 #include <Termina/RHI/Buffer.hpp>
 #include <Termina/RHI/BufferView.hpp>
 #include <Termina/RHI/Sampler.hpp>
+#include <Termina/Renderer/Camera.hpp>
+#include <GLM/glm.hpp>
 
 namespace Termina {
 
@@ -17,6 +19,7 @@ namespace Termina {
 
         void Resize(int32 width, int32 height) override;
         void Execute(RenderPassExecuteInfo& info) override;
+        void Inspect() override;
 
     private:
         static constexpr int32 MAX_INSTANCES = 4096;
@@ -39,6 +42,13 @@ namespace Termina {
         RendererBuffer*  m_MaterialBuffer      = nullptr;
         BufferView*      m_MaterialBufView     = nullptr;
         void*            m_MaterialMapped      = nullptr;
+
+        // Frustum culling
+        bool             m_FreezeFrustum       = false;
+        bool             m_FrustumFrozen       = false;  // true once we have a stored frustum
+        glm::mat4        m_FrozenViewProj      = glm::mat4(1.0f);
+        int32            m_LastCulledCount     = 0;
+        int32            m_LastTotalCount      = 0;
     };
 
 } // namespace Termina
