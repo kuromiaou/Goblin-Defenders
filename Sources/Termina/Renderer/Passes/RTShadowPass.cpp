@@ -82,11 +82,9 @@ namespace Termina {
             const glm::mat4 worldMatrix = actor->GetComponent<Transform>().GetWorldMatrix();
 
             // Flip Y to match the upside-down rasterization coordinate space
-            static const glm::mat4 kYFlip = glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, -1.0f, 1.0f));
-
             TLASInstanceDesc inst;
             inst.BLASObject = model->BLASObject;
-            inst.Transform  = kYFlip * worldMatrix;
+            inst.Transform  = worldMatrix;
             inst.InstanceID = instanceID++;
             inst.Mask       = 0xFF;
             inst.Opaque     = true;

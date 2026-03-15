@@ -42,6 +42,7 @@ namespace Termina {
         const Transform& t = m_Owner->GetComponent<Transform>();
         glm::vec3 pos = t.GetPosition();
         glm::vec3 dir = glm::normalize(t.GetForward());
+        dir.y = -dir.y;
 
         // Draw an arrow showing the light direction
         DebugPass::DrawArrow(pos, pos + dir * 2.0f, 0.15f,

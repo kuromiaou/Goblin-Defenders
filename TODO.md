@@ -1,8 +1,6 @@
 ## TODO
 
 ## Sunday
-- Vulkan/Metal RT
-- Raytraced shadows
 - Temporal anti-aliasing
 - Point and spot shadows with shadow atlas
 

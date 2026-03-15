@@ -277,7 +277,6 @@ ModelAsset* ModelLoader::LoadFromDisk(const std::string& path)
                 {
                     glm::vec3 pos = ReadFloat<3>(posAcc, vi);
                     pos = glm::vec3(worldMat * glm::vec4(pos, 1.0f));
-                    pos.y = -pos.y;
                     primVerts[vi].Position = pos;
 
                     if (normAcc)

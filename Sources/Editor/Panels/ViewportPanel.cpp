@@ -93,8 +93,6 @@ void ViewportPanel::OnImGuiRender()
 
             glm::mat4 view = renderer->GetCurrentCamera().View;
             glm::mat4 projection = renderer->GetCurrentCamera().Projection;
-            for (int col = 0; col < 4; col++)
-                view[col][1] = -view[col][1];
 
             if (ImGuizmo::Manipulate(glm::value_ptr(view),
                                  glm::value_ptr(projection),

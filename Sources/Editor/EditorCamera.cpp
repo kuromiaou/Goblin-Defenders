@@ -29,7 +29,7 @@ void EditorCamera::Update(float dt, float viewportWidth, float viewportHeight)
     {
         glm::vec2 delta = Termina::InputSystem::GetMouseDelta();
         m_Yaw   += delta.x * m_Sensitivity;
-        m_Pitch += delta.y * m_Sensitivity;
+        m_Pitch -= delta.y * m_Sensitivity;
         m_Pitch  = std::clamp(m_Pitch, -89.0f, 89.0f);
     }
 
@@ -67,9 +67,6 @@ void EditorCamera::Update(float dt, float viewportWidth, float viewportHeight)
 void EditorCamera::RecalculateProjection(float width, float height)
 {
     if (width <= 0.0f || height <= 0.0f) return;
-    // Projection is kept in standard OpenGL/ImGuizmo convention (Y-up NDC).
-    // For rendering we negate Y to counteract the Vulkan backend's viewport Y-flip,
-    // so the offscreen texture comes out correctly oriented without a UV flip.
     Projection            = glm::perspective(glm::radians(m_FOV), width / height, Near, Far);
     InverseProjection     = glm::inverse(Projection);
     ViewProjection        = Projection * View;
@@ -83,9 +80,7 @@ void EditorCamera::RecalculateView()
     InverseView           = glm::inverse(View);
     Position              = m_Position;
     Direction             = forward;
-    glm::mat4 renderProj  = Projection;
-    renderProj[1][1]      *= -1.0f;
-    ViewProjection        = renderProj * View;
+    ViewProjection        = Projection * View;
     InverseViewProjection = glm::inverse(ViewProjection);
 }
 
