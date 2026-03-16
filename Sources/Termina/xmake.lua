@@ -8,6 +8,7 @@ target("Termina")
     -- Termina.dll without manual __declspec(dllexport) on every class.
     if is_plat("windows") then
         add_rules("utils.symbols.export_all", {export_classes = true})
+        add_syslinks("ole32", "comdlg32")
     end
     set_group("Termina")
 

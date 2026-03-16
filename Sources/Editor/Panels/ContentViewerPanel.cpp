@@ -330,7 +330,7 @@ void ContentViewerPanel::OnImGuiRender()
         Termina::UIUtils::AcceptActor([this, entry](Termina::Actor* dragged) {
             std::string filename = std::string(dragged->GetName()) + ".trp";
             fs::path finalPath = UniquePath(entry.path() / filename);
-            dragged->GetParentWorld()->SaveActorToJSON(dragged, finalPath);
+            dragged->GetParentWorld()->SaveActorToJSON(dragged, finalPath.generic_string());
         });
 
         DrawContextMenuEntry(entry.path().string(), true);
@@ -376,7 +376,7 @@ void ContentViewerPanel::OnImGuiRender()
         Termina::UIUtils::AcceptActor([this](Termina::Actor* dragged) {
             std::string filename = std::string(dragged->GetName()) + ".trp";
             fs::path finalPath = UniquePath(m_CurrentPath / filename);
-            dragged->GetParentWorld()->SaveActorToJSON(dragged, finalPath);
+            dragged->GetParentWorld()->SaveActorToJSON(dragged, finalPath.generic_string());
         });
     }
 

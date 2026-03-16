@@ -9,6 +9,12 @@
 #include <vector>
 #include <algorithm>
 
+#include <windows.h>
+#include <combaseapi.h>
+#include <commdlg.h>
+#include <shobjidl.h>
+#include <string>
+
 namespace Termina {
     // Convert a wide (UTF-16) string to a UTF-8 std::string.
     static std::string WideToUTF8(const std::wstring& w)
