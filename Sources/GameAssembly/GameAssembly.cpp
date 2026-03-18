@@ -11,4 +11,5 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(ParticleSystemComponent, "Particle System")
     REGISTER_COMPONENT(PhysicsTestComponent, "Physics Test")
     REGISTER_COMPONENT(Player, "Player Test")
+
 COMPONENT_MODULE_END()
