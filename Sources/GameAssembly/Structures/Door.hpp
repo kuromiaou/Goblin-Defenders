@@ -8,9 +8,7 @@
 class Door : public TerminaScript::ScriptableComponent {
 public:
     Door() = default;
-    Door(Termina::Actor* owner, int id, float x, float y, float z) : TerminaScript::ScriptableComponent(owner),
-        door_id(id),
-        pos_x(x), pos_y(y), pos_z(z),
+    Door(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner),
         is_active(true) 
     {}
 

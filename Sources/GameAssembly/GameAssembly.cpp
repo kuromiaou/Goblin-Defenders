@@ -21,7 +21,6 @@
 #include "Structures/TrapAuraGold.hpp"
 #include "Structures/Nexus.hpp"
 #include "Structures/Door.hpp"
-#include "Managers/WaveManager.hpp"
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
 
@@ -50,5 +49,4 @@ COMPONENT_MODULE_BEGIN()
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")
     REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")
-    //REGISTER_COMPONENT(WaveManager,            "Wave Manager")
 COMPONENT_MODULE_END()

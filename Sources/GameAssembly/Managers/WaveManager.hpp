@@ -14,24 +14,17 @@
 //// WAVE MANAGER
 //// Gère le spawn et le déroulement des vagues d'ennemis
 //// Vagues fixes + endless au-delà
-//// Scaling HP : +10% par vague
 //// ============================================================
-//
+
 //enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
-//
-//struct WaveConfig {
-//    int wave_number;
-//    std::vector<std::pair<std::string, int>> spawns; // { type_ennemi, quantité }
-//};
-//
+
+
 //class WaveManager : public TerminaScript::ScriptableComponent {
 //private:
 //    int        current_wave;
 //    int        max_fixed_waves;  // ex : 10 vagues fixes, puis endless
 //    WaveState  state;
 //    bool       is_endless;
-//
-//    //std::vector<std::shared_ptr<Enemy>> active_enemies;
 //
 //public:
 //    WaveManager(Termina::Actor* owner)
