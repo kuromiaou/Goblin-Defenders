@@ -12,12 +12,18 @@ void PlayerController::Start()
 
 void PlayerController::Move()
 {
-	if (Input::IsKeyPressed(Termina::Key::Space))
-		rb.AddImpulse(glm::vec3(-1, 0, -1));
-	if (Input::IsKeyPressed(Termina::Key::S))
-		rb.AddImpulse(glm::vec3(1, 0, 1));
-	if (Input::IsKeyPressed(Termina::Key::A))
-		rb.AddImpulse(glm::vec3(-1, 0, 1));
-	if (Input::IsKeyPressed(Termina::Key::D))
-		rb.AddImpulse(glm::vec3(1, 0, -1));
+    glm::vec3 direction(0.0f);
+
+    if (Input::IsKeyHeld(Termina::Key::W))     direction += glm::vec3(-1, 0, -1);
+    if (Input::IsKeyHeld(Termina::Key::S))     direction += glm::vec3(1, 0, 1);
+    if (Input::IsKeyHeld(Termina::Key::A))     direction += glm::vec3(-1, 0, 1);
+    if (Input::IsKeyHeld(Termina::Key::D))     direction += glm::vec3(1, 0, -1);
+
+    if (glm::length(direction) > 0.0f)
+        direction = glm::normalize(direction);
+
+    glm::vec3 vel = rb.GetLinearVelocity();
+    vel.x = direction.x * m_MoveSpeed;
+    vel.z = direction.z * m_MoveSpeed;
+    rb.SetLinearVelocity(vel);
 }

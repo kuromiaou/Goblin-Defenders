@@ -19,4 +19,5 @@ public:
 
 private:
 	Termina::Rigidbody rb;
+	float m_MoveSpeed = 5.0f;
 };
