@@ -22,6 +22,8 @@
 #include "Structures/Nexus.hpp"
 #include "Structures/Door.hpp"
 #include "Managers/WaveManager.hpp"
+#include "Managers/ProjectileManager.hpp"
+#include "Managers/EntityManager.hpp"
 
 COMPONENT_MODULE_BEGIN()
     // Moteur
@@ -44,4 +46,8 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapWolf,               "Piège à Loup")
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
+
+    REGISTER_COMPONENT(EntityManager,          "Entity Manager")
+    REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")
+    //REGISTER_COMPONENT(WaveManager,            "Wave Manager")
 COMPONENT_MODULE_END()
