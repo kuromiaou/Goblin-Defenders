@@ -1,4 +1,7 @@
 #pragma once
+#include <Termina/Scripting/API/ScriptingAPI.hpp>
+
+
 #include "Goblin.hpp"
 #include "Hobgoblin.hpp"
 #include "Magicien.hpp"
@@ -21,18 +24,18 @@ struct WaveConfig {
     std::vector<std::pair<std::string, int>> spawns; // { type_ennemi, quantité }
 };
 
-class WaveManager : public Entity {
+class WaveManager : public TerminaScript::ScriptableComponent {
 private:
     int        current_wave;
     int        max_fixed_waves;  // ex : 10 vagues fixes, puis endless
     WaveState  state;
     bool       is_endless;
 
-    std::vector<std::shared_ptr<Enemy>> active_enemies;
+    //std::vector<std::shared_ptr<Enemy>> active_enemies;
 
 public:
-    WaveManager()
-        : Entity("WaveManager"),
+    WaveManager(Termina::Actor* owner)
+        : TerminaScript::ScriptableComponent(owner),
           current_wave(0),
           max_fixed_waves(10),
           state(WaveState::WAITING),
@@ -45,14 +48,14 @@ public:
     bool      isEndless()        const { return is_endless; }
     bool      isInProgress()     const { return state == WaveState::IN_PROGRESS; }
     bool      allEnemiesDead()   const {
-        for (const auto& e : active_enemies)
-            if (e && e->isAlive()) return false;
-        return true;
+        //for (const auto& e : active_enemies)
+        //    if (e && e->isAlive()) return false;
+        //return true;
     }
 
-    const std::vector<std::shared_ptr<Enemy>>& getActiveEnemies() const {
-        return active_enemies;
-    }
+    //const std::vector<std::shared_ptr<Enemy>>& getActiveEnemies() const {
+    //    return active_enemies;
+    //}
 
     // --- Lancement de la vague (déclenché par le joueur) ---
     void startWave() {
@@ -60,7 +63,7 @@ public:
         current_wave++;
         state      = WaveState::IN_PROGRESS;
         is_endless = (current_wave > max_fixed_waves);
-        active_enemies.clear();
+        //active_enemies.clear();
         spawnWave(current_wave);
     }
 
