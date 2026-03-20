@@ -36,6 +36,7 @@ void Goblin::Inspect()
     ImGui::DragInt("Gold Value", &gold_value, 1, 0, 9999);
 }
 
+//Works with Hot Reload
 void Goblin::Serialize(nlohmann::json& out) const
 {
     out["hp"]         = hp;
