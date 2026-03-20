@@ -13,11 +13,11 @@ void PlayerController::Start()
 void PlayerController::Move()
 {
 	if (Input::IsKeyPressed(Termina::Key::Space))
-		rb.AddImpulse(glm::vec3(0, 0, -1));
+		rb.AddImpulse(glm::vec3(-1, 0, -1));
 	if (Input::IsKeyPressed(Termina::Key::S))
-		rb.AddImpulse(glm::vec3(0, 0, 1));
+		rb.AddImpulse(glm::vec3(1, 0, 1));
 	if (Input::IsKeyPressed(Termina::Key::A))
-		rb.AddImpulse(glm::vec3(-1, 0, 0));
+		rb.AddImpulse(glm::vec3(-1, 0, 1));
 	if (Input::IsKeyPressed(Termina::Key::D))
-		rb.AddImpulse(glm::vec3(1, 0, 0));
+		rb.AddImpulse(glm::vec3(1, 0, -1));
 }
