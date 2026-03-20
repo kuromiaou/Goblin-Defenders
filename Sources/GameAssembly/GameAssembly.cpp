@@ -1,27 +1,27 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <Termina/World/ComponentRegistry.hpp>
 
-#include "FlyCamComponent.hpp"
-#include "ParticleSystem.hpp"
-#include "PhysicsTestComponent.hpp"
+#include "Camera/FlyCamComponent.hpp"
+#include "Tests/ParticleSystem.hpp"
+#include "Tests/PhysicsTestComponent.hpp"
 
 // --- Goblin Defenders ---
-#include "PlayerController.hpp"
-#include "Player.hpp"
-#include "Nexus.hpp"
-#include "Goblin.hpp"
-#include "Hobgoblin.hpp"
-#include "Magicien.hpp"
-#include "Shaman.hpp"
-#include "GoblinRapace.hpp"
-#include "TowerSingle.hpp"
-#include "TowerAOE.hpp"
-#include "TowerCC.hpp"
-#include "TrapWolf.hpp"
-#include "TrapMine.hpp"
-#include "TrapAuraGold.hpp"
-#include "Door.hpp"
-#include "WaveManager.hpp"
+#include "Player/PlayerController.hpp"
+#include "Player/Player.hpp"
+#include "Enemy/Goblin.hpp"
+#include "Enemy/Hobgoblin.hpp"
+#include "Enemy/Magicien.hpp"
+#include "Enemy/Shaman.hpp"
+#include "Enemy/GoblinRapace.hpp"
+#include "Structures/TowerSingle.hpp"
+#include "Structures/TowerAOE.hpp"
+#include "Structures/TowerCC.hpp"
+#include "Structures/TrapWolf.hpp"
+#include "Structures/TrapMine.hpp"
+#include "Structures/TrapAuraGold.hpp"
+#include "Structures/Nexus.hpp"
+#include "Structures/Door.hpp"
+#include "Managers/WaveManager.hpp"
 
 COMPONENT_MODULE_BEGIN()
     // Moteur

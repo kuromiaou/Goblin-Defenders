@@ -1,7 +1,7 @@
 #pragma once
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
-#include "Tiers.hpp"
+#include "GameAssembly/Tiers.hpp"
 using namespace TerminaScript;
 
 // HP  : High (50) x wave scaling
