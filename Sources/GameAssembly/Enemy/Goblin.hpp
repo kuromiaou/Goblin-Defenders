@@ -9,7 +9,7 @@ using namespace TerminaScript;
 // SPD : Mid
 // RES : Low / Low
 // Capacité : spawn en horde (3-5)
-class Goblin : public TerminaScript::ScriptableComponent {
+class Goblin : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     Goblin() = default;
     Goblin(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

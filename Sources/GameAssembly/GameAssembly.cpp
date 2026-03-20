@@ -46,6 +46,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapWolf,               "Piège à Loup")
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
+    REGISTER_COMPONENT(Door,                   "Spawner")
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")
     REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")

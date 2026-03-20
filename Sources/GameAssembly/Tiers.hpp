@@ -31,7 +31,7 @@ enum class ATKSPDTier { ATKSPD_HIGH = 10, ATKSPD_LOW = 7, ATKSPD_NONE = 0 };
 enum class ATKRangeTier { MELEE = 1, RANGE = 3 };
 
 // ============================================================
-// RESISTANCE TIER — formule : 100 / (100 + res)
+// RESISTANCE TIER — formula : 100 / (100 + res)
 //   RES_HIGH = 100 => 50% reduction
 //   RES_MID  = 33  => ~25% reduction
 //   RES_LOW  = 0   =>  0% reduction

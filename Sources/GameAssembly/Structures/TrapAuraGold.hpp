@@ -2,12 +2,13 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Trap.hpp"
 using namespace TerminaScript;
 
 // Aura Gold — Si un ennemi meurt dans la zone, bonus Gold au joueur
 // Bonus : entre 50% et 100% des HP_MAX de l'ennemi
 // Reste actif toute la vague (non consumé)
-class TrapAuraGold : public TerminaScript::ScriptableComponent {
+class TrapAuraGold : public Trap, public TerminaScript::ScriptableComponent {
 public:
     TrapAuraGold() = default;
     TrapAuraGold(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

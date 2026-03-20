@@ -2,11 +2,12 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Trap.hpp"
 using namespace TerminaScript;
 
 // Mine — ATK High (Physique)
 // Usage unique, explose au contact
-class TrapMine : public TerminaScript::ScriptableComponent {
+class TrapMine : public Trap, public TerminaScript::ScriptableComponent {
 public:
     TrapMine() = default;
     TrapMine(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

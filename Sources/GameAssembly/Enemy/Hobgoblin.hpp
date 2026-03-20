@@ -9,7 +9,7 @@ using namespace TerminaScript;
 // SPD : Low
 // RES : High / Mid
 // Capacité : x% de chance de nullifier les dégâts
-class Hobgoblin : public TerminaScript::ScriptableComponent {
+class Hobgoblin : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     Hobgoblin() = default;
     Hobgoblin(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

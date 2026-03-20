@@ -1,5 +1,6 @@
 #pragma once
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
+#include "Enemy.hpp"
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
 using namespace TerminaScript;
@@ -9,7 +10,7 @@ using namespace TerminaScript;
 // SPD : Mid
 // RES : Mid / Mid
 // Capacité : Aura (ATK_BOOST / SPD_BOOST / RES_BOOST) sur les alliés proches
-class Shaman : public TerminaScript::ScriptableComponent {
+class Shaman : public Enemy ,public TerminaScript::ScriptableComponent {
 public:
     Shaman() = default;
     Shaman(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

@@ -9,7 +9,7 @@ using namespace TerminaScript;
 // SPD : High
 // RES : Mid / Mid
 // Capacité : ramasse le Gold au sol, Gold perdu si atteint le Nexus
-class GoblinRapace : public TerminaScript::ScriptableComponent {
+class GoblinRapace : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     GoblinRapace() = default;
     GoblinRapace(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

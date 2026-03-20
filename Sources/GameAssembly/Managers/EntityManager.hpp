@@ -1,5 +1,21 @@
 #pragma once
+
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
+
+#include "GameAssembly/Enemy/Goblin.hpp"
+#include "GameAssembly/Enemy/GoblinRapace.hpp"
+#include "GameAssembly/Enemy/Hobgoblin.hpp"
+#include "GameAssembly/Enemy/Magicien.hpp"
+#include "GameAssembly/Enemy/Shaman.hpp"
+#include "GameAssembly/Player/Player.hpp"
+#include "GameAssembly/Structures/Door.hpp"
+#include "GameAssembly/Structures/Nexus.hpp"
+
+
+#include <iostream>
+#include <chrono>
+#include <algorithm>
+#include <vector>
 
 using namespace TerminaScript;
 
@@ -11,4 +27,7 @@ public:
 
     void Start()  override;
     void Update(float deltaTime) override;
+
+private:
+    std::vector<std::shared_ptr<Enemy>> allEnemies;
 };

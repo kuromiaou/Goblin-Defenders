@@ -2,13 +2,14 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Tower.hpp"
 using namespace TerminaScript;
 
 // ATK       : Null
 // ATK_Range : Mid (3)
 // ATK_SPD   : Low
 // Capacité  : Slow (-1 tier SPD) ou Shred (-1 tier RES)
-class TowerCC : public TerminaScript::ScriptableComponent {
+class TowerCC : public Tower : public TerminaScript::ScriptableComponent {
 public:
     TowerCC() = default;
     TowerCC(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

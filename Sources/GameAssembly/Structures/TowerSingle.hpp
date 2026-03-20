@@ -2,13 +2,14 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Tower.hpp"
 using namespace TerminaScript;
 
 // ATK       : High
 // ATK_Range : High (5)
 // ATK_SPD   : High
 // Type      : Physique ou Magique
-class TowerSingle : public TerminaScript::ScriptableComponent {
+class TowerSingle : public Tower , public TerminaScript::ScriptableComponent {
 public:
     TowerSingle() = default;
     TowerSingle(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

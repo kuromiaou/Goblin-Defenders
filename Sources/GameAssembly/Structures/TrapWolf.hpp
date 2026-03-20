@@ -2,11 +2,12 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Trap.hpp"
 using namespace TerminaScript;
 
 // Piège à Loup — STUN 0.5s -> 1.5s
 // Usage unique, placé librement sur la map
-class TrapWolf : public TerminaScript::ScriptableComponent {
+class TrapWolf : public Trap, public TerminaScript::ScriptableComponent {
 public:
     TrapWolf() = default;
     TrapWolf(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

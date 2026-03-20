@@ -9,7 +9,7 @@ using namespace TerminaScript;
 // SPD : Mid
 // RES : Low / High
 // Capacité : STUN les tours 0.5->1s après sa mort
-class Magicien : public TerminaScript::ScriptableComponent {
+class Magicien : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     Magicien() = default;
     Magicien(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}

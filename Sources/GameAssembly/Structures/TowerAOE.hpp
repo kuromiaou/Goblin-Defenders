@@ -2,13 +2,14 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Tower.hpp"
 using namespace TerminaScript;
 
 // ATK       : Mid
 // ATK_Range : Mid (3)
 // ATK_SPD   : Low
 // Type      : Physique ou Magique
-class TowerAOE : public TerminaScript::ScriptableComponent {
+class TowerAOE : public Tower, public TerminaScript::ScriptableComponent {
 public:
     TowerAOE() = default;
     TowerAOE(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}
