@@ -1,0 +1,58 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            2.9522130489349365,
+                            0.0,
+                            -2.7293429374694824
+                        ],
+                        "rotation": [
+                            1.0,
+                            -0.0,
+                            -0.0,
+                            -0.0
+                        ],
+                        "scale": [
+                            0.06999999284744263,
+                            0.06999999284744263,
+                            0.06999999284744263
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\functional props\\nexus\\nexus_mat0.mat"
+                        },
+                        "model": "Assets\\Models\\functional props\\nexus\\nexus.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.07685519009828568,
+                            0.2537745535373688,
+                            0.9702970385551453
+                        ],
+                        "intensity": 21.8700008392334,
+                        "range": 5.309999942779541
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "10860662857844168957",
+            "name": "Nexus",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}
