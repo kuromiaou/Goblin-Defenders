@@ -2,9 +2,9 @@
   "albedo_texture": "",
   "alpha_test": false,
   "color": [
-    0.09589474648237228,
-    0.9372937083244324,
-    0.2958310544490814
+    0.9405940771102905,
+    0.9024514555931091,
+    0.7139822840690613
   ],
   "emissive_texture": "",
   "metallic_factor": 0.0,
@@ -12,5 +12,5 @@
   "orm_texture": "",
   "override_metallic": false,
   "override_roughness": false,
-  "roughness_factor": 0.4790000021457672
+  "roughness_factor": 0.5
 }

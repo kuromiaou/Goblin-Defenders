@@ -15,39 +15,28 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Cube.001",
-			"rotation":[
-				0,
-				0,
-				-0.08572916686534882,
-				0.9963185787200928
-			],
-			"scale":[
-				0.03864036127924919,
-				0.1651710718870163,
-				0.08422829955816269
-			]
+			"name":"Cube.003"
 		}
 	],
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Material",
+			"name":"Material.008",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.0050766346976161,
-					0.3504570722579956,
-					0,
+					0.014991184696555138,
+					0.18590542674064636,
+					0.00875711441040039,
 					1
 				],
 				"metallicFactor":0,
-				"roughnessFactor":0.8333333730697632
+				"roughnessFactor":0.5
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Cube.003",
+			"name":"Cube.006",
 			"primitives":[
 				{
 					"attributes":{
@@ -65,68 +54,68 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":138,
+			"count":222,
 			"max":[
-				59.425392150878906,
-				15.595105171203613,
-				16.97646713256836
+				1.5500000715255737,
+				1.625,
+				1.5
 			],
 			"min":[
-				-28.11409568786621,
-				-3.644900321960449,
-				-18.066932678222656
+				-1.5500000715255737,
+				-1,
+				-1.8983643054962158
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":138,
+			"count":222,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":138,
+			"count":222,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":264,
+			"count":744,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":1656,
+			"byteLength":2664,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1656,
-			"byteOffset":1656,
+			"byteLength":2664,
+			"byteOffset":2664,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1104,
-			"byteOffset":3312,
+			"byteLength":1776,
+			"byteOffset":5328,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":528,
-			"byteOffset":4416,
+			"byteLength":1488,
+			"byteOffset":7104,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":4944,
-			"uri":"Goblin_ConceptArt.bin"
+			"byteLength":8592,
+			"uri":"goblin.bin"
 		}
 	]
 }
