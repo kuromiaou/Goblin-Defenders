@@ -13,6 +13,8 @@ public:
 
 	void Inspect() override;
 
+	int getOrder();
+
 private:
 	int m_Order = 0;
 	int m_CheckPointMax = 999;

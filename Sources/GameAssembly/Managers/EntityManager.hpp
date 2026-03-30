@@ -30,15 +30,21 @@ public:
     // Lance le spawn de tous les ennemis de la vague donnée
     void SpawnWave(int waveIndex);
 
+    // Enregistrer une Door
+    void RegisterDoor(Door* door);
+
 private:
     // Spawn individuels pour chaque type d'ennemi
-    void SpawnGoblin();
-    void SpawnGoblinRapace();
-    void SpawnHobgoblin();
-    void SpawnMagicien();
-    void SpawnShamanATK();
-    void SpawnShamanSPD();
-    void SpawnShamanRES();
+    void SpawnGoblin(const glm::vec3& spawnPos);
+    void SpawnGoblinRapace(const glm::vec3& spawnPos);
+    void SpawnHobgoblin(const glm::vec3& spawnPos);
+    void SpawnMagicien(const glm::vec3& spawnPos);
+    void SpawnShamanATK(const glm::vec3& spawnPos);
+    void SpawnShamanSPD(const glm::vec3& spawnPos);
+    void SpawnShamanRES(const glm::vec3& spawnPos);
+
+    // Helper pour spawner aux positions des doors
+    glm::vec3 getRandomDoorPosition() const;
 
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
 
@@ -48,14 +54,15 @@ private:
     bool       is_endless = false;
 
     std::vector<std::shared_ptr<Enemy>> allEnemies;
+    std::vector<Door*> all_doors;  // Stocke les portes
 
-    std::vector<int> GoblinWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> GoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
     std::vector<int> GoblinRapaceWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> HobGoblinWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> MagicienWave     = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanATKWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanSPDWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanRESWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> HobGoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> MagicienWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanATKWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanSPDWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanRESWave = { 0,1,1,2,2,2,3,3,3,3,3 };
 
     Termina::Actor* m_Player = nullptr;
 };

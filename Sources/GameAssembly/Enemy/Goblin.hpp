@@ -14,7 +14,6 @@ class Goblin : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     Goblin() = default;
     Goblin(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}
-    Goblin(int HP, int GOLD, int SPD, int RES_M, int RES_P);
 
     void Start()  override;
     void Update(float deltaTime) override;
@@ -42,7 +41,7 @@ private:
     int        hp         = 10;
     int        hp_max     = 10;
     int        wave       = 1;
-    int        gold_value = 5;
+    int        gold_value = hp/2;
     ATKTier    atk        = ATKTier::ATK_LOW;
     SPDTier    spd        = SPDTier::SPD_MID;
     ResTier    res_physique = ResTier::RES_LOW;

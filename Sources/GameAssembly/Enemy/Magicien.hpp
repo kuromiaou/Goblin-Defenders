@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
 #include "Enemy.hpp"
+#include <cmath>
 using namespace TerminaScript;
 
 // HP  : Mid — Range
@@ -40,7 +41,7 @@ private:
     int     hp           = 25;
     int     hp_max       = 25;
     int     wave         = 1;
-    int        gold_value = hp / 2;
+    int     gold_value   = std::ceil(hp / 2);
     float   stun_min     = 0.5f;
     float   stun_max     = 1.0f;
     ATKTier atk          = ATKTier::ATK_MID;
