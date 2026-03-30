@@ -2,6 +2,7 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Enemy.hpp"
 using namespace TerminaScript;
 
 // HP  : High (50) x wave scaling
@@ -38,7 +39,7 @@ private:
     int        hp             = 50;
     int        hp_max         = 50;
     int        wave           = 1;
-    int        gold_value     = 25;
+    int        gold_value = hp / 2;
     float      nullify_chance = 0.20f;
     ATKTier    atk            = ATKTier::ATK_MID;
     SPDTier    spd            = SPDTier::SPD_LOW;

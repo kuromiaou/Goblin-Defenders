@@ -27,12 +27,20 @@ public:
     void Start()  override;
     void Update(float deltaTime) override;
 
-    //Un getter de enemyCurrentWave en fonction de current_wave
+    // Lance le spawn de tous les ennemis de la vague donnée
+    void SpawnWave(int waveIndex);
 
 private:
+    // Spawn individuels pour chaque type d'ennemi
+    void SpawnGoblin();
+    void SpawnGoblinRapace();
+    void SpawnHobgoblin();
+    void SpawnMagicien();
+    void SpawnShamanATK();
+    void SpawnShamanSPD();
+    void SpawnShamanRES();
 
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
-
 
     int        current_wave = 0;
     int        max_fixed_waves = 10;
@@ -41,13 +49,13 @@ private:
 
     std::vector<std::shared_ptr<Enemy>> allEnemies;
 
-    
+    std::vector<int> GoblinWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> GoblinRapaceWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> HobGoblinWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> MagicienWave     = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanATKWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanSPDWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanRESWave    = { 0,1,1,2,2,2,3,3,3,3,3 };
 
-    //Un getter de enemyCurrentWave en fonction de current_wave
-    std::vector<int> GoblinWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> GoblinRapaceWave   = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> HobGoblinWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> MagicienWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> enemyCurrentWave   = {};
+    Termina::Actor* m_Player = nullptr;
 };

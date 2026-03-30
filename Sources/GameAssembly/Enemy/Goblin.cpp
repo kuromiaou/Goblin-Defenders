@@ -1,6 +1,10 @@
 #include "Goblin.hpp"
 #include <ImGui/imgui.h>
 
+Goblin::Goblin(int HP, int GOLD, ATKTier ATK, SPDTier SPD, ResTier RES_M, ResTier RES_P) : hp(HP), gold_value(GOLD)
+{
+}
+
 void Goblin::Start()
 {
     initForWave(1);

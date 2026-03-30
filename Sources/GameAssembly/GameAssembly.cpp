@@ -23,6 +23,7 @@
 #include "Structures/Door.hpp"
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
+#include "Enemy/CheckPoint.hpp"
 
 COMPONENT_MODULE_BEGIN()
     // Moteur
@@ -38,6 +39,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(Hobgoblin,              "Hobgoblin")
     REGISTER_COMPONENT(Magicien,               "Magicien")
     REGISTER_COMPONENT(Shaman,                 "Shaman")
+    REGISTER_COMPONENT(Door,                   "Spawner")
     REGISTER_COMPONENT(GoblinRapace,           "Goblin Rapace")
     REGISTER_COMPONENT(TowerSingle,            "Tour Single")
     REGISTER_COMPONENT(TowerAOE,               "Tour AOE")
@@ -45,7 +47,8 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapWolf,               "Piège à Loup")
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
-    REGISTER_COMPONENT(Door,                   "Spawner")
+    REGISTER_COMPONENT(Checkpoint,             "CheckPoint")
+
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")
     REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")

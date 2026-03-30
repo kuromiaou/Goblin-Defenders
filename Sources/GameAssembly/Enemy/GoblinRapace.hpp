@@ -2,6 +2,7 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Enemy.hpp"
 using namespace TerminaScript;
 
 // HP  : Mid/High

@@ -2,6 +2,7 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <algorithm>
 #include "GameAssembly/Tiers.hpp"
+#include "Enemy.hpp"
 using namespace TerminaScript;
 
 // HP  : Low (10) x wave scaling
@@ -13,6 +14,7 @@ class Goblin : public Enemy, public TerminaScript::ScriptableComponent {
 public:
     Goblin() = default;
     Goblin(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}
+    Goblin(int HP, int GOLD, int SPD, int RES_M, int RES_P);
 
     void Start()  override;
     void Update(float deltaTime) override;
