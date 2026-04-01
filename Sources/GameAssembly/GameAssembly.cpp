@@ -39,6 +39,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(Hobgoblin,              "Hobgoblin")
     REGISTER_COMPONENT(Magicien,               "Magicien")
     REGISTER_COMPONENT(Shaman,                 "Shaman")
+    REGISTER_COMPONENT(Checkpoint,             "CheckPoint")
     REGISTER_COMPONENT(Door,                   "Spawner")
     REGISTER_COMPONENT(GoblinRapace,           "Goblin Rapace")
     REGISTER_COMPONENT(TowerSingle,            "Tour Single")
@@ -47,7 +48,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapWolf,               "Piège à Loup")
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
-    REGISTER_COMPONENT(Checkpoint,             "CheckPoint")
+
 
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")

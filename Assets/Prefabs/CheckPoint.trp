@@ -1,0 +1,53 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -3.005819082260132,
+                            0.30335918068885803,
+                            3.5635414123535156
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {},
+                    "type": "CheckPoint"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "intensity": 0.03999999910593033,
+                        "range": 10.0
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "14060314924699520934",
+            "name": "CheckPoint",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}
