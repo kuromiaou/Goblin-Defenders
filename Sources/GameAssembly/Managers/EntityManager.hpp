@@ -30,21 +30,15 @@ public:
     // Lance le spawn de tous les ennemis de la vague donnée
     void SpawnWave(int waveIndex);
 
-    // Enregistrer une Door
-    void RegisterDoor(Door* door);
-
 private:
     // Spawn individuels pour chaque type d'ennemi
-    void SpawnGoblin(const glm::vec3& spawnPos);
-    void SpawnGoblinRapace(const glm::vec3& spawnPos);
-    void SpawnHobgoblin(const glm::vec3& spawnPos);
-    void SpawnMagicien(const glm::vec3& spawnPos);
-    void SpawnShamanATK(const glm::vec3& spawnPos);
-    void SpawnShamanSPD(const glm::vec3& spawnPos);
-    void SpawnShamanRES(const glm::vec3& spawnPos);
-
-    // Helper pour spawner aux positions des doors
-    glm::vec3 getRandomDoorPosition() const;
+    void SpawnGoblin();
+    void SpawnGoblinRapace();
+    void SpawnHobgoblin();
+    void SpawnMagicien();
+    void SpawnShamanATK();
+    void SpawnShamanSPD();
+    void SpawnShamanRES();
 
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
 
@@ -53,16 +47,17 @@ private:
     WaveState  state;
     bool       is_endless = false;
 
-    std::vector<std::shared_ptr<Enemy>> allEnemies;
-    std::vector<Door*> all_doors;
+    // Stocke les acteurs des ennemis spawés (pas les composants)
+    std::vector<Termina::Actor*> allEnemies;
 
-    std::vector<int> GoblinWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> GoblinRapaceWave   = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> HobGoblinWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> MagicienWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanATKWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanSPDWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanRESWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
+    // Vagues définissant le nombre d'ennemis à spawn à chaque vague
+    std::vector<int> GoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> GoblinRapaceWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> HobGoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> MagicienWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanATKWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanSPDWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanRESWave = { 0,1,1,2,2,2,3,3,3,3,3 };
 
     Termina::Actor* m_Player = nullptr;
 };
