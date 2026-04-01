@@ -54,7 +54,7 @@ private:
     bool       is_endless = false;
 
     std::vector<std::shared_ptr<Enemy>> allEnemies;
-    std::vector<Door*> all_doors;  // Stocke les portes
+    std::vector<Door*> all_doors;
 
     std::vector<int> GoblinWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
     std::vector<int> GoblinRapaceWave   = { 0,1,1,2,2,2,3,3,3,3,3 };
