@@ -1,0 +1,99 @@
+/!\ TOUTES LES FEATURES ENTRE PARENTHESES () SONT SUCEPTIBLES DE NE PAS ÊTRE IMPLEMENTEES /!\
+
+- moteur ? GCLion / Lorenzo / Mathias
+
+
+TOWER DEFENSE (dungeon defender / orc must die / mindustry)
+
+(intro)
+Avec les outils à notre disposition, nous sommes capables de faire / limités à faire : ...
+
+
+
+
+IA  
+--- Goblin Defender ---
+	Tower Defense TPS (repousser des vagues d'ennemies pour défendre sa base en jouant à la 3è personne).
+	
+	
+- Nexus 
+	HP , POS (fixe)
+	Coeur de la base du joueur, si ses HP tombent à 0, le joueur perd la partie.
+	
+	
+- Player
+	RSC (ressources), ATK , SPD, ATK SPD, ATK_Range, Gold
+	Camera Fixe : vue isométrique
+	
+	Le joueur peut se déplacer dans 8 directions , à : 0° , 45° , 90° , 135° , 180° , 225° , 270° , 315°.
+	Le joueur peut placer des tours dans des zones pré définies.
+	Le joueur peut placer des pièges n'omporte où sur la carte.
+	Le joueur peut directement infliger des dégats (physiques) aux ennemies (armes).
+	Le joueur peut directement infliger des dégats (magiques) aux ennemies (sorts) en dépensant des ressources (RSC).
+	Le joueur récupère des ressources et des Gold en tuant des ennemies.
+	Le joueur récupère des Gold à la fin de chaque vague.
+	En tant qu'utilisateur je peux améliorer mes tours
+	En tant qu'utilisateur je veux lancer la manche quand je suis prêt
+	En tant qu'utilisateur je peux interagir avec un menu avant le lancement de la partie
+	En tant qu'utilisateur je veux choisir quel type de dégats infliger
+
+
+- Ennemies
+	HP , ATK , SPD , ATK_Range, Spawn (random entre plusieurs portes), Path prédéfini , Valeur en Gold (Gold_Value) , Resistance (physique/magique)
+	Les ennemies se présentent sous plusieurs types :
+	Stats :
+		- Goblin   		= Low HP, Low ATK, Mid SPD, Melee ,Low Gold, Resistance Low/Low 
+		- Hobgoblin     = High HP, Mid ATK, Low SPD, Melee ,High Gold, Resistance High/Mid
+		- Magicien	   	= Low HP, High ATK, Mid SPD, Range ,Low Gold, Resistance Low/High
+		- Shaman 		= Mid HP, Null ATK, speed proportionnelle aux hp des ennemies, Aura_SIZE ,Mid Gold, Resistance Low/Low
+		- Goblin Rapace = Mid_High HP , Null ATK, Mid_High SPD ,Mid Gold + Gold volés * 1.2 , Resistance Mid/Mid
+	
+	Capacité :
+		- Goblin   		= Unité de base, Spawn en horde (3->5), 
+		- Hobgoblin     = x% de chance de nullifier les dégâts
+		- Magicien	   	= STUN les tours pendant 0.5->1 seconde après sa mort
+		- Shaman 		= Apparait avec une Aura entre 3 possibilités :
+								ATK Boost/SPD Boost/Resistance Boost en fonction des PV max de l'ennemi visé
+		- Goblin Rapace = S'il passe au dessus de Gold, il les rammasse et empêche le joueur de les récupérer,
+			si le joueur tue le Goblin, il récupère tout avec un multiplicateur de x1.2, 
+			si le Goblin arrive au nexus il disparait avec les Gold amassés.
+	
+	
+- Portes 
+	POS (endroit de spawn des ennemies fixes)
+	
+	
+- Pièges / Tours
+	ATK , POS, ATK_Range, ATK_SPD/CD (zones prédéfinies)	
+	Prix  : Tours > Pièges
+	Range : Tours > Pièges
+		- Tour Single (physique/magique)
+		- Tour AOE (physique/magique)
+		- Tour CC (slow/shred)
+	    (- Tour Création de pièges aux alentours)
+		
+		- Piège à loup (STUN)
+		- Piège Mine (HIGH ATK)
+		- Piège à Aura Gold (Si un ennemi meurt dans la zone d'aura , les gains en Gold du player augmentent)
+
+
+- Shop 
+	Entre chaque Vague, le joueur peut dépenser ses GOLDS accumulés depuis le début de la partie pour acheter des Tours, des Pièges, ainsi que les améliorer.
+
+
+- RSC (ressources)
+	Unité monétaire servant à lancer des sorts.
+
+
+- Gold 
+	Drop au sol par les ennemies à leur mort. 
+	Le joueur doit physiquement se déplacer et passer au dessus afin de les récupérer.
+	Les Gold peuvent être dépensés dans le shop.
+
+- Vagues
+	(BTD) Nombre fixe + endless au delà (endless = à fixer MAIS soit nbre Ennemies /> || Stats/Type Ennemies !=).
+	
+	Semaine 1 -> 1 Vague
+
+- Map
+	Nombre : 1 (2 map si on a le temps)

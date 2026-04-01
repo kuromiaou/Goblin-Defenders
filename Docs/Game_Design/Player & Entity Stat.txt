@@ -1,0 +1,189 @@
+Nexus :
+   HP = 500
+(n = entier naturel variable)
+
+
+----------------------------Enemy/Player----------------------------
+Enemy :
+Scaling des HP en fonction des vagues
+Gold_Value = 50% des HP_MAX
+
+----------------------------------------
+HP Tier :
+	High = 50
+	Mid  = 25
+	Low  = 10
+----------------------------------------
+
+----------------------------------------
+ATK Tier :
+	High = 25
+	Mid  = 10
+	Low  = 5
+	Null = 0
+----------------------------------------
+
+----------------------------------------
+SPD Tier :
+	High = 1.5 m/s
+	Mid  = 1 m/s
+	Low  = 0.5 m/s
+	Null = 0
+----------------------------------------
+
+----------------------------------------
+Resistance Formula (100 / 100 + Resistance) :
+	High = 50% = 100
+	Mid  = 25% = Mid
+	Low  = 0%  = 0
+----------------------------------------
+
+----------------------------------------
+ATK_Range Tier :
+	Melee = 1
+	Range = 3
+----------------------------------------
+
+----------------------------------------
+ATK_SPD Tier :
+	High  = 1
+	Low   = .75
+	Null  = 0
+----------------------------------------
+----------------------------Enemy/Player----------------------------
+
+
+	Player :
+		ATK 	= Physique = n/ Magique = n
+		RSC 	= n
+		SPD 	= High
+		ATK SPD = Mid Melee / High Range
+		Gold 	= n
+
+	Goblin : 
+		HP         = Low
+		ATK 	   = Low
+		SPD        = Mid
+		Resistance (Physique) = Low
+		Resistance (Magique)  =	Low
+		ATK_Range  = Melee
+		ATK_SPD    = High
+		
+	Hobgoblin : 
+		HP         = High
+		ATK 	   = Mid
+		SPD        = Low
+		Resistance (Physique) = High
+		Resistance (Magique)  =	Mid
+		ATK_Range  = Range
+		ATK_SPD    = Low
+		
+	Magicien : 
+		HP         = Mid
+		ATK 	   = Mid
+		SPD        = Mid
+		Resistance (Physique) = Low
+		Resistance (Magique)  =	High
+		ATK_Range  = Range
+		ATK_SPD    = Low
+		
+	Shaman : 
+		HP         = Mid
+		ATK 	   = ATK Tier UP/ SPD Tier UP/ RES Tier UP
+		SPD        = ATK_Boost        = Mid
+					 Resistance_Boost = Mid
+					 SPD_Boost        = High 
+						(Applique cette SPD a tous les alliés présents dans son Aura_SIZE)
+		Resistance (Physique) = Mid
+		Resistance (Magique)  =	Mid
+		ATK_Range  = Aura_SIZE
+		ATK_SPD    = Null
+		
+	Goblin Rapace : 
+		HP         = Mid
+		ATK 	   = Null
+		SPD        = High
+		Gold_Value = 50% des HP_MAX + Gold volé * 1.2 (à revoir)
+		Resistance (Physique) = Mid
+		Resistance (Magique)  =	Mid
+		ATK_Range  = Melee
+		ATK_SPD    = High
+
+
+
+----------------------------Tower----------------------------
+Aggro de la tour : 
+Le joueur peut configurer l'aggro de tour de la manière suivante :
+	- Le premier ennemi rencontré
+	- Le dernier ennemi rencontré (= le premier s'il n'y a qu'un seul ennemi)
+	- L'ennemi avec le plus d'HP_MAX
+	- L'ennemi avec le plus d'HP actuellement 
+		(=celui avec le plus d'HP_MAX si tout le monde est à HP_MAX. 
+			/!\ Si plusieurs ennemis ont le même HP_MAX / HP actuellement, la tour target le premier ennemi.).
+----------------------------------------
+ATK Tier :
+	High = 25
+	Mid  = 10
+	Low  = 5
+	Null = 0
+----------------------------------------
+
+----------------------------------------
+ATK_Range Tier :
+	High = 5
+	Mid  = 3
+	Low  = 1
+----------------------------------------
+
+----------------------------------------
+ATK_SPD Tier :
+	High  = 1
+	Low   = .75
+	Null  = 0
+----------------------------------------
+----------------------------Tower----------------------------
+
+		
+		
+Tower :
+	Single : 
+		Physique :
+			ATK       = High
+			ATK_Range = High
+			ATK_SPD   = High
+
+		Magique  :
+			ATK       = High
+			ATK_Range = High
+			ATK_SPD   = High
+
+			
+	AOE    :
+		Physique :
+			ATK       = Mid
+			ATK_Range = Mid
+			ATK_SPD   = Low
+
+		Magique  :
+			ATK       = Mid
+			ATK_Range = Mid
+			ATK_SPD   = Low
+			
+	CC     :
+		Slow : 
+			SPD = -1 tier
+		
+		Shred Resistance
+		
+Trap :
+	Piège à Loup :
+		Stun 0.5s -> 1.5s
+	Mine :
+		ATK : High
+	Aura Gold :
+		50% des Hp_MAX -> 100% des HP_MAX
+
+Vagues :	
+
+   
+Shop : 
