@@ -18,8 +18,8 @@
 
 using namespace TerminaScript;
 
-class EntityManager : public TerminaScript::ScriptableComponent
-{
+class EntityManager : public TerminaScript::ScriptableComponent {
+
 public:
     EntityManager() = default;
     EntityManager(Termina::Actor* owner) : TerminaScript::ScriptableComponent(owner) {}
@@ -59,5 +59,12 @@ private:
     std::vector<int> ShamanSPDWave = { 0,1,1,2,2,2,3,3,3,3,3 };
     std::vector<int> ShamanRESWave = { 0,1,1,2,2,2,3,3,3,3,3 };
 
-    Termina::Actor* m_Player = nullptr;
+    TerminaScript::Prefab p_Goblin;
+    TerminaScript::Prefab p_GoblinRapace;
+    TerminaScript::Prefab p_HobGoblin;
+    TerminaScript::Prefab p_Magicien;
+    TerminaScript::Prefab p_ShamanATK;
+    TerminaScript::Prefab p_ShamanSPD;
+    TerminaScript::Prefab p_ShamanRES;
+
 };
