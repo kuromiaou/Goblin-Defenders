@@ -26,7 +26,7 @@
 #include "Enemy/CheckPoint.hpp"
 
 COMPONENT_MODULE_BEGIN()
-    // Moteur
+    // Termina
     REGISTER_COMPONENT(FlyCamComponent,        "Fly Cam Component")
     REGISTER_COMPONENT(ParticleSystemComponent,"Particle System")
     REGISTER_COMPONENT(PhysicsTestComponent,   "Physics Test")

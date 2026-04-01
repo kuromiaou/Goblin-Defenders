@@ -56,13 +56,13 @@ private:
     std::vector<std::shared_ptr<Enemy>> allEnemies;
     std::vector<Door*> all_doors;  // Stocke les portes
 
-    std::vector<int> GoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> GoblinRapaceWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> HobGoblinWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> MagicienWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanATKWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanSPDWave = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanRESWave = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> GoblinWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> GoblinRapaceWave   = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> HobGoblinWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> MagicienWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanATKWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanSPDWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
+    std::vector<int> ShamanRESWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
 
     Termina::Actor* m_Player = nullptr;
 };
