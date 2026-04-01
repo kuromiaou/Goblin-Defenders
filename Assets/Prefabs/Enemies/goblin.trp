@@ -1,0 +1,42 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.9760855436325073,
+                            0.1878146231174469,
+                            2.4929425716400146
+                        ],
+                        "rotation": [
+                            -0.018707431852817535,
+                            -0.11215341836214066,
+                            0.9934507012367249,
+                            0.011286480352282524
+                        ],
+                        "scale": [
+                            0.05200454592704773,
+                            0.049337685108184814,
+                            0.05200463905930519
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "510082748791743173",
+            "name": "goblin",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}

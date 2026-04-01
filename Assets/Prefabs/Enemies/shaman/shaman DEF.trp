@@ -1,0 +1,125 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.06709179282188416,
+                            0.21771109104156494,
+                            1.6638140678405762
+                        ],
+                        "rotation": [
+                            0.6846634149551392,
+                            0.04748792201280594,
+                            -0.7237048745155334,
+                            -0.07233436405658722
+                        ],
+                        "scale": [
+                            0.08092311769723892,
+                            0.08092029392719269,
+                            0.08092522621154785
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "1504049725523703051",
+            "name": "shaman DEF",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.0,
+                            0.5
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.07000000029802322,
+                            0.07000000029802322,
+                            0.07000000029802322
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat1.mat"
+                        },
+                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "11816256264331477279",
+            "name": "shaman DEF crystal",
+            "parentId": "1504049725523703051"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            34.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.3465346693992615,
+                            1.0,
+                            0.3594744801521301
+                        ],
+                        "intensity": 0.20000000298023224,
+                        "range": 1.0
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "11247525490272516795",
+            "name": "shaman DEF crystal light",
+            "parentId": "11816256264331477279"
+        }
+    ],
+    "version": 1
+}

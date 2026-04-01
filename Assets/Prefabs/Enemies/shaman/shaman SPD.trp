@@ -1,0 +1,125 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -0.8632988929748535,
+                            0.21771109104156494,
+                            1.6575467586517334
+                        ],
+                        "rotation": [
+                            0.6831650733947754,
+                            -0.04466283321380615,
+                            -0.7266538739204407,
+                            0.05713881179690361
+                        ],
+                        "scale": [
+                            0.08092080056667328,
+                            0.08091998845338821,
+                            0.08092085272073746
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "4839603921572503270",
+            "name": "shaman SPD",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.0,
+                            0.5
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.07000000029802322,
+                            0.07000000029802322,
+                            0.07000000029802322
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat0.mat"
+                        },
+                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "5936554968782903924",
+            "name": "shaman SPD crystal",
+            "parentId": "4839603921572503270"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            6.103515625e-05,
+                            34.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.132013201713562,
+                            0.8710909485816956,
+                            1.0
+                        ],
+                        "intensity": 0.20000000298023224,
+                        "range": 1.0
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "4803560680116840114",
+            "name": "shaman SPD crystal light",
+            "parentId": "5936554968782903924"
+        }
+    ],
+    "version": 1
+}

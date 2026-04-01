@@ -1,0 +1,125 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.949994683265686,
+                            0.21771109104156494,
+                            1.77297842502594
+                        ],
+                        "rotation": [
+                            -0.011143863201141357,
+                            0.04824601113796234,
+                            0.9986578226089478,
+                            0.015190406702458858
+                        ],
+                        "scale": [
+                            0.08092820644378662,
+                            0.08092004805803299,
+                            0.08092840760946274
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "10557225708092369767",
+            "name": "shaman ATK",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.0,
+                            0.5
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.07000000029802322,
+                            0.07000000029802322,
+                            0.07000000029802322
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat2.mat"
+                        },
+                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "13765133055129668976",
+            "name": "shaman ATK crystal",
+            "parentId": "10557225708092369767"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            34.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.35313528776168823,
+                            0.08391333371400833,
+                            0.0
+                        ],
+                        "intensity": 0.20000000298023224,
+                        "range": 1.0
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "9043779923741073167",
+            "name": "shaman ATK crystal light",
+            "parentId": "13765133055129668976"
+        }
+    ],
+    "version": 1
+}
