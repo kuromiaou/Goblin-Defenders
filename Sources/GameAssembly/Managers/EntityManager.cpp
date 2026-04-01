@@ -2,7 +2,13 @@
 
 void EntityManager::Start()
 {
-    m_Player = m_Owner->GetParentWorld()->GetActorByName("Player");
+    p_Goblin       = TerminaScript::Prefab("Assets/Prefab/goblin.trp");
+    p_GoblinRapace = TerminaScript::Prefab("Assets/Prefab/goblinrapace.trp");
+    p_HobGoblin    = TerminaScript::Prefab("Assets/Prefab/hobgoblin.trp");
+    p_Magicien     = TerminaScript::Prefab("Assets/Prefab/magicien.trp");
+    p_ShamanATK    = TerminaScript::Prefab("Assets/Prefab/shamanATK.trp");
+    p_ShamanSPD    = TerminaScript::Prefab("Assets/Prefab/shamanSPD.trp");
+    p_ShamanRES    = TerminaScript::Prefab("Assets/Prefab/shamanRES.trp");
 }
 
 void EntityManager::Update(float deltaTime)
@@ -67,36 +73,43 @@ void EntityManager::SpawnWave(int waveIndex)
 
 void EntityManager::SpawnGoblin()
 {
-    /*allEnemies.push_back(goblin);*/
+    Termina::Actor* Gob = Instantiate(p_Goblin);
+    allEnemies.push_back(Gob);
 }
 
 void EntityManager::SpawnGoblinRapace()
 {
-    //allEnemies.push_back(goblinRapace);
+    Termina::Actor* GobRapace = Instantiate(p_GoblinRapace);
+    allEnemies.push_back(GobRapace);
 }
 
 void EntityManager::SpawnHobgoblin()
 {
 
-    //allEnemies.push_back(hobgoblin);
+    Termina::Actor* HobGob = Instantiate(p_HobGoblin);
+    allEnemies.push_back(HobGob);
 }
 
 void EntityManager::SpawnMagicien()
 {
-    //allEnemies.push_back(magicien);
+    Termina::Actor* Mage = Instantiate(p_Magicien);
+    allEnemies.push_back(Mage);
 }
 
 void EntityManager::SpawnShamanATK()
 {
-    //allEnemies.push_back(shaman);
+    Termina::Actor* ShamanATK = Instantiate(p_ShamanATK);
+    allEnemies.push_back(ShamanATK);
 }
 
 void EntityManager::SpawnShamanSPD()
 {
-    //allEnemies.push_back(shaman);
+    Termina::Actor* ShamanSPD = Instantiate(p_ShamanSPD);
+    allEnemies.push_back(ShamanSPD);
 }
 
 void EntityManager::SpawnShamanRES()
 {
-    //allEnemies.push_back(shaman);
+    Termina::Actor* ShamanRES = Instantiate(p_ShamanRES);
+    allEnemies.push_back(ShamanRES);
 }
