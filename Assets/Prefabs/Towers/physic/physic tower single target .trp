@@ -9,13 +9,13 @@
                         "position": [
                             0.0,
                             0.3499999940395355,
-                            0.6000000238418579
+                            2.799999952316284
                         ],
                         "rotation": [
                             1.0,
-                            -0.0,
-                            -0.0,
-                            -0.0
+                            0.0,
+                            0.0,
+                            0.0
                         ],
                         "scale": [
                             0.20000000298023224,
@@ -28,13 +28,13 @@
                 {
                     "active": true,
                     "data": {
-                        "model": "Assets\\Models\\functional props\\towers\\magic tower\\tower_magic.gltf"
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "12112612152610732620",
-            "name": "magic tower single targer",
+            "id": "13114017286511689169",
+            "name": "physic tower single target ",
             "parentId": null
         },
         {
@@ -66,7 +66,7 @@
                     "active": true,
                     "data": {
                         "material_overrides": {
-                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\magical.mat"
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
                         },
                         "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
@@ -76,19 +76,28 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.10891091823577881,
-                            0.49710822105407715,
-                            1.0
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
                         ],
                         "intensity": 0.10000000149011612,
                         "range": 0.3100000023841858
                     },
                     "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "damage_type": 0,
+                        "level": 1
+                    },
+                    "type": "Tour Single"
                 }
             ],
-            "id": "15444156693724825049",
-            "name": "magic tower single target element light",
-            "parentId": "12112612152610732620"
+            "id": "534412786029086217",
+            "name": "physic tower single target element ",
+            "parentId": "13114017286511689169"
         },
         {
             "active": true,
@@ -119,9 +128,9 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.2343234419822693,
-                            0.5982093811035156,
-                            1.0
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
                         ],
                         "intensity": 2.299999952316284,
                         "range": 0.4000000059604645
@@ -129,9 +138,9 @@
                     "type": "Point Light"
                 }
             ],
-            "id": "17377383384344559431",
-            "name": "magic tower single target element light",
-            "parentId": "15444156693724825049"
+            "id": "7994337103854523730",
+            "name": "physic tower single target element light",
+            "parentId": "534412786029086217"
         }
     ],
     "version": 1

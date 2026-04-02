@@ -31,6 +31,17 @@
                         "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aura_size": 3.0,
+                        "aura_type": 2,
+                        "hp": 25,
+                        "hp_max": 25,
+                        "wave": 1
+                    },
+                    "type": "Shaman"
                 }
             ],
             "id": "1504049725523703051",

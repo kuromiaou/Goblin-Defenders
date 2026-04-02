@@ -7,15 +7,15 @@
                     "active": true,
                     "data": {
                         "position": [
-                            1.899999976158142,
+                            0.0,
                             0.3499999940395355,
-                            2.799999952316284
+                            0.6000000238418579
                         ],
                         "rotation": [
                             1.0,
-                            0.0,
-                            0.0,
-                            0.0
+                            -0.0,
+                            -0.0,
+                            -0.0
                         ],
                         "scale": [
                             0.20000000298023224,
@@ -28,13 +28,13 @@
                 {
                     "active": true,
                     "data": {
-                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
+                        "model": "Assets\\Models\\functional props\\towers\\magic tower\\tower_magic.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "12183833313007446251",
-            "name": "physic tower AOE ",
+            "id": "12112612152610732620",
+            "name": "magic tower single targer",
             "parentId": null
         },
         {
@@ -49,15 +49,15 @@
                             0.0
                         ],
                         "rotation": [
-                            1.9106861004394154e-15,
-                            -4.3711398944878965e-08,
                             1.0,
-                            -4.371138828673793e-08
+                            0.0,
+                            0.0,
+                            0.0
                         ],
                         "scale": [
-                            0.6000000238418579,
-                            0.6000000238418579,
-                            0.6000000238418579
+                            0.5,
+                            0.5,
+                            0.5
                         ]
                     },
                     "type": "Transform"
@@ -66,9 +66,9 @@
                     "active": true,
                     "data": {
                         "material_overrides": {
-                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\magical.mat"
                         },
-                        "model": "Assets\\Models\\Functional props\\towers\\AOE element\\AOE element.gltf"
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
                     "type": "Mesh Component"
                 },
@@ -76,19 +76,28 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.9725490212440491,
-                            0.8901960849761963,
-                            0.0313725508749485
+                            0.10891091823577881,
+                            0.49710822105407715,
+                            1.0
                         ],
                         "intensity": 0.10000000149011612,
                         "range": 0.3100000023841858
                     },
                     "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "damage_type": 1,
+                        "level": 1
+                    },
+                    "type": "Tour Single"
                 }
             ],
-            "id": "7084801975432971018",
-            "name": "physic tower AOE element ",
-            "parentId": "12183833313007446251"
+            "id": "15444156693724825049",
+            "name": "magic tower single target element light",
+            "parentId": "12112612152610732620"
         },
         {
             "active": true,
@@ -97,9 +106,9 @@
                     "active": true,
                     "data": {
                         "position": [
-                            1.9073486328125e-06,
-                            4.0,
-                            -1.0
+                            0.0,
+                            4.5,
+                            0.0
                         ],
                         "rotation": [
                             1.0,
@@ -119,19 +128,19 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.9725490212440491,
-                            0.8901960849761963,
-                            0.0313725508749485
+                            0.2343234419822693,
+                            0.5982093811035156,
+                            1.0
                         ],
-                        "intensity": 1.0,
-                        "range": 0.5
+                        "intensity": 2.299999952316284,
+                        "range": 0.4000000059604645
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "10160518508016851507",
-            "name": "physic tower AOE element light",
-            "parentId": "7084801975432971018"
+            "id": "17377383384344559431",
+            "name": "magic tower single target element light",
+            "parentId": "15444156693724825049"
         }
     ],
     "version": 1

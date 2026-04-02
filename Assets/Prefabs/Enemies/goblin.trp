@@ -31,6 +31,16 @@
                         "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "gold_value": 5,
+                        "hp": 10,
+                        "hp_max": 10,
+                        "wave": 1
+                    },
+                    "type": "Goblin"
                 }
             ],
             "id": "510082748791743173",

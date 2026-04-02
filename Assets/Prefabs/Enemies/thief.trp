@@ -34,6 +34,17 @@
                         "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 35,
+                        "hp_max": 35,
+                        "reached_nexus": false,
+                        "stolen_gold": 0,
+                        "wave": 1
+                    },
+                    "type": "Goblin Rapace"
                 }
             ],
             "id": "1803679130710607559",

@@ -31,6 +31,17 @@
                         "model": "Assets\\Models\\Enemies\\mage\\mage .gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 25,
+                        "hp_max": 25,
+                        "stun_max": 1.0,
+                        "stun_min": 0.5,
+                        "wave": 1
+                    },
+                    "type": "Magicien"
                 }
             ],
             "id": "903091259274718800",

@@ -7,7 +7,7 @@
                     "active": true,
                     "data": {
                         "position": [
-                            1.9000000953674316,
+                            -2.0,
                             0.3499999940395355,
                             0.6000000238418579
                         ],
@@ -33,9 +33,72 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "14208187683248327451",
-            "name": "magic tower AOE ",
+            "id": "17621311703208638498",
+            "name": "magic tower CC ",
             "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            2.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.5,
+                            0.5,
+                            0.5
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\magical.mat"
+                        },
+                        "model": "Assets\\Models\\functional props\\towers\\CC element\\CC2.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.10980392247438431,
+                            0.49803921580314636,
+                            1.0
+                        ],
+                        "intensity": 0.5400000214576721,
+                        "range": 0.5099999904632568
+                    },
+                    "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "cc_type": 0,
+                        "level": 1,
+                        "shred_type": 0
+                    },
+                    "type": "Tour CC"
+                }
+            ],
+            "id": "13778729886697064734",
+            "name": "magic tower CC element ",
+            "parentId": "17621311703208638498"
         },
         {
             "active": true,
@@ -49,59 +112,6 @@
                             0.0
                         ],
                         "rotation": [
-                            1.910685465164705e-15,
-                            4.371138828673793e-08,
-                            -1.0,
-                            -4.371138828673793e-08
-                        ],
-                        "scale": [
-                            0.6000000238418579,
-                            0.6000000238418579,
-                            0.6000000238418579
-                        ]
-                    },
-                    "type": "Transform"
-                },
-                {
-                    "active": true,
-                    "data": {
-                        "material_overrides": {
-                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\magical.mat"
-                        },
-                        "model": "Assets\\Models\\Functional props\\towers\\AOE element\\AOE element.gltf"
-                    },
-                    "type": "Mesh Component"
-                },
-                {
-                    "active": true,
-                    "data": {
-                        "color": [
-                            0.23529411852359772,
-                            0.6000000238418579,
-                            1.0
-                        ],
-                        "intensity": 0.10000000149011612,
-                        "range": 0.3100000023841858
-                    },
-                    "type": "Point Light"
-                }
-            ],
-            "id": "15470313855726853914",
-            "name": "magic tower AOE element ",
-            "parentId": "14208187683248327451"
-        },
-        {
-            "active": true,
-            "components": [
-                {
-                    "active": true,
-                    "data": {
-                        "position": [
-                            0.0,
-                            4.0,
-                            -1.0
-                        ],
-                        "rotation": [
                             1.0,
                             0.0,
                             0.0,
@@ -119,19 +129,19 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.23529411852359772,
-                            0.6000000238418579,
+                            0.10980392247438431,
+                            0.49803921580314636,
                             1.0
                         ],
-                        "intensity": 1.0,
-                        "range": 0.5
+                        "intensity": 0.25,
+                        "range": 0.4099999964237213
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "10860924110233459166",
-            "name": "magic tower AOE element light",
-            "parentId": "15470313855726853914"
+            "id": "14456639744946295991",
+            "name": "magic tower CC element light",
+            "parentId": "13778729886697064734"
         }
     ],
     "version": 1
