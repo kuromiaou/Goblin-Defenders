@@ -42,7 +42,8 @@ private:
 
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
 
-    int        current_wave = 7;
+
+    int        current_wave = 1;
     int        max_fixed_waves = 10;
     WaveState  state;
     bool       is_endless = false, is_wave_spawned = false;
@@ -50,14 +51,10 @@ private:
     // Stocke les acteurs des ennemis spawés (pas les composants)
     std::vector<Termina::Actor*> allEnemies;
 
-    // Vagues définissant le nombre d'ennemis à spawn à chaque vague
-    std::vector<int> GoblinWave         = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> GoblinRapaceWave   = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> HobGoblinWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> MagicienWave       = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanATKWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanSPDWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
-    std::vector<int> ShamanRESWave      = { 0,1,1,2,2,2,3,3,3,3,3 };
+
+    enum class EnemyOrder {GOBLIN /*0*/, GOBLINRAPACE /*1*/, HOBGOBLIN /*2*/, MAGICIEN /*3*/, SHAMANATK /*4*/, SHAMANSPD /*5*/, SHAMANDEF /*6*/};
+
+    std::vector < std::vector<int >> EnemySpawnOrder = { {}, { 2,0,3,4 }, {0} };
 
     TerminaScript::Prefab p_Goblin;
     TerminaScript::Prefab p_GoblinRapace;
