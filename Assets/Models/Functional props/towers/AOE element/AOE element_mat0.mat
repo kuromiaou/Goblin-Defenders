@@ -2,9 +2,9 @@
   "albedo_texture": "",
   "alpha_test": false,
   "color": [
-    0.8844884634017944,
-    0.8844884634017944,
-    0.8844884634017944
+    1.0,
+    1.0,
+    1.0
   ],
   "emissive_texture": "",
   "metallic_factor": 0.0,

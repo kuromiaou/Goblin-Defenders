@@ -7,9 +7,9 @@
                     "active": true,
                     "data": {
                         "position": [
-                            2.9522130489349365,
-                            0.2735025882720947,
-                            -2.7293429374694824
+                            1.899999976158142,
+                            0.3499999940395355,
+                            2.799999952316284
                         ],
                         "rotation": [
                             1.0,
@@ -18,9 +18,9 @@
                             0.0
                         ],
                         "scale": [
-                            0.498399943113327,
-                            0.498399943113327,
-                            0.498399943113327
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
                         ]
                     },
                     "type": "Transform"
@@ -28,16 +28,13 @@
                 {
                     "active": true,
                     "data": {
-                        "material_overrides": {
-                            "0": "Assets\\Models\\functional props\\nexus\\nexus_mat0.mat"
-                        },
-                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "10860662857844168957",
-            "name": "Nexus",
+            "id": "12183833313007446251",
+            "name": "physic tower AOE ",
             "parentId": null
         },
         {
@@ -48,19 +45,19 @@
                     "data": {
                         "position": [
                             0.0,
-                            -1.0100810527801514,
+                            1.5,
                             0.0
                         ],
                         "rotation": [
+                            1.9106861004394154e-15,
+                            -4.3711398944878965e-08,
                             1.0,
-                            0.0,
-                            0.0,
-                            0.0
+                            -4.371138828673793e-08
                         ],
                         "scale": [
-                            1.0,
-                            1.0,
-                            1.0
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579
                         ]
                     },
                     "type": "Transform"
@@ -68,20 +65,30 @@
                 {
                     "active": true,
                     "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
+                        },
+                        "model": "Assets\\Models\\Functional props\\towers\\AOE element\\AOE element.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
                         "color": [
-                            0.05635612830519676,
-                            0.15147048234939575,
-                            0.6567656993865967
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
                         ],
-                        "intensity": 31.739999771118164,
-                        "range": 3.109999895095825
+                        "intensity": 0.10000000149011612,
+                        "range": 0.3100000023841858
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "4298725967578866188",
-            "name": "nexus light 01",
-            "parentId": "10860662857844168957"
+            "id": "7084801975432971018",
+            "name": "physic tower AOE element ",
+            "parentId": "12183833313007446251"
         },
         {
             "active": true,
@@ -90,9 +97,9 @@
                     "active": true,
                     "data": {
                         "position": [
-                            0.0,
-                            1.345505952835083,
-                            0.0
+                            1.9073486328125e-06,
+                            4.0,
+                            -1.0
                         ],
                         "rotation": [
                             1.0,
@@ -112,19 +119,19 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.054901961237192154,
-                            0.15294118225574493,
-                            0.6549019813537598
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
                         ],
-                        "intensity": 5.840000152587891,
-                        "range": 2.200000047683716
+                        "intensity": 1.0,
+                        "range": 0.5
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "16351428977633988730",
-            "name": "nexus light 02",
-            "parentId": "10860662857844168957"
+            "id": "10160518508016851507",
+            "name": "physic tower AOE element light",
+            "parentId": "7084801975432971018"
         }
     ],
     "version": 1

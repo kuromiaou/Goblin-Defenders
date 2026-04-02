@@ -7,20 +7,20 @@
                     "active": true,
                     "data": {
                         "position": [
-                            0.06709179282188416,
-                            0.21771109104156494,
-                            1.6638140678405762
+                            -0.6518489122390747,
+                            0.23570549488067627,
+                            1.7001302242279053
                         ],
                         "rotation": [
-                            0.6846634149551392,
-                            0.04748792201280594,
-                            -0.7237048745155334,
-                            -0.07233436405658722
+                            0.7071067690849304,
+                            0.0,
+                            -0.7071067690849304,
+                            0.0
                         ],
                         "scale": [
-                            0.08092311769723892,
-                            0.08092029392719269,
-                            0.08092522621154785
+                            0.08000126481056213,
+                            0.07999999821186066,
+                            0.08000126481056213
                         ]
                     },
                     "type": "Transform"
@@ -33,8 +33,8 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "1504049725523703051",
-            "name": "shaman DEF",
+            "id": "4839603921572503270",
+            "name": "shaman SPD ",
             "parentId": null
         },
         {
@@ -55,9 +55,9 @@
                             0.0
                         ],
                         "scale": [
-                            0.07000000029802322,
-                            0.07000000029802322,
-                            0.07000000029802322
+                            0.5,
+                            0.5,
+                            0.5
                         ]
                     },
                     "type": "Transform"
@@ -66,16 +66,16 @@
                     "active": true,
                     "data": {
                         "material_overrides": {
-                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat1.mat"
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat0.mat"
                         },
-                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "11816256264331477279",
-            "name": "shaman DEF crystal",
-            "parentId": "1504049725523703051"
+            "id": "5936554968782903924",
+            "name": "shaman SPD crystal",
+            "parentId": "4839603921572503270"
         },
         {
             "active": true,
@@ -85,7 +85,7 @@
                     "data": {
                         "position": [
                             0.0,
-                            34.0,
+                            4.5,
                             0.0
                         ],
                         "rotation": [
@@ -106,9 +106,9 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.3465346693992615,
-                            1.0,
-                            0.3594744801521301
+                            0.132013201713562,
+                            0.8710909485816956,
+                            1.0
                         ],
                         "intensity": 0.20000000298023224,
                         "range": 1.0
@@ -116,9 +116,49 @@
                     "type": "Point Light"
                 }
             ],
-            "id": "11247525490272516795",
-            "name": "shaman DEF crystal light",
-            "parentId": "11816256264331477279"
+            "id": "4803560680116840114",
+            "name": "shaman SPD crystal light",
+            "parentId": "5936554968782903924"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            2.0,
+                            2.0,
+                            2.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat0.mat"
+                        },
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman aura.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "4539602686924152746",
+            "name": "shaman SPD aura",
+            "parentId": "4839603921572503270"
         }
     ],
     "version": 1

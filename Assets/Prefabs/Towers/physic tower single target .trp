@@ -7,20 +7,20 @@
                     "active": true,
                     "data": {
                         "position": [
-                            0.949994683265686,
-                            0.21771109104156494,
-                            1.77297842502594
+                            0.0,
+                            0.3499999940395355,
+                            2.799999952316284
                         ],
                         "rotation": [
-                            -0.011143863201141357,
-                            0.04824601113796234,
-                            0.9986578226089478,
-                            0.015190406702458858
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
                         ],
                         "scale": [
-                            0.08092820644378662,
-                            0.08092004805803299,
-                            0.08092840760946274
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
                         ]
                     },
                     "type": "Transform"
@@ -28,13 +28,13 @@
                 {
                     "active": true,
                     "data": {
-                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "10557225708092369767",
-            "name": "shaman ATK",
+            "id": "13114017286511689169",
+            "name": "physic tower single target ",
             "parentId": null
         },
         {
@@ -45,8 +45,8 @@
                     "data": {
                         "position": [
                             0.0,
-                            1.0,
-                            0.5
+                            1.5,
+                            0.0
                         ],
                         "rotation": [
                             1.0,
@@ -55,9 +55,9 @@
                             0.0
                         ],
                         "scale": [
-                            0.07000000029802322,
-                            0.07000000029802322,
-                            0.07000000029802322
+                            0.5,
+                            0.5,
+                            0.5
                         ]
                     },
                     "type": "Transform"
@@ -66,16 +66,29 @@
                     "active": true,
                     "data": {
                         "material_overrides": {
-                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat2.mat"
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
                         },
-                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
+                        ],
+                        "intensity": 0.10000000149011612,
+                        "range": 0.3100000023841858
+                    },
+                    "type": "Point Light"
                 }
             ],
-            "id": "13765133055129668976",
-            "name": "shaman ATK crystal",
-            "parentId": "10557225708092369767"
+            "id": "534412786029086217",
+            "name": "physic tower single target element ",
+            "parentId": "13114017286511689169"
         },
         {
             "active": true,
@@ -85,7 +98,7 @@
                     "data": {
                         "position": [
                             0.0,
-                            34.0,
+                            4.5,
                             0.0
                         ],
                         "rotation": [
@@ -106,19 +119,19 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.35313528776168823,
-                            0.08391333371400833,
-                            0.0
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
                         ],
-                        "intensity": 0.20000000298023224,
-                        "range": 1.0
+                        "intensity": 2.299999952316284,
+                        "range": 0.4000000059604645
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "9043779923741073167",
-            "name": "shaman ATK crystal light",
-            "parentId": "13765133055129668976"
+            "id": "7994337103854523730",
+            "name": "physic tower single target element light",
+            "parentId": "534412786029086217"
         }
     ],
     "version": 1

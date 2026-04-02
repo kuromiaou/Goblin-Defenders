@@ -15,13 +15,24 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Icosphere"
+			"name":"Cone.001",
+			"rotation":[
+				0,
+				0,
+				-0.7071068286895752,
+				0.7071067094802856
+			],
+			"translation":[
+				0,
+				1.9419220685958862,
+				0
+			]
 		}
 	],
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Material.004",
+			"name":"Material.016",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0.800000011920929,
@@ -36,7 +47,7 @@
 	],
 	"meshes":[
 		{
-			"name":"Icosphere.001",
+			"name":"Cone.006",
 			"primitives":[
 				{
 					"attributes":{
@@ -54,68 +65,68 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":60,
+			"count":217,
 			"max":[
-				0.8944249749183655,
-				1,
-				0.8506399989128113
+				2.000030994415283,
+				2.000032424926758,
+				0.80901700258255
 			],
 			"min":[
-				-0.8944249749183655,
-				-1,
-				-0.8506399989128113
+				-2.000032424926758,
+				-2.0000314712524414,
+				-1
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":60,
+			"count":217,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":60,
+			"count":217,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":60,
+			"count":420,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":720,
+			"byteLength":2604,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":720,
-			"byteOffset":720,
+			"byteLength":2604,
+			"byteOffset":2604,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":480,
-			"byteOffset":1440,
+			"byteLength":1736,
+			"byteOffset":5208,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":120,
-			"byteOffset":1920,
+			"byteLength":840,
+			"byteOffset":6944,
 			"target":34963
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":2040,
-			"uri":"CC.bin"
+			"byteLength":7784,
+			"uri":"AOE%20element.bin"
 		}
 	]
 }

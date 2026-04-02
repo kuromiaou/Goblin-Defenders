@@ -7,20 +7,20 @@
                     "active": true,
                     "data": {
                         "position": [
-                            -0.8632988929748535,
-                            0.21771109104156494,
-                            1.6575467586517334
+                            1.9000000953674316,
+                            0.3499999940395355,
+                            0.6000000238418579
                         ],
                         "rotation": [
-                            0.6831650733947754,
-                            -0.04466283321380615,
-                            -0.7266538739204407,
-                            0.05713881179690361
+                            1.0,
+                            -0.0,
+                            -0.0,
+                            -0.0
                         ],
                         "scale": [
-                            0.08092080056667328,
-                            0.08091998845338821,
-                            0.08092085272073746
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
                         ]
                     },
                     "type": "Transform"
@@ -28,13 +28,13 @@
                 {
                     "active": true,
                     "data": {
-                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                        "model": "Assets\\Models\\functional props\\towers\\magic tower\\tower_magic.gltf"
                     },
                     "type": "Mesh Component"
                 }
             ],
-            "id": "4839603921572503270",
-            "name": "shaman SPD",
+            "id": "14208187683248327451",
+            "name": "magic tower AOE ",
             "parentId": null
         },
         {
@@ -45,19 +45,19 @@
                     "data": {
                         "position": [
                             0.0,
-                            1.0,
-                            0.5
-                        ],
-                        "rotation": [
-                            1.0,
-                            0.0,
-                            0.0,
+                            1.5,
                             0.0
                         ],
+                        "rotation": [
+                            1.910685465164705e-15,
+                            4.371138828673793e-08,
+                            -1.0,
+                            -4.371138828673793e-08
+                        ],
                         "scale": [
-                            0.07000000029802322,
-                            0.07000000029802322,
-                            0.07000000029802322
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579
                         ]
                     },
                     "type": "Transform"
@@ -66,16 +66,29 @@
                     "active": true,
                     "data": {
                         "material_overrides": {
-                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat0.mat"
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\magical.mat"
                         },
-                        "model": "Assets\\Models\\Functional props\\nexus\\nexus.gltf"
+                        "model": "Assets\\Models\\Functional props\\towers\\AOE element\\AOE element.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.23529411852359772,
+                            0.6000000238418579,
+                            1.0
+                        ],
+                        "intensity": 0.10000000149011612,
+                        "range": 0.3100000023841858
+                    },
+                    "type": "Point Light"
                 }
             ],
-            "id": "5936554968782903924",
-            "name": "shaman SPD crystal",
-            "parentId": "4839603921572503270"
+            "id": "15470313855726853914",
+            "name": "magic tower AOE element ",
+            "parentId": "14208187683248327451"
         },
         {
             "active": true,
@@ -84,9 +97,9 @@
                     "active": true,
                     "data": {
                         "position": [
-                            6.103515625e-05,
-                            34.0,
-                            0.0
+                            0.0,
+                            4.0,
+                            -1.0
                         ],
                         "rotation": [
                             1.0,
@@ -106,19 +119,19 @@
                     "active": true,
                     "data": {
                         "color": [
-                            0.132013201713562,
-                            0.8710909485816956,
+                            0.23529411852359772,
+                            0.6000000238418579,
                             1.0
                         ],
-                        "intensity": 0.20000000298023224,
-                        "range": 1.0
+                        "intensity": 1.0,
+                        "range": 0.5
                     },
                     "type": "Point Light"
                 }
             ],
-            "id": "4803560680116840114",
-            "name": "shaman SPD crystal light",
-            "parentId": "5936554968782903924"
+            "id": "10860924110233459166",
+            "name": "magic tower AOE element light",
+            "parentId": "15470313855726853914"
         }
     ],
     "version": 1
