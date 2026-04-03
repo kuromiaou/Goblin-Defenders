@@ -2,9 +2,9 @@
   "albedo_texture": "Assets/Models/Cube/Cube_BaseColor.png",
   "alpha_test": false,
   "color": [
-    1.0,
-    1.0,
-    1.0
+    0.10694727301597595,
+    0.0883573591709137,
+    0.5577557682991028
   ],
   "emissive_texture": "",
   "metallic_factor": 1.0,
