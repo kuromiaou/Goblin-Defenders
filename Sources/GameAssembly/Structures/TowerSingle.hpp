@@ -25,12 +25,10 @@ public:
     float      getATKSPD()     const { return static_cast<int>(atk_spd) * 0.1f; }
     DamageType getDamageType() const { return damage_type; }
     AggroMode  getAggroMode()  const { return aggro; }
-    bool       isStunned()     const { return stun_timer > 0.0f; }
     int        getLevel()      const { return level; }
 
     void setAggroMode(AggroMode m) { aggro = m; }
     void setDamageType(DamageType t) { damage_type = t; }
-    void applyStun(float duration)   { stun_timer = duration; }
     void upgrade();
 
 private:
@@ -39,6 +37,5 @@ private:
     ATKSPDTier    atk_spd     = ATKSPDTier::ATKSPD_HIGH;
     DamageType    damage_type = DamageType::PHYSIQUE;
     AggroMode     aggro       = AggroMode::FIRST;
-    float         stun_timer  = 0.0f;
     int           level       = 1;
 };
