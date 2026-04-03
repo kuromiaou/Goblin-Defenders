@@ -1,0 +1,53 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -7.185343265533447,
+                            0.1869601607322693,
+                            3.576245069503784
+                        ],
+                        "rotation": [
+                            0.70710688829422,
+                            0.0,
+                            -0.7071066498756409,
+                            0.0
+                        ],
+                        "scale": [
+                            0.06552436947822571,
+                            0.06216570362448692,
+                            0.0655243769288063
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\mage\\mage .gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 25,
+                        "hp_max": 25,
+                        "stun_max": 1.0,
+                        "stun_min": 0.5,
+                        "wave": 1
+                    },
+                    "type": "Magicien"
+                }
+            ],
+            "id": "903091259274718800",
+            "name": "mage",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}

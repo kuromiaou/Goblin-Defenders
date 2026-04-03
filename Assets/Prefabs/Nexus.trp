@@ -1,0 +1,131 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            2.9522130489349365,
+                            0.2735025882720947,
+                            -2.7293429374694824
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.498399943113327,
+                            0.498399943113327,
+                            0.498399943113327
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\functional props\\nexus\\nexus_mat0.mat"
+                        },
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "10860662857844168957",
+            "name": "Nexus",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            -1.0100810527801514,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.05635612830519676,
+                            0.15147048234939575,
+                            0.6567656993865967
+                        ],
+                        "intensity": 31.739999771118164,
+                        "range": 3.109999895095825
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "4298725967578866188",
+            "name": "nexus light 01",
+            "parentId": "10860662857844168957"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.345505952835083,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.054901961237192154,
+                            0.15294118225574493,
+                            0.6549019813537598
+                        ],
+                        "intensity": 5.840000152587891,
+                        "range": 2.200000047683716
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "16351428977633988730",
+            "name": "nexus light 02",
+            "parentId": "10860662857844168957"
+        }
+    ],
+    "version": 1
+}

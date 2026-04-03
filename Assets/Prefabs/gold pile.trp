@@ -1,0 +1,85 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            2.891240119934082,
+                            0.11088398098945618,
+                            2.617199659347534
+                        ],
+                        "rotation": [
+                            0.44324102997779846,
+                            0.0,
+                            0.8964024782180786,
+                            0.0
+                        ],
+                        "scale": [
+                            0.0498005673289299,
+                            0.049800001084804535,
+                            0.04980059340596199
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Functional props\\coins\\gold pile.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "11948782336683388541",
+            "name": "gold pile",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.8785455226898193,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9570956826210022,
+                            0.948589026927948,
+                            0.09792068600654602
+                        ],
+                        "intensity": 0.05000000074505806,
+                        "range": 0.20999999344348907
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "15153770887733650318",
+            "name": "gold pile light",
+            "parentId": "11948782336683388541"
+        }
+    ],
+    "version": 1
+}

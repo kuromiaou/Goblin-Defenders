@@ -1,0 +1,53 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -8.406172752380371,
+                            0.10678978264331818,
+                            3.5608267784118652
+                        ],
+                        "rotation": [
+                            0.7533128261566162,
+                            0.0,
+                            -0.6576623916625977,
+                            0.0
+                        ],
+                        "scale": [
+                            0.06528524309396744,
+                            0.06528483331203461,
+                            0.06528547406196594
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\hobgoblin\\hobgoblin.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "gold_value": 25,
+                        "hp": 50,
+                        "hp_max": 50,
+                        "nullify_chance": 0.20000000298023224,
+                        "wave": 1
+                    },
+                    "type": "Hobgoblin"
+                }
+            ],
+            "id": "5342168046182027464",
+            "name": "hobgoblin",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}

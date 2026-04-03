@@ -1,0 +1,147 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            0.3499999940395355,
+                            2.799999952316284
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "13114017286511689169",
+            "name": "physic tower single target ",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.5,
+                            0.5,
+                            0.5
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
+                        },
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
+                        ],
+                        "intensity": 0.10000000149011612,
+                        "range": 0.3100000023841858
+                    },
+                    "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "damage_type": 0,
+                        "level": 1
+                    },
+                    "type": "Tour Single"
+                }
+            ],
+            "id": "534412786029086217",
+            "name": "physic tower single target element ",
+            "parentId": "13114017286511689169"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            4.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
+                        ],
+                        "intensity": 2.299999952316284,
+                        "range": 0.4000000059604645
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "7994337103854523730",
+            "name": "physic tower single target element light",
+            "parentId": "534412786029086217"
+        }
+    ],
+    "version": 1
+}

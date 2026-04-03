@@ -1,0 +1,148 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            1.899999976158142,
+                            0.3499999940395355,
+                            2.799999952316284
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "12183833313007446251",
+            "name": "physic tower AOE ",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.9106861004394154e-15,
+                            -4.3711398944878965e-08,
+                            1.0,
+                            -4.371138828673793e-08
+                        ],
+                        "scale": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.6000000238418579
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
+                        },
+                        "model": "Assets\\Models\\Functional props\\towers\\AOE element\\AOE element.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
+                        ],
+                        "intensity": 0.10000000149011612,
+                        "range": 0.3100000023841858
+                    },
+                    "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "aoe_radius": 2.0,
+                        "damage_type": 0,
+                        "level": 1
+                    },
+                    "type": "Tour AOE"
+                }
+            ],
+            "id": "7084801975432971018",
+            "name": "physic tower AOE element ",
+            "parentId": "12183833313007446251"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            1.9073486328125e-06,
+                            4.0,
+                            -1.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9725490212440491,
+                            0.8901960849761963,
+                            0.0313725508749485
+                        ],
+                        "intensity": 1.0,
+                        "range": 0.5
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "10160518508016851507",
+            "name": "physic tower AOE element light",
+            "parentId": "7084801975432971018"
+        }
+    ],
+    "version": 1
+}

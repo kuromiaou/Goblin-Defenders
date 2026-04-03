@@ -1,0 +1,52 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -6.895477294921875,
+                            0.15063521265983582,
+                            3.5509674549102783
+                        ],
+                        "rotation": [
+                            0.70710688829422,
+                            0.0,
+                            -0.7071066498756409,
+                            0.0
+                        ],
+                        "scale": [
+                            0.04999528452754021,
+                            0.05000000074505806,
+                            0.04999538138508797
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "gold_value": 5,
+                        "hp": 10,
+                        "hp_max": 10,
+                        "wave": 1
+                    },
+                    "type": "Goblin"
+                }
+            ],
+            "id": "510082748791743173",
+            "name": "goblin",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}

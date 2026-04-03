@@ -33,7 +33,7 @@ namespace Termina {
             m_ComponentMap[typeid(T)] = ptr;
             m_Components.push_back(std::move(ptr));
             if (m_Initialized) ptr->OnInit();
-            if (m_InPlayMode) m_PendingPlayComponents.push_back(ptr);
+            if (m_InPlayMode) m_PendingPlayComponents.push_back(ptr); 
             return *ptr;
         }
 

@@ -1,0 +1,148 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -2.0,
+                            0.3499999940395355,
+                            2.799999952316284
+                        ],
+                        "rotation": [
+                            1.0,
+                            -0.0,
+                            -0.0,
+                            -0.0
+                        ],
+                        "scale": [
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.20000000298023224
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\functional props\\towers\\physical tower\\tower_physical.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "16369935883613105658",
+            "name": "physic tower CC",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            2.4000000953674316,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            0.5,
+                            0.5,
+                            0.5
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Functional props\\towers\\crystal mats\\physical.mat"
+                        },
+                        "model": "Assets\\Models\\functional props\\towers\\CC element\\CC2.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.9735973477363586,
+                            0.8897043466567993,
+                            0.032131895422935486
+                        ],
+                        "intensity": 0.5400000214576721,
+                        "range": 0.5099999904632568
+                    },
+                    "type": "Point Light"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aggro": 0,
+                        "cc_type": 1,
+                        "level": 1,
+                        "shred_type": 0
+                    },
+                    "type": "Tour CC"
+                }
+            ],
+            "id": "11520291848165234617",
+            "name": "physic tower CC element ",
+            "parentId": "16369935883613105658"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            1.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.7656765580177307,
+                            0.7470619082450867,
+                            0.13898418843746185
+                        ],
+                        "intensity": 0.25,
+                        "range": 0.4099999964237213
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "2421599103792322431",
+            "name": "physic tower CC element light",
+            "parentId": "11520291848165234617"
+        }
+    ],
+    "version": 1
+}
