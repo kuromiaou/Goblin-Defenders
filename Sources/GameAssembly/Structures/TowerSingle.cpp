@@ -7,8 +7,7 @@ void TowerSingle::Start()
 
 void TowerSingle::Update(float deltaTime)
 {
-    if (stun_timer > 0.0f)
-        stun_timer = std::max(0.0f, stun_timer - deltaTime);
+
 }
 
 void TowerSingle::upgrade()
@@ -31,7 +30,6 @@ void TowerSingle::Inspect()
     if (ImGui::Combo("Aggro", &aggro_idx, aggro_names, 4))
         aggro = static_cast<AggroMode>(aggro_idx);
 
-    ImGui::DragFloat("Stun Timer", &stun_timer, 0.1f, 0.0f, 10.0f);
 }
 
 void TowerSingle::Serialize(nlohmann::json& out) const

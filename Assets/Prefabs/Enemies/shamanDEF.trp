@@ -1,0 +1,254 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman DEF .trp
+                            -7.418336391448975,
+                            0.21771109104156494,
+                            3.5705549716949463
+                        ],
+                        "rotation": [
+                            0.7006576657295227,
+                            0.0,
+                            -0.7134975790977478,
+                            0.0
+                        ],
+                        "scale": [
+                            0.08092368394136429,
+                            0.08092029392719269,
+                            0.08092568814754486
+========
+                            0.33118411898612976,
+                            0.4708421230316162,
+                            1.6881917715072632
+                        ],
+                        "rotation": [
+                            0.6846632957458496,
+                            0.04748781397938728,
+                            -0.7237049341201782,
+                            -0.07233437150716782
+                        ],
+                        "scale": [
+                            0.08092279732227325,
+                            0.08092032372951508,
+                            0.08092523366212845
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanDEF.trp
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "aura_size": 3.0,
+                        "aura_type": 2,
+                        "hp": 25,
+                        "hp_max": 25,
+                        "wave": 1
+                    },
+                    "type": "Shaman"
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman DEF .trp
+                }
+            ],
+            "id": "1504049725523703051",
+            "name": "shaman DEF ",
+========
+                },
+                {
+                    "active": true,
+                    "data": {},
+                    "type": "Enemy Movement"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "allow_sleep": true,
+                        "angular_damping": 0.05000000074505806,
+                        "freeze_pos": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "freeze_rot": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "gravity_factor": 1.0,
+                        "is_sensor": false,
+                        "linear_damping": 0.05000000074505806,
+                        "mass": 1.0,
+                        "type": 0
+                    },
+                    "type": "Rigidbody"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "half_extents": [
+                            1.4299999475479126,
+                            1.6399999856948853,
+                            1.659999966621399
+                        ],
+                        "offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rot_off": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Box Collider"
+                }
+            ],
+            "id": "2801558696463498070",
+            "name": "shamanDEF",
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanDEF.trp
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -2.6943162083625793e-06,
+                            0.9999997615814209,
+                            0.49999839067459106
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            -2.86102294921875e-06,
+                            0.0
+                        ],
+                        "scale": [
+                            0.5,
+                            0.5,
+                            0.5
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat1.mat"
+                        },
+                        "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "5680163889834403154",
+            "name": "shaman DEF crystal",
+            "parentId": "2801558696463498070"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -0.00034618377685546875,
+                            4.5,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "color": [
+                            0.3465346693992615,
+                            1.0,
+                            0.3594744801521301
+                        ],
+                        "intensity": 0.20000000298023224,
+                        "range": 1.0
+                    },
+                    "type": "Point Light"
+                }
+            ],
+            "id": "98459341838095077",
+            "name": "shaman DEF crystal light",
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman DEF .trp
+            "parentId": "11816256264331477279"
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scale": [
+                            2.0,
+                            2.0,
+                            2.0
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\shaman\\shaman_crystal_mat1.mat"
+                        },
+                        "model": "Assets\\Models\\Enemies\\shaman\\shaman aura.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "10268764981501164083",
+            "name": "shaman DEF aura",
+            "parentId": "1504049725523703051"
+========
+            "parentId": "5680163889834403154"
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanDEF.trp
+        }
+    ],
+    "version": 1
+}

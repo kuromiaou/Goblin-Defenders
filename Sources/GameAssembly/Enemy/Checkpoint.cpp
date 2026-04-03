@@ -14,7 +14,3 @@ void Checkpoint::Inspect()
 	ImGui::DragInt("CheckPoint", &m_Order, 1, 0, m_CheckPointMax);
 }
 
-int Checkpoint::getOrder()
-{
-	return m_Order;
-}

@@ -25,7 +25,11 @@
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
 #include "Enemy/CheckPoint.hpp"
+<<<<<<< HEAD
 #include "Structures/MainMenu.hpp"
+=======
+#include "Enemy/EnemyMovement.hpp"
+>>>>>>> BaseFeatures
 
 COMPONENT_MODULE_BEGIN()
     // Termina
@@ -43,6 +47,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(Shaman,                 "Shaman")
     REGISTER_COMPONENT(Checkpoint,             "CheckPoint")
     REGISTER_COMPONENT(Door,                   "Spawner")
+    REGISTER_COMPONENT(EnemyMovement,          "Enemy Movement")
     REGISTER_COMPONENT(GoblinRapace,           "Goblin Rapace")
     REGISTER_COMPONENT(TowerSingle,            "Tour Single")
     REGISTER_COMPONENT(TowerAOE,               "Tour AOE")

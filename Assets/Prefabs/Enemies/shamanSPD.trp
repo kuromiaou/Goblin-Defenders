@@ -7,9 +7,15 @@
                     "active": true,
                     "data": {
                         "position": [
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman SPD .trp
                             -7.976745128631592,
                             0.23570549488067627,
                             3.578620195388794
+========
+                            -1.1711639165878296,
+                            0.5353615880012512,
+                            1.5262492895126343
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanSPD.trp
                         ],
                         "rotation": [
                             0.70710688829422,
@@ -42,10 +48,67 @@
                         "wave": 1
                     },
                     "type": "Shaman"
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman SPD .trp
                 }
             ],
             "id": "4839603921572503270",
             "name": "shaman SPD ",
+========
+                },
+                {
+                    "active": true,
+                    "data": {},
+                    "type": "Enemy Movement"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "allow_sleep": true,
+                        "angular_damping": 0.05000000074505806,
+                        "freeze_pos": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "freeze_rot": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "gravity_factor": 1.0,
+                        "is_sensor": false,
+                        "linear_damping": 0.05000000074505806,
+                        "mass": 1.0,
+                        "type": 0
+                    },
+                    "type": "Rigidbody"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "half_extents": [
+                            1.7200000286102295,
+                            1.600000023841858,
+                            1.940000057220459
+                        ],
+                        "offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rot_off": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Box Collider"
+                }
+            ],
+            "id": "123695317445912052",
+            "name": "shamanSPD",
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanSPD.trp
             "parentId": null
         },
         {
@@ -84,9 +147,9 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "5936554968782903924",
+            "id": "16008797326670135313",
             "name": "shaman SPD crystal",
-            "parentId": "4839603921572503270"
+            "parentId": "123695317445912052"
         },
         {
             "active": true,
@@ -127,8 +190,9 @@
                     "type": "Point Light"
                 }
             ],
-            "id": "4803560680116840114",
+            "id": "7973341844025448862",
             "name": "shaman SPD crystal light",
+<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman SPD .trp
             "parentId": "5936554968782903924"
         },
         {
@@ -170,6 +234,9 @@
             "id": "4539602686924152746",
             "name": "shaman SPD aura",
             "parentId": "4839603921572503270"
+========
+            "parentId": "16008797326670135313"
+>>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanSPD.trp
         }
     ],
     "version": 1
