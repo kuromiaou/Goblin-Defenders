@@ -25,11 +25,8 @@
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
 #include "Enemy/CheckPoint.hpp"
-<<<<<<< HEAD
 #include "Structures/MainMenu.hpp"
-=======
 #include "Enemy/EnemyMovement.hpp"
->>>>>>> BaseFeatures
 
 COMPONENT_MODULE_BEGIN()
     // Termina
