@@ -1,0 +1,143 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            1.0893670320510864,
+                            0.8639101982116699,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.9990677833557129,
+                            0.0,
+                            0.0,
+                            -0.0431692972779274
+                        ],
+                        "scale": [
+                            0.042000021785497665,
+                            0.042000021785497665,
+                            0.04200000315904617
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "material_overrides": {
+                            "0": "Assets\\Models\\Enemies\\thief\\thief_mat0.mat"
+                        },
+                        "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 35,
+                        "hp_max": 35,
+                        "reached_nexus": false,
+                        "stolen_gold": 0,
+                        "wave": 1
+                    },
+                    "type": "Goblin Rapace"
+                },
+                {
+                    "active": true,
+                    "data": {},
+                    "type": "Enemy Movement"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "allow_sleep": true,
+                        "angular_damping": 0.05000000074505806,
+                        "freeze_pos": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "freeze_rot": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "gravity_factor": 1.0,
+                        "is_sensor": false,
+                        "linear_damping": 0.05000000074505806,
+                        "mass": 1.0,
+                        "type": 0
+                    },
+                    "type": "Rigidbody"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "half_extents": [
+                            1.25,
+                            1.7300000190734863,
+                            1.8200000524520874
+                        ],
+                        "offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rot_off": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Box Collider"
+                }
+            ],
+            "id": "17659052454843794071",
+            "name": "thief",
+            "parentId": null
+        },
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            -0.08477020263671875,
+                            0.9836733341217041,
+                            0.059326171875
+                        ],
+                        "rotation": [
+                            1.0,
+                            0.0,
+                            0.0,
+                            5.21540641784668e-08
+                        ],
+                        "scale": [
+                            0.34999996423721313,
+                            0.34999996423721313,
+                            0.3500000238418579
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Functional props\\coins\\gold pile.gltf"
+                    },
+                    "type": "Mesh Component"
+                }
+            ],
+            "id": "5773114771251853814",
+            "name": "thief gold",
+            "parentId": "17659052454843794071"
+        }
+    ],
+    "version": 1
+}

@@ -186,8 +186,7 @@ void EntityManager::SpawnGoblinRapace(const glm::vec3& position)
     if (goblinRapace && goblinRapace->HasComponent<Termina::Transform>()) {
         goblinRapace->GetComponent<Termina::Transform>().SetPosition(position);
 
-        //auto& movement = goblinRapace->AddComponent<EnemyMovement>();
-        //movement.SetSpeed(8.0f);
+
 
         allEnemies.push_back(goblinRapace);
         TN_INFO("Goblin Rapace spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
@@ -200,8 +199,6 @@ void EntityManager::SpawnHobgoblin(const glm::vec3& position)
     if (hobgoblin && hobgoblin->HasComponent<Termina::Transform>()) {
         hobgoblin->GetComponent<Termina::Transform>().SetPosition(position);
 
-        //auto& movement = hobgoblin->AddComponent<EnemyMovement>();
-        //movement.SetSpeed(8.0f);  // Vitesse du goblin
 
         allEnemies.push_back(hobgoblin);
         TN_INFO("Hobgoblin spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);

@@ -1,0 +1,102 @@
+{
+    "actors": [
+        {
+            "active": true,
+            "components": [
+                {
+                    "active": true,
+                    "data": {
+                        "position": [
+                            1.7901347875595093,
+                            1.2269861698150635,
+                            3.0353286266326904
+                        ],
+                        "rotation": [
+                            -0.008860934525728226,
+                            -0.1133568063378334,
+                            0.9906537532806396,
+                            -0.07534480839967728
+                        ],
+                        "scale": [
+                            0.05000021681189537,
+                            0.04999997094273567,
+                            0.05000010505318642
+                        ]
+                    },
+                    "type": "Transform"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "model": "Assets\\Models\\Enemies\\goblin\\goblin.gltf"
+                    },
+                    "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "gold_value": 5,
+                        "hp": 10,
+                        "hp_max": 10,
+                        "wave": 1
+                    },
+                    "type": "Goblin"
+                },
+                {
+                    "active": true,
+                    "data": {},
+                    "type": "Enemy Movement"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "allow_sleep": true,
+                        "angular_damping": 0.05000000074505806,
+                        "freeze_pos": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "freeze_rot": [
+                            false,
+                            false,
+                            false
+                        ],
+                        "gravity_factor": 1.0,
+                        "is_sensor": false,
+                        "linear_damping": 0.05000000074505806,
+                        "mass": 1.0,
+                        "type": 0
+                    },
+                    "type": "Rigidbody"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "half_extents": [
+                            1.159999966621399,
+                            1.149999976158142,
+                            1.340000033378601
+                        ],
+                        "offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rot_off": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    "type": "Box Collider"
+                }
+            ],
+            "id": "968641591918239711",
+            "name": "goblin",
+            "parentId": null
+        }
+    ],
+    "version": 1
+}
