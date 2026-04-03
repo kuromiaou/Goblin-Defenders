@@ -3,157 +3,247 @@
 void EntityManager::Start()
 {
     state = WaveState::IN_PROGRESS;
-    if(p_Goblin       = TerminaScript::Prefab("Assets/Prefabs/Enemies/goblin.trp"))
-        TN_INFO("goblin loaded");
+
+    // Charger les préfabs des ennemis
+    p_Goblin = TerminaScript::Prefab("Assets/Prefabs/Enemies/goblin.trp");
+    if (p_Goblin.IsValid())
+        TN_INFO("Goblin prefab loaded");
+
     p_GoblinRapace = TerminaScript::Prefab("Assets/Prefabs/Enemies/thief.trp");
-    p_HobGoblin    = TerminaScript::Prefab("Assets/Prefabs/Enemies/hobgoblin.trp");
-    p_Magicien     = TerminaScript::Prefab("Assets/Prefabs/Enemies/mage.trp");
-    p_ShamanATK    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanATK.trp");
-    p_ShamanSPD    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanSPD.trp");
-    p_ShamanRES    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanRES.trp");
+    p_HobGoblin = TerminaScript::Prefab("Assets/Prefabs/Enemies/hobgoblin.trp");
+    p_Magicien = TerminaScript::Prefab("Assets/Prefabs/Enemies/mage.trp");
+    p_ShamanATK = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanATK.trp");
+    p_ShamanSPD = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanSPD.trp");
+    p_ShamanRES = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanRES.trp");
+
+    // Récupérer et cacher les portes
+    m_Doors = GetDoors();
+
+    if (m_Doors.empty())
+        TN_WARN("No doors found in the world!");
 }
 
 void EntityManager::Update(float deltaTime)
 {
+    // Nettoyer les ennemis morts/détruits
+    CleanupDeadEnemies();
+
     switch (state) {
     case WaveState::WAITING:
-
+        // Attendre avant de commencer la vague suivante
         break;
 
     case WaveState::IN_PROGRESS:
         if (!is_wave_spawned) {
             SpawnWave(current_wave);
             is_wave_spawned = true;
+            TN_INFO("Wave %d started with %zu enemies", current_wave, allEnemies.size());
         }
 
+        // Vérifier si tous les ennemis de la vague sont morts
         if (allEnemies.empty()) {
             state = WaveState::COMPLETED;
+            TN_INFO("Wave %d completed!", current_wave);
         }
-
         break;
 
     case WaveState::COMPLETED:
-
         is_wave_spawned = false;
         current_wave++;
 
-        state = WaveState::WAITING;
-
+        // Vérifier si on a atteint le max des vagues fixes
+        if (current_wave > max_fixed_waves) {
+            if (is_endless) {
+                // Générer une vague infinie aléatoire
+                state = WaveState::WAITING;
+            }
+            else {
+                TN_INFO("All waves completed! Game Over!");
+                state = WaveState::WAITING;
+            }
+        }
+        else {
+            state = WaveState::WAITING;
+        }
         break;
-
     }
+}
+
+std::vector<Door*> EntityManager::GetDoors()
+{
+    std::vector<Door*> doors;
+    const auto& actors = m_Owner->GetParentWorld()->GetActors();
+
+    for (const auto& actor : actors) {
+        if (actor->HasComponent<Door>()) {
+            doors.push_back(&actor->GetComponent<Door>());
+        }
+    }
+
+    return doors;
+}
+
+void EntityManager::CleanupDeadEnemies()
+{
+    // Supprimer les ennemis qui ont été détruits
+    allEnemies.erase(
+        std::remove_if(allEnemies.begin(), allEnemies.end(),
+            [this](Termina::Actor* enemy) {
+                // Vérifier si l'ennemi a été supprimé du monde
+                if (!enemy) return true;
+
+                const auto& actors = m_Owner->GetParentWorld()->GetActors();
+                return std::find_if(actors.begin(), actors.end(),
+                    [enemy](const std::shared_ptr<Termina::Actor>& actor) {
+                        return actor.get() == enemy;
+                    }) == actors.end();
+            }),
+        allEnemies.end()
+    );
 }
 
 void EntityManager::SpawnWave(int waveIndex)
 {
-    //// Vérifier que l'index est valide
-    //if (waveIndex < 0 || waveIndex >= static_cast<int>(GoblinWave.size()))
-    //    return;
+    // Vérifier que l'index est valide
+    if (waveIndex < 0 || waveIndex >= static_cast<int>(EnemySpawnOrder.size())) {
+        TN_WARN("Wave index %d out of range!", waveIndex);
+        return;
+    }
 
-    // Spawner les Goblins
+    if (m_Doors.empty()) {
+        TN_ERROR("No doors available to spawn enemies!");
+        return;
+    }
 
-    //int goblinCount = GoblinWave[waveIndex];
-    //for (int i = 0; i < goblinCount; i++)
-    //{
-        Termina::Actor* Gob = Instantiate(p_Goblin);
-        if (Gob->HasComponent<Termina::Transform>()) {
-            Termina::Transform gob_transform = Gob->GetComponent<Termina::Transform>();
-            glm::vec3 gob_pos = {0,0,0};
-            gob_transform.SetPosition(gob_pos);
-            TN_INFO("x : + %gob_transform.GetPosition().x +  y : + %gob_transform.GetPosition().y +  z : + %gob_transform.GetPosition().z");
-            TN_INFO("x : '%s'", gob_transform.GetPosition().x   "y : '%s'", gob_transform.GetPosition().y  "z : '%s'", gob_transform.GetPosition().z);
-        }
-        allEnemies.push_back(Gob);
-        std::cout << "goblin spawned";
-    //}
+    // Récupérer la liste des types d'ennemis pour cette vague
+    const auto& waveEnemies = EnemySpawnOrder[waveIndex];
 
-    //// Spawner les Goblin Rapace
-    //int goblinRapaceCount = GoblinRapaceWave[waveIndex];
-    //for (int i = 0; i < goblinRapaceCount; i++)
-    //{
-    //    SpawnGoblinRapace();
-    //    std::cout << "Goblin Rapace spawned";
-    //}
+    // Spawner chaque ennemi de la vague
+    for (int i = 0; i < static_cast<int>(waveEnemies.size()); i++) {
+        int enemyType = waveEnemies[i];
 
-    //// Spawner les Hobgoblins
-    //int hobgoblinCount = HobGoblinWave[waveIndex];
-    //for (int i = 0; i < hobgoblinCount; i++)
-    //{
-    //    SpawnHobgoblin();
-    //    std::cout << "Hobgoblins spawned";
-    //}
+        // Sélectionner une porte aléatoire pour le spawn
+        Door* door = m_Doors[i % m_Doors.size()];
+        glm::vec3 spawnPosition = door->getPosition();
 
-    //// Spawner les Magiciens
-    //int magicienCount = MagicienWave[waveIndex];
-    //for (int i = 0; i < magicienCount; i++)
-    //{
-    //    SpawnMagicien();
-    //    std::cout << "Magiciens spawned";
-    //}
+        // Ajouter un léger offset pour éviter que les ennemis spawn au même endroit
+        spawnPosition.x += (float)(i % 3) * 2.f;
+        spawnPosition.z += (float)(i / 3) * 2.f;
 
-    //// Spawner les Shamans ATK
-    //int shamanATKCount = ShamanATKWave[waveIndex];
-    //for (int i = 0; i < shamanATKCount; i++)
-    //{
-    //    SpawnShamanATK();
-    //    std::cout << "Shamans ATK spawned";
-    //}
-
-    //// Spawner les Shamans SPD
-    //int shamanSPDCount = ShamanSPDWave[waveIndex];
-    //for (int i = 0; i < shamanSPDCount; i++)
-    //{
-    //    SpawnShamanSPD();
-    //    std::cout << "Shamans SPD spawned";
-    //}
-
-    //// Spawner les Shamans RES
-    //int shamanRESCount = ShamanRESWave[waveIndex];
-    //for (int i = 0; i < shamanRESCount; i++)
-    //{
-    //    SpawnShamanRES();
-    //    std::cout << "Shamans RES spawned";
-    //}
+        SpawnEnemyByType(enemyType, spawnPosition);
+    }
 }
 
-void EntityManager::SpawnGoblin()
+void EntityManager::SpawnEnemyByType(int enemyType, const glm::vec3& position)
 {
+    Termina::Actor* enemy = nullptr;
 
+    switch (static_cast<EnemyType>(enemyType)) {
+    case EnemyType::GOBLIN:
+        SpawnGoblin(position);
+        break;
+    case EnemyType::GOBLINRAPACE:
+        SpawnGoblinRapace(position);
+        break;
+    case EnemyType::HOBGOBLIN:
+        SpawnHobgoblin(position);
+        break;
+    case EnemyType::MAGICIEN:
+        SpawnMagicien(position);
+        break;
+    case EnemyType::SHAMANATK:
+        SpawnShamanATK(position);
+        break;
+    case EnemyType::SHAMANSPD:
+        SpawnShamanSPD(position);
+        break;
+    case EnemyType::SHAMANRES:
+        SpawnShamanRES(position);
+        break;
+    default:
+        TN_WARN("Unknown enemy type: %d", enemyType);
+        break;
+    }
 }
 
-void EntityManager::SpawnGoblinRapace()
+void EntityManager::SpawnGoblin(const glm::vec3& position)
 {
-    Termina::Actor* GobRapace = Instantiate(p_GoblinRapace);
-    allEnemies.push_back(GobRapace);
+    Termina::Actor* goblin = Instantiate(p_Goblin);
+    if (goblin && goblin->HasComponent<Termina::Transform>()) {
+        goblin->GetComponent<Termina::Transform>().SetPosition(position);
+
+        //auto& movement = goblin->AddComponent<EnemyMovement>();
+        //movement.SetSpeed(8.0f);  // Vitesse du goblin
+
+        allEnemies.push_back(goblin);
+        TN_INFO("Goblin spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
 
-void EntityManager::SpawnHobgoblin()
+void EntityManager::SpawnGoblinRapace(const glm::vec3& position)
 {
+    Termina::Actor* goblinRapace = Instantiate(p_GoblinRapace);
+    if (goblinRapace && goblinRapace->HasComponent<Termina::Transform>()) {
+        goblinRapace->GetComponent<Termina::Transform>().SetPosition(position);
 
-    Termina::Actor* HobGob = Instantiate(p_HobGoblin);
-    allEnemies.push_back(HobGob);
+        //auto& movement = goblinRapace->AddComponent<EnemyMovement>();
+        //movement.SetSpeed(8.0f);
+
+        allEnemies.push_back(goblinRapace);
+        TN_INFO("Goblin Rapace spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
 
-void EntityManager::SpawnMagicien()
+void EntityManager::SpawnHobgoblin(const glm::vec3& position)
 {
-    Termina::Actor* Mage = Instantiate(p_Magicien);
-    allEnemies.push_back(Mage);
+    Termina::Actor* hobgoblin = Instantiate(p_HobGoblin);
+    if (hobgoblin && hobgoblin->HasComponent<Termina::Transform>()) {
+        hobgoblin->GetComponent<Termina::Transform>().SetPosition(position);
+
+        //auto& movement = hobgoblin->AddComponent<EnemyMovement>();
+        //movement.SetSpeed(8.0f);  // Vitesse du goblin
+
+        allEnemies.push_back(hobgoblin);
+        TN_INFO("Hobgoblin spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
 
-void EntityManager::SpawnShamanATK()
+void EntityManager::SpawnMagicien(const glm::vec3& position)
 {
-    Termina::Actor* ShamanATK = Instantiate(p_ShamanATK);
-    allEnemies.push_back(ShamanATK);
+    Termina::Actor* magicien = Instantiate(p_Magicien);
+    if (magicien && magicien->HasComponent<Termina::Transform>()) {
+        magicien->GetComponent<Termina::Transform>().SetPosition(position);
+        allEnemies.push_back(magicien);
+        TN_INFO("Magicien spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
 
-void EntityManager::SpawnShamanSPD()
+void EntityManager::SpawnShamanATK(const glm::vec3& position)
 {
-    Termina::Actor* ShamanSPD = Instantiate(p_ShamanSPD);
-    allEnemies.push_back(ShamanSPD);
+    Termina::Actor* shamanATK = Instantiate(p_ShamanATK);
+    if (shamanATK && shamanATK->HasComponent<Termina::Transform>()) {
+        shamanATK->GetComponent<Termina::Transform>().SetPosition(position);
+        allEnemies.push_back(shamanATK);
+        TN_INFO("Shaman ATK spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
 
-void EntityManager::SpawnShamanRES()
+void EntityManager::SpawnShamanSPD(const glm::vec3& position)
 {
-    Termina::Actor* ShamanRES = Instantiate(p_ShamanRES);
-    allEnemies.push_back(ShamanRES);
+    Termina::Actor* shamanSPD = Instantiate(p_ShamanSPD);
+    if (shamanSPD && shamanSPD->HasComponent<Termina::Transform>()) {
+        shamanSPD->GetComponent<Termina::Transform>().SetPosition(position);
+        allEnemies.push_back(shamanSPD);
+        TN_INFO("Shaman SPD spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
+}
+
+void EntityManager::SpawnShamanRES(const glm::vec3& position)
+{
+    Termina::Actor* shamanRES = Instantiate(p_ShamanRES);
+    if (shamanRES && shamanRES->HasComponent<Termina::Transform>()) {
+        shamanRES->GetComponent<Termina::Transform>().SetPosition(position);
+        allEnemies.push_back(shamanRES);
+        TN_INFO("Shaman RES spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
+    }
 }
