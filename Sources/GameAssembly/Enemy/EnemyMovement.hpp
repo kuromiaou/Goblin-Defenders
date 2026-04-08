@@ -13,13 +13,14 @@ public:
     void Update(float deltaTime) override;
     void Inspect() override;
 
+    // AJOUT: Sérialisation
+    void Serialize(nlohmann::json& out) const override;
+    void Deserialize(const nlohmann::json& in) override;
+
     void SetSpeed(float speed) { m_Speed = speed; }
     float GetSpeed() const { return m_Speed; }
 
 private:
-    // Trouvé le checkpoint suivant
-    void FindNextCheckpoint();
-
     // Distance au checkpoint actuel
     float GetDistanceToTarget() const;
 

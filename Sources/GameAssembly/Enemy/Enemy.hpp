@@ -1,3 +1,8 @@
 #pragma once
 
-class Enemy {};
+class Enemy
+{
+public:
+    Enemy() = default;
+    virtual ~Enemy() = default;
+};

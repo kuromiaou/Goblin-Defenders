@@ -48,34 +48,6 @@
                 },
                 {
                     "active": true,
-                    "data": {},
-                    "type": "Enemy Movement"
-                },
-                {
-                    "active": true,
-                    "data": {
-                        "allow_sleep": true,
-                        "angular_damping": 0.05000000074505806,
-                        "freeze_pos": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "freeze_rot": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "gravity_factor": 1.0,
-                        "is_sensor": false,
-                        "linear_damping": 0.05000000074505806,
-                        "mass": 1.0,
-                        "type": 0
-                    },
-                    "type": "Rigidbody"
-                },
-                {
-                    "active": true,
                     "data": {
                         "half_extents": [
                             1.25,
@@ -97,7 +69,7 @@
                     "type": "Box Collider"
                 }
             ],
-            "id": "17659052454843794071",
+            "id": "11157772484461738199",
             "name": "thief",
             "parentId": null
         },
@@ -134,9 +106,9 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "5773114771251853814",
+            "id": "17391861264010367653",
             "name": "thief gold",
-            "parentId": "17659052454843794071"
+            "parentId": "11157772484461738199"
         }
     ],
     "version": 1

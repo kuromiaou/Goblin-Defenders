@@ -45,31 +45,10 @@
                 },
                 {
                     "active": true,
-                    "data": {},
-                    "type": "Enemy Movement"
-                },
-                {
-                    "active": true,
                     "data": {
-                        "allow_sleep": true,
-                        "angular_damping": 0.05000000074505806,
-                        "freeze_pos": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "freeze_rot": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "gravity_factor": 1.0,
-                        "is_sensor": false,
-                        "linear_damping": 0.05000000074505806,
-                        "mass": 1.0,
-                        "type": 0
+                        "speed": 1.0
                     },
-                    "type": "Rigidbody"
+                    "type": "Enemy Movement"
                 },
                 {
                     "active": true,
@@ -94,7 +73,7 @@
                     "type": "Box Collider"
                 }
             ],
-            "id": "123695317445912052",
+            "id": "8735545524243272844",
             "name": "shamanSPD",
             "parentId": null
         },
@@ -134,9 +113,9 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "16008797326670135313",
+            "id": "6660402882712688918",
             "name": "shaman SPD crystal",
-            "parentId": "123695317445912052"
+            "parentId": "8735545524243272844"
         },
         {
             "active": true,
@@ -177,9 +156,9 @@
                     "type": "Point Light"
                 }
             ],
-            "id": "7973341844025448862",
+            "id": "2952424455831796432",
             "name": "shaman SPD crystal light",
-            "parentId": "16008797326670135313"
+            "parentId": "6660402882712688918"
         }
     ],
     "version": 1

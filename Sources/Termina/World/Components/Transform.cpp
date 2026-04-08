@@ -50,7 +50,7 @@ namespace Termina {
 
     glm::vec3 Transform::GetPosition() const
     {
-        glm::mat4 world = GetWorldMatrix();
+         glm::mat4 world = GetWorldMatrix();
         return glm::vec3(world[3]);
     }
 

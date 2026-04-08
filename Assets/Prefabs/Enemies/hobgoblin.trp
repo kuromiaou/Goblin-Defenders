@@ -45,34 +45,13 @@
                 },
                 {
                     "active": true,
-                    "data": {},
-                    "type": "Enemy Movement"
-                },
-                {
-                    "active": true,
                     "data": {
-                        "allow_sleep": true,
-                        "angular_damping": 0.05000000074505806,
-                        "freeze_pos": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "freeze_rot": [
-                            false,
-                            false,
-                            false
-                        ],
-                        "gravity_factor": 1.0,
-                        "is_sensor": false,
-                        "linear_damping": 0.05000000074505806,
-                        "mass": 1.0,
-                        "type": 0
+                        "speed": 1.0
                     },
-                    "type": "Rigidbody"
+                    "type": "Enemy Movement"
                 }
             ],
-            "id": "14626032072723175466",
+            "id": "16141120760141121768",
             "name": "hobgoblin",
             "parentId": null
         },
@@ -124,9 +103,9 @@
                     "type": "Box Collider"
                 }
             ],
-            "id": "17401761217154696442",
+            "id": "9161829888307932979",
             "name": "Entity",
-            "parentId": "14626032072723175466"
+            "parentId": "16141120760141121768"
         }
     ],
     "version": 1
