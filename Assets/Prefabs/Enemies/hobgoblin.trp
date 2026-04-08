@@ -42,6 +42,13 @@
                         "wave": 1
                     },
                     "type": "Hobgoblin"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "speed": 0.5
+                    },
+                    "type": "Enemy Movement"
                 }
             ],
             "id": "5342168046182027464",

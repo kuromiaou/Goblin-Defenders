@@ -42,6 +42,13 @@
                         "wave": 1
                     },
                     "type": "Magicien"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "speed": 1.0
+                    },
+                    "type": "Enemy Movement"
                 }
             ],
             "id": "903091259274718800",

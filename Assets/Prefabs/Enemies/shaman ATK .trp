@@ -7,15 +7,9 @@
                     "active": true,
                     "data": {
                         "position": [
-<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman ATK .trp
                             -7.714105606079102,
                             0.21771109104156494,
                             3.5824313163757324
-========
-                            1.1118533611297607,
-                            0.46654969453811646,
-                            1.6779515743255615
->>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanATK.trp
                         ],
                         "rotation": [
                             0.70710688829422,
@@ -48,12 +42,6 @@
                         "wave": 1
                     },
                     "type": "Shaman"
-<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman ATK .trp
-                }
-            ],
-            "id": "10557225708092369767",
-            "name": "shaman ATK ",
-========
                 },
                 {
                     "active": true,
@@ -61,33 +49,10 @@
                         "speed": 1.0
                     },
                     "type": "Enemy Movement"
-                },
-                {
-                    "active": true,
-                    "data": {
-                        "half_extents": [
-                            1.5700000524520874,
-                            1.7799999713897705,
-                            1.6799999475479126
-                        ],
-                        "offset": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "rot_off": [
-                            0.0,
-                            0.0,
-                            0.0,
-                            1.0
-                        ]
-                    },
-                    "type": "Box Collider"
                 }
             ],
-            "id": "16322357325770605898",
-            "name": "shamanATK",
->>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanATK.trp
+            "id": "10557225708092369767",
+            "name": "shaman ATK ",
             "parentId": null
         },
         {
@@ -126,9 +91,9 @@
                     "type": "Mesh Component"
                 }
             ],
-            "id": "14736639504202073028",
+            "id": "13765133055129668976",
             "name": "shaman ATK crystal",
-            "parentId": "16322357325770605898"
+            "parentId": "10557225708092369767"
         },
         {
             "active": true,
@@ -169,9 +134,8 @@
                     "type": "Point Light"
                 }
             ],
-            "id": "5408052024261721923",
+            "id": "9043779923741073167",
             "name": "shaman ATK crystal light",
-<<<<<<<< HEAD:Assets/Prefabs/Enemies/shaman ATK .trp
             "parentId": "13765133055129668976"
         },
         {
@@ -213,9 +177,6 @@
             "id": "16079456639673352910",
             "name": "shaman ATK aura",
             "parentId": "10557225708092369767"
-========
-            "parentId": "14736639504202073028"
->>>>>>>> BaseFeatures:Assets/Prefabs/Enemies/shamanATK.trp
         }
     ],
     "version": 1

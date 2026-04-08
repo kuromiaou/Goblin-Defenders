@@ -41,6 +41,13 @@
                         "wave": 1
                     },
                     "type": "Goblin"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "speed": 1.0
+                    },
+                    "type": "Enemy Movement"
                 }
             ],
             "id": "510082748791743173",
