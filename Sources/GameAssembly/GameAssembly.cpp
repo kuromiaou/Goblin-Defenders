@@ -24,7 +24,8 @@
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
 #include "Enemy/CheckPoint.hpp"
-#include "Structures/MainMenu.hpp"
+#include "UI/MainMenu.hpp"
+#include "UI/HUD.hpp"
 
 COMPONENT_MODULE_BEGIN()
     // Termina
@@ -50,7 +51,9 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
 
+    // Goblin Defenders UI
     REGISTER_COMPONENT(MainMenuComponent,      "MainMenuComponent")
+    REGISTER_COMPONENT(HUDComponent,           "HUDComponent")
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")
     REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")
