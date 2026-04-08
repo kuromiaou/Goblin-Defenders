@@ -4,7 +4,7 @@ void EntityManager::Start()
 {
     Checkpoint::ClearAllCheckpoints();
 
-    state = WaveState::IN_PROGRESS;
+    state = WaveState::WAITING;
 
     // Charger les préfabs des ennemis
     p_Goblin = TerminaScript::Prefab("Assets/Prefabs/Enemies/goblin.trp");

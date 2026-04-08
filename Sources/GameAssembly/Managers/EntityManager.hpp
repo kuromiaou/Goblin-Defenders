@@ -33,6 +33,9 @@ public:
 
     std::vector<Door*> GetDoors();
 
+    enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
+    WaveState  state;
+
     void CleanupDeadEnemies();
 
     void SpawnEnemyByType(int enemyType, const glm::vec3& position);
@@ -48,12 +51,8 @@ private:
     void SpawnShamanSPD(const glm::vec3& position);
     void SpawnShamanRES(const glm::vec3& position);
 
-    enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
-
-
     int        current_wave = 1;
     int        max_fixed_waves = 10;
-    WaveState  state;
     bool       is_endless = false, is_wave_spawned = false;
 
     // Stocke les acteurs des ennemis spawés (pas les composants)

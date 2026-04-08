@@ -46,12 +46,12 @@
                 {
                     "active": true,
                     "data": {
-                        "speed": 0.5
+                        "speed": 0.75
                     },
                     "type": "Enemy Movement"
                 }
             ],
-            "id": "5342168046182027464",
+            "id": "2689303520179456509",
             "name": "hobgoblin",
             "parentId": null
         }

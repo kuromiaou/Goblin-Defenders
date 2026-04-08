@@ -3,6 +3,7 @@
 #include <ImGui/imgui.h>
 #include <Termina/Core/Application.hpp>
 #include <Termina/World/WorldSystem.hpp>
+#include <GameAssembly/Managers/EntityManager.hpp>
 
 void HUDComponent::OnRender(float dt)
 {
@@ -55,7 +56,15 @@ void HUDComponent::OnRender(float dt)
 
     if (ImGui::Button("Start", ImVec2(200, 50)))
     {
-
+        // Get the EntityManager from the world and start the wave
+        auto& worldActors = m_Owner->GetParentWorld()->GetActors();
+        for (const auto& actor : worldActors) {
+            if (actor->HasComponent<EntityManager>()) {
+                EntityManager& manager = actor->GetComponent<EntityManager>();
+                manager.state = EntityManager::WaveState::IN_PROGRESS;  
+                break;
+            }
+        }
     }
 
     ImGui::End();
