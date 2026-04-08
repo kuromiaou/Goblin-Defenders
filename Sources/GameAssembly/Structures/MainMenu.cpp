@@ -32,7 +32,7 @@ void MainMenuComponent::OnRender(float dt)
     ImGui::End();
 
     // ==== TITLE ====
-    ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.2f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.3f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
     ImGui::SetNextWindowBgAlpha(0.0f);
 
     ImGui::Begin("Title", nullptr,
@@ -40,7 +40,7 @@ void MainMenuComponent::OnRender(float dt)
         ImGuiWindowFlags_NoMove |
         ImGuiWindowFlags_AlwaysAutoResize);
 
-    ImGui::Text("Last Survivor");
+    ImGui::Text("Goblin Defenders");
 
     ImGui::End();
 
