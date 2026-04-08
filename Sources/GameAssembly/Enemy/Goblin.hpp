@@ -38,12 +38,12 @@ public:
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }
 
-    int        hp         = 10;
-    int        hp_max     = 10;
-    int        wave       = 1;
-    int        gold_value = hp/2;
-    ATKTier    atk        = ATKTier::ATK_LOW;
-    SPDTier    spd        = SPDTier::SPD_MID;
+    int        hp = 10;
+    int        hp_max = 10;
+    int        wave = 1;
+    int        gold_value = hp / 2;
+    ATKTier    atk = ATKTier::ATK_LOW;
+    SPDTier    spd = SPDTier::SPD_MID;
     ResTier    res_physique = ResTier::RES_LOW;
-    ResTier    res_magique  = ResTier::RES_LOW;
+    ResTier    res_magique = ResTier::RES_LOW;
 };
