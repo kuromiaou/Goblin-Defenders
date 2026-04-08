@@ -5,6 +5,12 @@
 
 void EnemyMovement::Start()
 {
+    // Vérifier que m_Transform est bien initialisé
+    if (!m_Transform) {
+        TN_ERROR("EnemyMovement: m_Transform is nullptr! Skipping pathfinding init.");
+        return;
+    }
+
     // Trier les checkpoints par ordre
     auto& checkpoints = Checkpoint::GetAllCheckpoints();
     std::sort(checkpoints.begin(), checkpoints.end(),
@@ -25,11 +31,11 @@ void EnemyMovement::Start()
 
 void EnemyMovement::Update(float deltaTime)
 {
-    if (!m_PathfindingInitialized || !m_CurrentTarget)
+    // Vérifier que tout est initialisé
+    if (!m_PathfindingInitialized || !m_CurrentTarget || !m_Transform)
         return;
 
-    Termina::Transform transform;
-    glm::vec3 currentPos = transform.GetPosition();
+    glm::vec3 currentPos = m_Transform->GetLocalPosition();
     glm::vec3 targetPos = m_CurrentTarget->getPosition();
 
     // Direction vers le checkpoint
@@ -39,33 +45,32 @@ void EnemyMovement::Update(float deltaTime)
     float distance = GetDistanceToTarget();
 
     // Si on est arrivé au checkpoint
-    if (distance < 0.5f) {
-        // Aller au prochain checkpoint
+    if (distance < 0.1f) {
         auto& checkpoints = Checkpoint::GetAllCheckpoints();
         m_CurrentCheckpointIndex++;
 
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
-            // On a atteint le dernier checkpoint (ex: la base ennemie)
             TN_INFO("Enemy reached the end of the path!");
-            // Optionnel: détruire l'ennemi ou le faire disparaître
+            Destroy(m_Owner);
             return;
         }
 
         m_CurrentTarget = checkpoints[m_CurrentCheckpointIndex];
         TN_INFO("Moving to checkpoint %d", m_CurrentTarget->getOrder());
+        return;
     }
 
     // Déplacer l'ennemi vers le checkpoint
     glm::vec3 newPos = currentPos + direction * m_Speed * deltaTime;
-    transform.SetPosition(newPos);
+    m_Transform->SetPosition(newPos);
 }
 
 float EnemyMovement::GetDistanceToTarget() const
 {
-    if (!m_CurrentTarget)
+    if (!m_CurrentTarget || !m_Transform)
         return FLT_MAX;
 
-    glm::vec3 currentPos = m_Transform->GetPosition();
+    glm::vec3 currentPos = m_Transform->GetLocalPosition();
     glm::vec3 targetPos = m_CurrentTarget->getPosition();
     return glm::distance(currentPos, targetPos);
 }
@@ -76,5 +81,17 @@ void EnemyMovement::Inspect()
     if (m_CurrentTarget) {
         ImGui::Text("Current Target Checkpoint: %d", m_CurrentTarget->getOrder());
         ImGui::Text("Distance to Target: %.2f", GetDistanceToTarget());
+    }
+}
+
+void EnemyMovement::Serialize(nlohmann::json& out) const
+{
+    out["speed"] = m_Speed;
+}
+
+void EnemyMovement::Deserialize(const nlohmann::json& in)
+{
+    if (in.contains("speed")) {
+        m_Speed = in["speed"];
     }
 }

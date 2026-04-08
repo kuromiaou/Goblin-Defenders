@@ -73,7 +73,7 @@ private:
 
     std::vector<std::vector<int>> EnemySpawnOrder = {
          {},                   // Vague 0
-         { 0, 0, 0, 0 },       // Vague 1
+         { 2, 3, 5, 1, 0 },       // Vague 1
          { 2, 0, 3, 4 },       // Vague 2
          { 2, 0, 3, 4 },       // Vague 3
          { 2, 0, 3, 4 },       // Vague 4

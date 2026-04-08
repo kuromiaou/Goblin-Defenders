@@ -2,6 +2,8 @@
 
 void EntityManager::Start()
 {
+    Checkpoint::ClearAllCheckpoints();
+
     state = WaveState::IN_PROGRESS;
 
     // Charger les préfabs des ennemis
@@ -10,11 +12,11 @@ void EntityManager::Start()
         TN_INFO("Goblin prefab loaded");
 
     p_GoblinRapace = TerminaScript::Prefab("Assets/Prefabs/Enemies/thief.trp");
-    p_HobGoblin = TerminaScript::Prefab("Assets/Prefabs/Enemies/hobgoblin.trp");
-    p_Magicien = TerminaScript::Prefab("Assets/Prefabs/Enemies/mage.trp");
-    p_ShamanATK = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanATK.trp");
-    p_ShamanSPD = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanSPD.trp");
-    p_ShamanRES = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman/shamanRES.trp");
+    p_HobGoblin    = TerminaScript::Prefab("Assets/Prefabs/Enemies/hobgoblin.trp");
+    p_Magicien     = TerminaScript::Prefab("Assets/Prefabs/Enemies/mage.trp");
+    p_ShamanATK    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanATK.trp");
+    p_ShamanSPD    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanSPD.trp");
+    p_ShamanRES    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanRES.trp");
 
     // Récupérer et cacher les portes
     m_Doors = GetDoors();
@@ -127,8 +129,8 @@ void EntityManager::SpawnWave(int waveIndex)
         glm::vec3 spawnPosition = door->getPosition();
 
         // Ajouter un léger offset pour éviter que les ennemis spawn au même endroit
-        spawnPosition.x += (float)(i % 3) * 2.f;
-        spawnPosition.z += (float)(i / 3) * 2.f;
+        spawnPosition.x += (float)(i % 3);
+        spawnPosition.z += (float)(i / 3);
 
         SpawnEnemyByType(enemyType, spawnPosition);
     }
@@ -171,10 +173,6 @@ void EntityManager::SpawnGoblin(const glm::vec3& position)
     Termina::Actor* goblin = Instantiate(p_Goblin);
     if (goblin && goblin->HasComponent<Termina::Transform>()) {
         goblin->GetComponent<Termina::Transform>().SetPosition(position);
-
-        //auto& movement = goblin->AddComponent<EnemyMovement>();
-        //movement.SetSpeed(8.0f);  // Vitesse du goblin
-
         allEnemies.push_back(goblin);
         TN_INFO("Goblin spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
     }
@@ -185,9 +183,6 @@ void EntityManager::SpawnGoblinRapace(const glm::vec3& position)
     Termina::Actor* goblinRapace = Instantiate(p_GoblinRapace);
     if (goblinRapace && goblinRapace->HasComponent<Termina::Transform>()) {
         goblinRapace->GetComponent<Termina::Transform>().SetPosition(position);
-
-
-
         allEnemies.push_back(goblinRapace);
         TN_INFO("Goblin Rapace spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
     }
@@ -198,8 +193,6 @@ void EntityManager::SpawnHobgoblin(const glm::vec3& position)
     Termina::Actor* hobgoblin = Instantiate(p_HobGoblin);
     if (hobgoblin && hobgoblin->HasComponent<Termina::Transform>()) {
         hobgoblin->GetComponent<Termina::Transform>().SetPosition(position);
-
-
         allEnemies.push_back(hobgoblin);
         TN_INFO("Hobgoblin spawned at (%.2f, %.2f, %.2f)", position.x, position.y, position.z);
     }

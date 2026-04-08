@@ -23,7 +23,7 @@ public:
     bool  isActive()      const { return is_active; }
 
     // Récupère la position depuis le Transform
-    glm::vec3 getPosition() const { return m_Transform->GetPosition(); }
+    glm::vec3 getPosition() const { return m_Transform->GetLocalPosition(); }
 
     // --- Setters ---
     void setActive(bool v) { is_active = v; }

@@ -1,6 +1,5 @@
 #include <Termina/Scripting/API/ScriptingAPI.hpp>
 #include <Termina/World/ComponentRegistry.hpp>
-#include <ImGui/imgui.h>
 
 #include "Camera/FlyCamComponent.hpp"
 #include "Tests/ParticleSystem.hpp"
@@ -25,7 +24,8 @@
 #include "Managers/ProjectileManager.hpp"
 #include "Managers/EntityManager.hpp"
 #include "Enemy/CheckPoint.hpp"
-#include "Structures/MainMenu.hpp"
+#include "UI/MainMenu.hpp"
+#include "UI/HUD.hpp"
 #include "Enemy/EnemyMovement.hpp"
 
 COMPONENT_MODULE_BEGIN()
@@ -53,17 +53,10 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
 
+    // Goblin Defenders UI
     REGISTER_COMPONENT(MainMenuComponent,      "MainMenuComponent")
+    REGISTER_COMPONENT(HUDComponent,           "HUDComponent")
 
     REGISTER_COMPONENT(EntityManager,          "Entity Manager")
     REGISTER_COMPONENT(ProjectileManager,      "Projectile Manager")
 COMPONENT_MODULE_END()
-
-TERMINA_DLL_EXPORT void SetImGuiContext(void* ctx, void* allocFunc, void* freeFunc, void* userData)
-{
-    ImGui::SetCurrentContext(static_cast<ImGuiContext*>(ctx));
-    ImGui::SetAllocatorFunctions(
-        reinterpret_cast<ImGuiMemAllocFunc>(allocFunc),
-        reinterpret_cast<ImGuiMemFreeFunc>(freeFunc),
-        userData);
-}

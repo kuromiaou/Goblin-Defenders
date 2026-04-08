@@ -11,13 +11,21 @@ public:
     void Update(float Deltatime) override;
     void Inspect() override;
 
-    int getOrder() const { return m_Order; }
+    void Serialize(nlohmann::json& out) const override;
+    void Deserialize(const nlohmann::json& in) override;
+
+    int getOrder() const;
     glm::vec3 getPosition() const { return m_Transform->GetPosition(); }
 
     // Getter statique pour accéder à tous les checkpoints
     static std::vector<Checkpoint*>& GetAllCheckpoints() {
         static std::vector<Checkpoint*> checkpoints;
         return checkpoints;
+    }
+
+    // AJOUT: Méthode pour vider la liste
+    static void ClearAllCheckpoints() {
+        GetAllCheckpoints().clear();
     }
 
 private:
