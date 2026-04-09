@@ -13,7 +13,7 @@ enum class HPTier { HP_HIGH = 50, HP_MID = 25, HP_LOW = 10 };
 // ============================================================
 // ATK TIER
 // ============================================================
-enum class ATKTier { ATK_HIGH = 25, ATK_MID = 10, ATK_LOW = 5, ATK_NONE = 0 };
+enum class ATKTier { ATK_HIGH = 10, ATK_MID = 5, ATK_LOW = 2, ATK_NONE = 0 };
 
 // ============================================================
 // SPD TIER (x0.1 = m/s => SPD_HIGH=1.5, SPD_MID=1.0, SPD_LOW=0.5)
@@ -41,7 +41,7 @@ enum class ResTier { RES_HIGH = 100, RES_MID = 33, RES_LOW = 0 };
 // ============================================================
 // TOWER ATK_RANGE TIER
 // ============================================================
-enum class TowerRangeTier { TOWER_HIGH = 5, TOWER_MID = 3, TOWER_LOW = 1 };
+enum class TowerRangeTier { TOWER_HIGH = 3, TOWER_MID = 3, TOWER_LOW = 2 };
 
 // ============================================================
 // AGGRO MODE (Tower targeting)

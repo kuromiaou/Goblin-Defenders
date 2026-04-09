@@ -73,16 +73,16 @@ private:
 
     std::vector<std::vector<int>> EnemySpawnOrder = {
          {},                   // Vague 0
-         { 2, 3, 5, 1, 0 },       // Vague 1
-         { 2, 0, 3, 4 },       // Vague 2
-         { 2, 0, 3, 4 },       // Vague 3
-         { 2, 0, 3, 4 },       // Vague 4
-         { 2, 0, 3, 4 },       // Vague 5
-         { 2, 0, 3, 4 },       // Vague 6
-         { 2, 0, 3, 4 },       // Vague 7
-         { 2, 0, 3, 4 },       // Vague 8
-         { 2, 0, 3, 4 },       // Vague 9
-         { 2, 0, 3, 4 }        // Vague 10
+         { 0, 0, 0, 0, 0 },       // Vague 1
+         { 0, 0, 0, 3 },       // Vague 2
+         { 0, 0, 3, 3, 4 },       // Vague 3
+         { 0, 0, 2, 6 },       // Vague 4
+         { 1, 0, 0, 0, 0, 0, 5 },       // Vague 5
+         { 3, 3, 3, 2, 0, 0 },       // Vague 6
+         { 2, 2, 2, 5 },       // Vague 7
+         { 1, 1, 1, 1, 0, 0, 0, 2, 2 },       // Vague 8
+         { 2, 6, 0, 0, 0, 0, 0, 0, 3, 3, 3, 1, 5},       // Vague 9
+         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }        // Vague 10
     };
 
     TerminaScript::Prefab p_Goblin;

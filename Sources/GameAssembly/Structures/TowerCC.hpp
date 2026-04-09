@@ -34,8 +34,8 @@ public:
     void upgrade();
 
 private:
-    TowerRangeTier atk_range   = TowerRangeTier::TOWER_MID;
-    ATKSPDTier     atk_spd     = ATKSPDTier::ATKSPD_LOW;
+    TowerRangeTier atk_range = TowerRangeTier::TOWER_LOW;
+    ATKSPDTier     atk_spd = ATKSPDTier::ATKSPD_HIGH;
     CCType         cc_type     = CCType::SLOW;
     AggroMode      aggro       = AggroMode::FIRST;
     float          stun_timer  = 0.0f;
