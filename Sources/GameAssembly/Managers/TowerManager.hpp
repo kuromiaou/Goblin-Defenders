@@ -23,5 +23,5 @@ public:
     void Update(float deltaTime) override;
 
 private:
-    std::vector<std::shared_ptr<Tower>> allTraps;
+    std::vector<std::shared_ptr<Tower>> allTowers;
 };
