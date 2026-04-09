@@ -34,6 +34,8 @@ public:
 
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }
+    void applyAura();
+    void handleDeath();
 
     int      hp           = 25;
     int      hp_max       = 25;
@@ -44,4 +46,5 @@ private:
     SPDTier  spd          = SPDTier::SPD_MID;
     ResTier  res_physique = ResTier::RES_MID;
     ResTier  res_magique  = ResTier::RES_MID;
+    bool     death_handled = false;
 };

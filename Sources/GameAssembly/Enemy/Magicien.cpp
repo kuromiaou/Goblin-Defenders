@@ -1,5 +1,10 @@
 #include "Magicien.hpp"
 #include <ImGui/imgui.h>
+#include "GameAssembly/Gameplay/GoldPickup.hpp"
+#include "GameAssembly/Structures/TowerAOE.hpp"
+#include "GameAssembly/Structures/TowerCC.hpp"
+#include "GameAssembly/Structures/TowerSingle.hpp"
+#include "GameAssembly/Utils/ActorUtils.hpp"
 
 void Magicien::Start()
 {
@@ -9,8 +14,10 @@ void Magicien::Start()
 void Magicien::Update(float deltaTime)
 {
     tickEffects(deltaTime);
-    if (isDead())
-        Destroy(m_Owner);
+    if (isDead()) {
+        handleDeath();
+        return;
+    }
 }
 
 void Magicien::initForWave(int current_wave)
@@ -27,9 +34,42 @@ void Magicien::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
-    if (isShredded()) res = shredResistance(res);
+    res = applyResistanceEffects(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
     hp = std::max(0, hp - static_cast<int>(dmg * mult));
+}
+
+void Magicien::stunAllTowers(float duration) const
+{
+    if (!m_Owner) return;
+    Termina::World* world = m_Owner->GetParentWorld();
+    if (!world) return;
+
+    for (const auto& actor : world->GetActors())
+    {
+        if (!actor || !actor->IsActive()) continue;
+        if (actor->HasComponent<TowerSingle>()) actor->GetComponent<TowerSingle>().applyStun(duration);
+        if (actor->HasComponent<TowerAOE>())    actor->GetComponent<TowerAOE>().applyStun(duration);
+        if (actor->HasComponent<TowerCC>())     actor->GetComponent<TowerCC>().applyStun(duration);
+    }
+}
+
+void Magicien::handleDeath()
+{
+    if (death_handled || !m_Owner) return;
+    death_handled = true;
+
+    stunAllTowers(getDeathStunDuration());
+
+    static const TerminaScript::Prefab goldPrefab("Assets/Prefabs/gold pile.trp");
+    if (goldPrefab.IsValid() && m_Transform) {
+        if (Termina::Actor* drop = Instantiate(goldPrefab)) {
+            drop->GetComponent<Termina::Transform>().SetPosition(m_Transform->GetPosition());
+            drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
+        }
+    }
+
+    DestroyActorHierarchy(m_Owner);
 }
 
 float Magicien::getDeathStunDuration() const

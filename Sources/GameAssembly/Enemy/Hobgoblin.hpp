@@ -23,7 +23,7 @@ public:
 
     int   getHP()          const override { return hp; }
     int   getHPMax()       const override { return hp_max; }
-    int   getATK()         const { return static_cast<int>(atk); }
+    int   getATK()         const { return static_cast<int>(static_cast<float>(static_cast<int>(atk)) * getAttackMultiplier()); }
     float getSPD()         const { return static_cast<int>(spd) * 0.1f; }
     int   getGoldValue()   const override { return gold_value; }
     float getNullifyChance()const { return nullify_chance; }
@@ -35,6 +35,7 @@ public:
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }
     bool rollNullify() const { return (static_cast<float>(rand()) / RAND_MAX) < nullify_chance; }
+    void handleDeath();
 
     int        hp             = 50;
     int        hp_max         = 50;
@@ -45,4 +46,5 @@ private:
     SPDTier    spd            = SPDTier::SPD_LOW;
     ResTier    res_physique   = ResTier::RES_HIGH;
     ResTier    res_magique    = ResTier::RES_MID;
+    bool       death_handled  = false;
 };

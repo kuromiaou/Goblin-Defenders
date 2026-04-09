@@ -38,6 +38,8 @@ public:
     void takeDamage(int dmg, DamageType type) override;
 
 private:
+    void handleDeath();
+
     int     hp            = 35;
     int     hp_max        = 35;
     int     wave          = 1;
@@ -46,4 +48,5 @@ private:
     SPDTier spd           = SPDTier::SPD_HIGH;
     ResTier res_physique  = ResTier::RES_MID;
     ResTier res_magique   = ResTier::RES_MID;
+    bool    death_handled = false;
 };

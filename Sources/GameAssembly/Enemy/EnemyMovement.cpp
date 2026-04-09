@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <glm/geometric.hpp>
 #include "ImGui/imgui.h"
+#include "GameAssembly/Utils/ActorUtils.hpp"
 
 void EnemyMovement::Start()
 {
@@ -41,6 +42,8 @@ void EnemyMovement::Update(float deltaTime)
     // Tick slow timer.
     if (m_SlowTimer > 0.0f)
         m_SlowTimer = std::max(0.0f, m_SlowTimer - deltaTime);
+    if (m_SpeedBoostTimer > 0.0f)
+        m_SpeedBoostTimer = std::max(0.0f, m_SpeedBoostTimer - deltaTime);
 
     glm::vec3 currentPos = m_Transform->GetLocalPosition();
     glm::vec3 targetPos  = m_CurrentTarget->getPosition();
@@ -53,7 +56,7 @@ void EnemyMovement::Update(float deltaTime)
 
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
             TN_INFO("Enemy reached the end of the path!");
-            Destroy(m_Owner);
+            DestroyActorHierarchy(m_Owner);
             return;
         }
 
@@ -62,7 +65,7 @@ void EnemyMovement::Update(float deltaTime)
         return;
     }
 
-    float effectiveSpeed = m_Speed * GetSlowFactor();
+    float effectiveSpeed = m_Speed * GetSlowFactor() * GetSpeedBoostFactor();
     glm::vec3 newPos = currentPos + direction * effectiveSpeed * deltaTime;
     m_Transform->SetPosition(newPos);
 }
@@ -78,6 +81,14 @@ void EnemyMovement::ApplySlow(float duration, float factor)
 void EnemyMovement::ApplyStun(float duration)
 {
     m_StunTimer = std::max(m_StunTimer, duration);
+}
+
+void EnemyMovement::ApplySpeedBoost(float duration, float factor)
+{
+    if (duration > m_SpeedBoostTimer) {
+        m_SpeedBoostTimer = duration;
+        m_SpeedBoostFactor = std::max(1.0f, factor);
+    }
 }
 
 float EnemyMovement::GetDistanceToTarget() const
@@ -101,6 +112,8 @@ void EnemyMovement::Inspect()
         ImGui::Text("STUNNED: %.2fs remaining", m_StunTimer);
     if (m_SlowTimer > 0.0f)
         ImGui::Text("SLOWED (x%.1f): %.2fs remaining", m_SlowFactor, m_SlowTimer);
+    if (m_SpeedBoostTimer > 0.0f)
+        ImGui::Text("BOOSTED (x%.1f): %.2fs remaining", m_SpeedBoostFactor, m_SpeedBoostTimer);
 }
 
 void EnemyMovement::Serialize(nlohmann::json& out) const

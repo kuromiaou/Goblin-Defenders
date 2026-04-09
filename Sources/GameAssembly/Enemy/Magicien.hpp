@@ -24,7 +24,7 @@ public:
 
     int   getHP()        const override { return hp; }
     int   getHPMax()     const override { return hp_max; }
-    int   getATK()       const { return static_cast<int>(atk); }
+    int   getATK()       const { return static_cast<int>(static_cast<float>(static_cast<int>(atk)) * getAttackMultiplier()); }
     float getSPD()       const { return static_cast<int>(spd) * 0.1f; }
     int   getGoldValue() const override { return gold_value; }
     bool  isDead()       const override { return hp <= 0; }
@@ -37,6 +37,8 @@ public:
 
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }
+    void handleDeath();
+    void stunAllTowers(float duration) const;
 
     int     hp           = 25;
     int     hp_max       = 25;
@@ -48,4 +50,5 @@ private:
     SPDTier spd          = SPDTier::SPD_MID;
     ResTier res_physique = ResTier::RES_LOW;
     ResTier res_magique  = ResTier::RES_HIGH;
+    bool    death_handled = false;
 };

@@ -1,5 +1,7 @@
 #include "Goblin.hpp"
 #include <ImGui/imgui.h>
+#include "GameAssembly/Gameplay/GoldPickup.hpp"
+#include "GameAssembly/Utils/ActorUtils.hpp"
 
 
 
@@ -11,8 +13,10 @@ void Goblin::Start()
 void Goblin::Update(float deltaTime)
 {
     tickEffects(deltaTime);
-    if (isDead())
-        Destroy(m_Owner);
+    if (isDead()) {
+        handleDeath();
+        return;
+    }
 }
 
 void Goblin::initForWave(int current_wave)
@@ -29,9 +33,25 @@ void Goblin::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
-    if (isShredded()) res = shredResistance(res);
+    res = applyResistanceEffects(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
     hp = std::max(0, hp - static_cast<int>(dmg * mult));
+}
+
+void Goblin::handleDeath()
+{
+    if (death_handled || !m_Owner) return;
+    death_handled = true;
+
+    static const TerminaScript::Prefab goldPrefab("Assets/Prefabs/gold pile.trp");
+    if (goldPrefab.IsValid() && m_Transform) {
+        if (Termina::Actor* drop = Instantiate(goldPrefab)) {
+            drop->GetComponent<Termina::Transform>().SetPosition(m_Transform->GetPosition());
+            drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
+        }
+    }
+
+    DestroyActorHierarchy(m_Owner);
 }
 
 void Goblin::Inspect()

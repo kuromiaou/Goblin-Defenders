@@ -10,6 +10,9 @@ void TowerAOE::Start()
 
 void TowerAOE::Update(float deltaTime)
 {
+    if (attack_indicator_timer > 0.0f)
+        attack_indicator_timer = std::max(0.0f, attack_indicator_timer - deltaTime);
+
     // Tick stun — tower cannot fire while stunned.
     if (stun_timer > 0.0f) {
         stun_timer = std::max(0.0f, stun_timer - deltaTime);
@@ -79,6 +82,9 @@ void TowerAOE::Update(float deltaTime)
         }
     }
 
+    if (hitCount > 0)
+        attack_indicator_timer = 0.15f;
+
     TN_INFO("[TowerAOE] Hit %d enemy(ies) for %d (%s) dmg",
         hitCount, getATK(), damage_type == DamageType::PHYSIQUE ? "Phys" : "Mag");
 
@@ -105,6 +111,12 @@ void TowerAOE::Inspect()
     int aggro_idx = static_cast<int>(aggro);
     if (ImGui::Combo("Aggro", &aggro_idx, aggro_names, 4))
         aggro = static_cast<AggroMode>(aggro_idx);
+
+    ImGui::TextColored(
+        isAttackIndicatorActive() ? ImVec4(0.1f, 1.0f, 0.1f, 1.0f) : ImVec4(1.0f, 1.0f, 1.0f, 1.0f),
+        "Attack Indicator: %s",
+        isAttackIndicatorActive() ? "ON" : "OFF"
+    );
 }
 
 void TowerAOE::Serialize(nlohmann::json& out) const

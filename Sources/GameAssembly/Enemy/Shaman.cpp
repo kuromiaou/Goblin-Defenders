@@ -1,5 +1,10 @@
 #include "Shaman.hpp"
 #include <ImGui/imgui.h>
+#include <glm/geometric.hpp>
+#include "GameAssembly/Enemy/EnemyMovement.hpp"
+#include "GameAssembly/Enemy/EnemyQuery.hpp"
+#include "GameAssembly/Gameplay/GoldPickup.hpp"
+#include "GameAssembly/Utils/ActorUtils.hpp"
 
 void Shaman::Start()
 {
@@ -9,8 +14,12 @@ void Shaman::Start()
 void Shaman::Update(float deltaTime)
 {
     tickEffects(deltaTime);
-    if (isDead())
-        Destroy(m_Owner);
+    if (isDead()) {
+        handleDeath();
+        return;
+    }
+
+    applyAura();
 }
 
 void Shaman::initForWave(int current_wave)
@@ -19,8 +28,6 @@ void Shaman::initForWave(int current_wave)
     float scaling = 1.0f + (wave - 1) * 0.1f;
     hp_max = static_cast<int>(static_cast<int>(HPTier::HP_MID) * scaling);
     hp     = hp_max;
-    // Aura choisie aléatoirement
-    aura_type = static_cast<AuraType>(rand() % 3);
     computeGoldValue();
 }
 
@@ -29,9 +36,55 @@ void Shaman::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
-    if (isShredded()) res = shredResistance(res);
+    res = applyResistanceEffects(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
     hp = std::max(0, hp - static_cast<int>(dmg * mult));
+}
+
+void Shaman::applyAura()
+{
+    if (!m_Owner || !m_Transform) return;
+
+    auto enemies = GetAllLiveEnemies(m_Owner->GetParentWorld());
+    const glm::vec3 center = m_Transform->GetPosition();
+
+    for (auto& [actor, enemy] : enemies)
+    {
+        if (!actor || actor == m_Owner || !actor->HasComponent<Termina::Transform>()) continue;
+
+        const glm::vec3 pos = actor->GetComponent<Termina::Transform>().GetPosition();
+        if (glm::distance(center, pos) > aura_size) continue;
+
+        switch (aura_type)
+        {
+        case AuraType::ATK_BOOST:
+            enemy->applyAttackBoost(0.2f, 1.25f);
+            break;
+        case AuraType::SPD_BOOST:
+            if (actor->HasComponent<EnemyMovement>())
+                actor->GetComponent<EnemyMovement>().ApplySpeedBoost(0.2f, 1.35f);
+            break;
+        case AuraType::RES_BOOST:
+            enemy->applyResBoost(0.2f, static_cast<int>(ResTier::RES_MID));
+            break;
+        }
+    }
+}
+
+void Shaman::handleDeath()
+{
+    if (death_handled || !m_Owner) return;
+    death_handled = true;
+
+    static const TerminaScript::Prefab goldPrefab("Assets/Prefabs/gold pile.trp");
+    if (goldPrefab.IsValid() && m_Transform) {
+        if (Termina::Actor* drop = Instantiate(goldPrefab)) {
+            drop->GetComponent<Termina::Transform>().SetPosition(m_Transform->GetPosition());
+            drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
+        }
+    }
+
+    DestroyActorHierarchy(m_Owner);
 }
 
 void Shaman::Inspect()
