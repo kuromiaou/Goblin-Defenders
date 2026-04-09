@@ -53,6 +53,7 @@ void HUDComponent::OnRender(float dt)
         }
     }
     if (m_PlayerActor && !m_PlayerActor->HasComponent<Player>()) {
+        TN_WARN("HUD: missing Player component on '%s', auto-adding it.", m_PlayerActor->GetName().c_str());
         m_PlayerActor->AddComponent<Player>();
     }
     if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
@@ -71,6 +72,7 @@ void HUDComponent::OnRender(float dt)
         }
     }
     if (m_NexusActor && !m_NexusActor->HasComponent<Nexus>()) {
+        TN_WARN("HUD: missing Nexus component on '%s', auto-adding it.", m_NexusActor->GetName().c_str());
         m_NexusActor->AddComponent<Nexus>();
     }
     if (m_NexusActor && m_NexusActor->HasComponent<Nexus>()) {

@@ -68,6 +68,7 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
 
     if (!nexusActor) return;
     if (!nexusActor->HasComponent<Nexus>()) {
+        TN_WARN("EnemyMovement: missing Nexus component on '%s', auto-adding it.", nexusActor->GetName().c_str());
         nexusActor->AddComponent<Nexus>();
     }
     nexusActor->GetComponent<Nexus>().takeDamage(damage);

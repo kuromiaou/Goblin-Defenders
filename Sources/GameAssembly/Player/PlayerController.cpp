@@ -13,6 +13,7 @@ void PlayerController::Update(float dt)
 void PlayerController::Start()
 {
     if (m_Owner && !m_Owner->HasComponent<Player>()) {
+        TN_WARN("PlayerController: missing Player component on '%s', auto-adding it.", m_Owner->GetName().c_str());
         m_Owner->AddComponent<Player>();
     }
     rb = m_Owner->GetComponent<Termina::Rigidbody>();
