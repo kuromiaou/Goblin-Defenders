@@ -49,20 +49,9 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
     for (const auto& actor : world->GetActors())
     {
         if (!actor || !actor->IsActive()) continue;
-        if (actor->HasComponent<Nexus>()) {
+        if (actor->HasComponent<Nexus>() || actor->GetName() == kNexusActorName) {
             nexusActor = actor.get();
             break;
-        }
-    }
-
-    if (!nexusActor) {
-        for (const auto& actor : world->GetActors())
-        {
-            if (!actor || !actor->IsActive()) continue;
-            if (actor->GetName() == kNexusActorName) {
-                nexusActor = actor.get();
-                break;
-            }
         }
     }
 
