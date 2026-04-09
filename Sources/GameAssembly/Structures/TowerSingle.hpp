@@ -27,8 +27,11 @@ public:
     AggroMode  getAggroMode()  const { return aggro; }
     int        getLevel()      const { return level; }
 
+    bool       isStunned()     const { return stun_timer > 0.0f; }
+
     void setAggroMode(AggroMode m) { aggro = m; }
     void setDamageType(DamageType t) { damage_type = t; }
+    void applyStun(float duration) { stun_timer = std::max(stun_timer, duration); }
     void upgrade();
 
 private:
@@ -38,4 +41,6 @@ private:
     DamageType    damage_type = DamageType::PHYSIQUE;
     AggroMode     aggro       = AggroMode::FIRST;
     int           level       = 1;
+    float         stun_timer  = 0.0f;
+    float         attack_cooldown = 0.0f;
 };

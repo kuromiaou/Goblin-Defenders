@@ -13,20 +13,34 @@ public:
     void Update(float deltaTime) override;
     void Inspect() override;
 
-    // AJOUT: Sérialisation
     void Serialize(nlohmann::json& out) const override;
     void Deserialize(const nlohmann::json& in) override;
 
     void SetSpeed(float speed) { m_Speed = speed; }
     float GetSpeed() const { return m_Speed; }
 
+    // Returns the index of the checkpoint currently being tracked (proxy for path progress).
+    int GetCheckpointIndex() const { return m_CurrentCheckpointIndex; }
+
+    // Apply a speed slow for `duration` seconds. `factor` in (0,1] â€” 0.5 = half speed.
+    void ApplySlow(float duration, float factor = 0.5f);
+    // Stun the enemy (stop movement) for `duration` seconds.
+    void ApplyStun(float duration);
+
+    bool  IsStunned()     const { return m_StunTimer > 0.0f; }
+    bool  IsSlowed()      const { return m_SlowTimer > 0.0f; }
+    float GetSlowFactor() const { return m_SlowTimer > 0.0f ? m_SlowFactor : 1.0f; }
+
 private:
-    // Distance au checkpoint actuel
     float GetDistanceToTarget() const;
 
     float m_Speed = 10.0f;
-    int m_CurrentCheckpointIndex = 0;
+    int   m_CurrentCheckpointIndex = 0;
     Checkpoint* m_CurrentTarget = nullptr;
 
-    bool m_PathfindingInitialized = false;
+    bool  m_PathfindingInitialized = false;
+
+    float m_SlowTimer  = 0.0f;
+    float m_SlowFactor = 0.5f;   // effective factor while slow is active
+    float m_StunTimer  = 0.0f;
 };

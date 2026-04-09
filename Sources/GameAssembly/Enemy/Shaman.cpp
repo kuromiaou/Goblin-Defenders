@@ -8,8 +8,9 @@ void Shaman::Start()
 
 void Shaman::Update(float deltaTime)
 {
-    // L'application de l'aura aux alliés sera gérée par le WaveManager
-    // qui détecte les ennemis dans le rayon aura_size
+    tickEffects(deltaTime);
+    if (isDead())
+        Destroy(m_Owner);
 }
 
 void Shaman::initForWave(int current_wave)
@@ -28,6 +29,7 @@ void Shaman::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
+    if (isShredded()) res = shredResistance(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
     hp = std::max(0, hp - static_cast<int>(dmg * mult));
 }

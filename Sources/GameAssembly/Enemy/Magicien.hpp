@@ -22,18 +22,18 @@ public:
     void Serialize(nlohmann::json& out) const override;
     void Deserialize(const nlohmann::json& in) override;
 
-    int   getHP()        const { return hp; }
-    int   getHPMax()     const { return hp_max; }
+    int   getHP()        const override { return hp; }
+    int   getHPMax()     const override { return hp_max; }
     int   getATK()       const { return static_cast<int>(atk); }
     float getSPD()       const { return static_cast<int>(spd) * 0.1f; }
-    int   getGoldValue() const { return gold_value; }
-    bool  isDead()       const { return hp <= 0; }
+    int   getGoldValue() const override { return gold_value; }
+    bool  isDead()       const override { return hp <= 0; }
 
     // Retourne la durée de stun à appliquer aux tours à la mort
     float getDeathStunDuration() const;
 
     void initForWave(int current_wave);
-    void takeDamage(int dmg, DamageType type);
+    void takeDamage(int dmg, DamageType type) override;
 
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }

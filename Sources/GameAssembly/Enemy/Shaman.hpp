@@ -21,16 +21,16 @@ public:
     void Serialize(nlohmann::json& out) const override;
     void Deserialize(const nlohmann::json& in) override;
 
-    int      getHP()        const { return hp; }
-    int      getHPMax()     const { return hp_max; }
+    int      getHP()        const override { return hp; }
+    int      getHPMax()     const override { return hp_max; }
     float    getSPD()       const { return static_cast<int>(spd) * 0.1f; }
-    int      getGoldValue() const { return gold_value; }
+    int      getGoldValue() const override { return gold_value; }
     AuraType getAuraType()  const { return aura_type; }
     float    getAuraSize()  const { return aura_size; }
-    bool     isDead()       const { return hp <= 0; }
+    bool     isDead()       const override { return hp <= 0; }
 
     void initForWave(int current_wave);
-    void takeDamage(int dmg, DamageType type);
+    void takeDamage(int dmg, DamageType type) override;
 
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }

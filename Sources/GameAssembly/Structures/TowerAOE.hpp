@@ -42,5 +42,6 @@ private:
     AggroMode      aggro       = AggroMode::FIRST;
     float          aoe_radius  = 2.0f;
     float          stun_timer  = 0.0f;
+    float          attack_cooldown = 0.0f;
     int            level       = 1;
 };

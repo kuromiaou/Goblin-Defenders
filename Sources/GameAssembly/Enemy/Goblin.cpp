@@ -10,6 +10,9 @@ void Goblin::Start()
 
 void Goblin::Update(float deltaTime)
 {
+    tickEffects(deltaTime);
+    if (isDead())
+        Destroy(m_Owner);
 }
 
 void Goblin::initForWave(int current_wave)
@@ -26,8 +29,9 @@ void Goblin::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
+    if (isShredded()) res = shredResistance(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
-    /*hp = std::max(0.f, hp - static_cast<int>(dmg * mult));*/
+    hp = std::max(0, hp - static_cast<int>(dmg * mult));
 }
 
 void Goblin::Inspect()
