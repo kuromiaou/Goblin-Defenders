@@ -128,7 +128,7 @@ void HUDComponent::OnRender(float dt)
     ImGui::End();
 
     // ==== START ====
-    ImGui::SetNextWindowPos(ImVec2(width * 0.175f, height * 0.175f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+    ImGui::SetNextWindowPos(ImVec2(width * 0.175f, height * 0.8f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
     ImGui::SetNextWindowBgAlpha(0.0f);
 
     ImGui::Begin("Start", nullptr,
