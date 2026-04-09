@@ -16,4 +16,5 @@ public:
 
 private:
     Termina::Actor* m_PlayerActor = nullptr;
+    Termina::Actor* m_NexusActor = nullptr;
 };
