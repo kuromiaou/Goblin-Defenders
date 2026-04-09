@@ -26,10 +26,14 @@ public:
     void ApplySlow(float duration, float factor = 0.5f);
     // Stun the enemy (stop movement) for `duration` seconds.
     void ApplyStun(float duration);
+    // Apply a speed boost for `duration` seconds. `factor` >= 1.0.
+    void ApplySpeedBoost(float duration, float factor = 1.25f);
 
     bool  IsStunned()     const { return m_StunTimer > 0.0f; }
     bool  IsSlowed()      const { return m_SlowTimer > 0.0f; }
     float GetSlowFactor() const { return m_SlowTimer > 0.0f ? m_SlowFactor : 1.0f; }
+    bool  IsSpeedBoosted() const { return m_SpeedBoostTimer > 0.0f; }
+    float GetSpeedBoostFactor() const { return m_SpeedBoostTimer > 0.0f ? m_SpeedBoostFactor : 1.0f; }
 
 private:
     float GetDistanceToTarget() const;
@@ -43,4 +47,6 @@ private:
     float m_SlowTimer  = 0.0f;
     float m_SlowFactor = 0.5f;   // effective factor while slow is active
     float m_StunTimer  = 0.0f;
+    float m_SpeedBoostTimer = 0.0f;
+    float m_SpeedBoostFactor = 1.25f;
 };

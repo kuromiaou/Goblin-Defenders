@@ -24,7 +24,7 @@ public:
     // --- Stats ---
     int  getHP()         const override { return hp; }
     int  getHPMax()      const override { return hp_max; }
-    int  getATK()        const { return static_cast<int>(atk); }
+    int  getATK()        const { return applyAttackEffects(static_cast<int>(atk)); }
     float getSPD()       const { return static_cast<int>(spd) * 0.1f; }
     int  getGoldValue()  const override { return gold_value; }
     int  getWave()       const { return wave; }
@@ -37,6 +37,7 @@ public:
 
 private:
     void computeGoldValue() { gold_value = static_cast<int>(hp_max * 0.5f); }
+    void handleDeath();
 
     int        hp = 10;
     int        hp_max = 10;
@@ -46,4 +47,5 @@ private:
     SPDTier    spd = SPDTier::SPD_MID;
     ResTier    res_physique = ResTier::RES_LOW;
     ResTier    res_magique = ResTier::RES_LOW;
+    bool       death_handled = false;
 };

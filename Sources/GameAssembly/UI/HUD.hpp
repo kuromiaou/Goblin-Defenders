@@ -15,4 +15,5 @@ public:
     void OnRender(float dt) override;
 
 private:
+    Termina::Actor* m_PlayerActor = nullptr;
 };

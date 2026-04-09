@@ -16,8 +16,10 @@ public:
 	void Start()override;
 
 	void Move();
+	void Attack(float dt);
 
 private:
 	Termina::Rigidbody rb;
 	float m_MoveSpeed = 5.0f;
+	float m_AttackCooldown = 0.0f;
 };

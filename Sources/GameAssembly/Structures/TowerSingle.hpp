@@ -28,6 +28,7 @@ public:
     int        getLevel()      const { return level; }
 
     bool       isStunned()     const { return stun_timer > 0.0f; }
+    bool       isAttackIndicatorActive() const { return attack_indicator_timer > 0.0f; }
 
     void setAggroMode(AggroMode m) { aggro = m; }
     void setDamageType(DamageType t) { damage_type = t; }
@@ -43,4 +44,5 @@ private:
     int           level       = 1;
     float         stun_timer  = 0.0f;
     float         attack_cooldown = 0.0f;
+    float         attack_indicator_timer = 0.0f;
 };

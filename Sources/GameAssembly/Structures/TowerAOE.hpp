@@ -27,6 +27,7 @@ public:
     DamageType getDamageType() const { return damage_type; }
     AggroMode  getAggroMode()  const { return aggro; }
     bool       isStunned()     const { return stun_timer > 0.0f; }
+    bool       isAttackIndicatorActive() const { return attack_indicator_timer > 0.0f; }
     int        getLevel()      const { return level; }
 
     void setAggroMode(AggroMode m)   { aggro       = m; }
@@ -43,5 +44,6 @@ private:
     float          aoe_radius  = 2.0f;
     float          stun_timer  = 0.0f;
     float          attack_cooldown = 0.0f;
+    float          attack_indicator_timer = 0.0f;
     int            level       = 1;
 };

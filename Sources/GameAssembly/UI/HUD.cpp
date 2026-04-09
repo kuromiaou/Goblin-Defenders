@@ -4,6 +4,7 @@
 #include <Termina/Core/Application.hpp>
 #include <Termina/World/WorldSystem.hpp>
 #include <GameAssembly/Managers/EntityManager.hpp>
+#include <GameAssembly/Player/Player.hpp>
 
 void HUDComponent::OnRender(float dt)
 {
@@ -11,8 +12,9 @@ void HUDComponent::OnRender(float dt)
 
     float width = io.DisplaySize.x;
     float height = io.DisplaySize.y;
+    auto& worldActors = m_Owner->GetParentWorld()->GetActors();
 
-    // Fenêtre fullscreen
+    // Fenï¿½tre fullscreen
     ImGui::SetNextWindowPos(ImVec2(0, 0));
     ImGui::SetNextWindowSize(io.DisplaySize);
 
@@ -32,6 +34,29 @@ void HUDComponent::OnRender(float dt)
 
     ImGui::End();
 
+    int currentGold = 0;
+    if (!m_PlayerActor || !m_PlayerActor->IsActive() || !m_PlayerActor->HasComponent<Player>()) {
+        m_PlayerActor = nullptr;
+        for (const auto& actor : worldActors) {
+            if (actor->HasComponent<Player>()) {
+                m_PlayerActor = actor.get();
+                break;
+            }
+        }
+    }
+    if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
+        currentGold = m_PlayerActor->GetComponent<Player>().getGold();
+    }
+
+    ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    ImGui::SetNextWindowBgAlpha(0.0f);
+    ImGui::Begin("Gold", nullptr,
+        ImGuiWindowFlags_NoDecoration |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::Text("Gold: %d", currentGold);
+    ImGui::End();
+
     // ==== WAVE ====
     ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
     ImGui::SetNextWindowBgAlpha(0.0f);
@@ -43,7 +68,6 @@ void HUDComponent::OnRender(float dt)
 
     // Get current wave from EntityManager
     int currentWave = 1;
-    auto& worldActors = m_Owner->GetParentWorld()->GetActors();
     for (const auto& actor : worldActors) {
         if (actor->HasComponent<EntityManager>()) {
             EntityManager& manager = actor->GetComponent<EntityManager>();

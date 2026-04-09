@@ -6,7 +6,7 @@ void EntityManager::Start()
 
     state = WaveState::WAITING;
 
-    // Charger les préfabs des ennemis
+    // Charger les prï¿½fabs des ennemis
     p_Goblin = TerminaScript::Prefab("Assets/Prefabs/Enemies/goblin.trp");
     if (p_Goblin.IsValid())
         TN_INFO("Goblin prefab loaded");
@@ -14,11 +14,11 @@ void EntityManager::Start()
     p_GoblinRapace = TerminaScript::Prefab("Assets/Prefabs/Enemies/thief.trp");
     p_HobGoblin    = TerminaScript::Prefab("Assets/Prefabs/Enemies/hobgoblin.trp");
     p_Magicien     = TerminaScript::Prefab("Assets/Prefabs/Enemies/mage.trp");
-    p_ShamanATK    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanATK.trp");
-    p_ShamanSPD    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanSPD.trp");
-    p_ShamanRES    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shamanRES.trp");
+    p_ShamanATK    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman ATK .trp");
+    p_ShamanSPD    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman SPD .trp");
+    p_ShamanRES    = TerminaScript::Prefab("Assets/Prefabs/Enemies/shaman DEF .trp");
 
-    // Récupérer et cacher les portes
+    // Rï¿½cupï¿½rer et cacher les portes
     m_Doors = GetDoors();
 
     if (m_Doors.empty())
@@ -27,7 +27,7 @@ void EntityManager::Start()
 
 void EntityManager::Update(float deltaTime)
 {
-    // Nettoyer les ennemis morts/détruits
+    // Nettoyer les ennemis morts/dï¿½truits
     CleanupDeadEnemies();
 
     switch (state) {
@@ -42,7 +42,7 @@ void EntityManager::Update(float deltaTime)
             TN_INFO("Wave %d started with %zu enemies", current_wave, allEnemies.size());
         }
 
-        // Vérifier si tous les ennemis de la vague sont morts
+        // Vï¿½rifier si tous les ennemis de la vague sont morts
         if (allEnemies.empty()) {
             state = WaveState::COMPLETED;
             TN_INFO("Wave %d completed!", current_wave);
@@ -53,10 +53,10 @@ void EntityManager::Update(float deltaTime)
         is_wave_spawned = false;
         current_wave++;
 
-        // Vérifier si on a atteint le max des vagues fixes
+        // Vï¿½rifier si on a atteint le max des vagues fixes
         if (current_wave > max_fixed_waves) {
             if (is_endless) {
-                // Générer une vague infinie aléatoire
+                // Gï¿½nï¿½rer une vague infinie alï¿½atoire
                 state = WaveState::WAITING;
             }
             else {
@@ -87,11 +87,11 @@ std::vector<Door*> EntityManager::GetDoors()
 
 void EntityManager::CleanupDeadEnemies()
 {
-    // Supprimer les ennemis qui ont été détruits
+    // Supprimer les ennemis qui ont ï¿½tï¿½ dï¿½truits
     allEnemies.erase(
         std::remove_if(allEnemies.begin(), allEnemies.end(),
             [this](Termina::Actor* enemy) {
-                // Vérifier si l'ennemi a été supprimé du monde
+                // Vï¿½rifier si l'ennemi a ï¿½tï¿½ supprimï¿½ du monde
                 if (!enemy) return true;
 
                 const auto& actors = m_Owner->GetParentWorld()->GetActors();
@@ -106,7 +106,7 @@ void EntityManager::CleanupDeadEnemies()
 
 void EntityManager::SpawnWave(int waveIndex)
 {
-    // Vérifier que l'index est valide
+    // Vï¿½rifier que l'index est valide
     if (waveIndex < 0 || waveIndex >= static_cast<int>(EnemySpawnOrder.size())) {
         TN_WARN("Wave index %d out of range!", waveIndex);
         return;
@@ -117,18 +117,18 @@ void EntityManager::SpawnWave(int waveIndex)
         return;
     }
 
-    // Récupérer la liste des types d'ennemis pour cette vague
+    // Rï¿½cupï¿½rer la liste des types d'ennemis pour cette vague
     const auto& waveEnemies = EnemySpawnOrder[waveIndex];
 
     // Spawner chaque ennemi de la vague
     for (int i = 0; i < static_cast<int>(waveEnemies.size()); i++) {
         int enemyType = waveEnemies[i];
 
-        // Sélectionner une porte aléatoire pour le spawn
+        // Sï¿½lectionner une porte alï¿½atoire pour le spawn
         Door* door = m_Doors[i % m_Doors.size()];
         glm::vec3 spawnPosition = door->getPosition();
 
-        // Ajouter un léger offset pour éviter que les ennemis spawn au même endroit
+        // Ajouter un lï¿½ger offset pour ï¿½viter que les ennemis spawn au mï¿½me endroit
         spawnPosition.x += (float)(i % 3);
         spawnPosition.z += (float)(i / 3);
 
