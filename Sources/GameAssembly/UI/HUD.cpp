@@ -67,7 +67,7 @@ void HUDComponent::OnRender(float dt)
         currentNexusHPMax = std::max(1, nexus.getHPMax());
     }
 
-    ImGui::SetNextWindowPos(ImVec2(width * 0.18f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    ImGui::SetNextWindowPos(ImVec2(width * 0.18f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
     ImGui::SetNextWindowBgAlpha(0.0f);
     ImGui::Begin("Nexus Health", nullptr,
         ImGuiWindowFlags_NoDecoration |
