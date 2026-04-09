@@ -1,18 +1,64 @@
 #include "HUD.hpp"
 
 #include <algorithm>
+#include <string>
+#include <GLM/glm.hpp>
 #include <ImGui/imgui.h>
 #include <Termina/Core/Application.hpp>
 #include <Termina/World/WorldSystem.hpp>
 #include <GameAssembly/Managers/EntityManager.hpp>
 #include <GameAssembly/Player/Player.hpp>
 #include <GameAssembly/Structures/Nexus.hpp>
+#include <GameAssembly/Structures/TowerSingle.hpp>
+#include <GameAssembly/Structures/TowerAOE.hpp>
+#include <GameAssembly/Structures/TowerCC.hpp>
 
 namespace
 {
 constexpr const char* kPlayerActorName = "Player";
 constexpr const char* kNexusActorName = "Nexus";
 constexpr const char* kMenuWorldPath = "Assets/Worlds/Menu";
+constexpr int kTowerBuildCost = 50;
+
+bool IsTowerActor(const Termina::Actor* actor)
+{
+    return actor && (actor->HasComponent<TowerSingle>() || actor->HasComponent<TowerAOE>() || actor->HasComponent<TowerCC>());
+}
+
+bool IsTowerSlotName(const std::string& name)
+{
+    return name.rfind("Tower_Base", 0) == 0 && name != "Tower_Bases";
+}
+
+bool IsSlotOccupied(const Termina::Actor* slot, const std::vector<std::shared_ptr<Termina::Actor>>& worldActors)
+{
+    if (!slot || !slot->HasComponent<Termina::Transform>()) return true;
+
+    const glm::vec3 slotPos = slot->GetComponent<Termina::Transform>().GetPosition();
+    constexpr float kOccupiedDistance = 1.2f;
+
+    for (const auto& actor : worldActors) {
+        if (!actor || actor.get() == slot || !actor->IsActive() || !actor->HasComponent<Termina::Transform>()) continue;
+        if (!IsTowerActor(actor.get())) continue;
+
+        const float distance = glm::distance(slotPos, actor->GetComponent<Termina::Transform>().GetPosition());
+        if (distance <= kOccupiedDistance) return true;
+    }
+    return false;
+}
+
+bool WorldToScreen(const glm::vec3& worldPos, const Termina::Camera& camera, float width, float height, ImVec2& outScreenPos)
+{
+    const glm::vec4 clip = camera.ViewProjection * glm::vec4(worldPos, 1.0f);
+    if (clip.w <= 0.0f) return false;
+
+    const glm::vec3 ndc = glm::vec3(clip) / clip.w;
+    if (ndc.z < -1.0f || ndc.z > 1.0f) return false;
+
+    outScreenPos.x = (ndc.x * 0.5f + 0.5f) * width;
+    outScreenPos.y = (1.0f - (ndc.y * 0.5f + 0.5f)) * height;
+    return true;
+}
 }
 
 void HUDComponent::OnRender(float dt)
@@ -174,6 +220,60 @@ void HUDComponent::OnRender(float dt)
         ImGuiWindowFlags_AlwaysAutoResize);
     ImGui::Text("Gold: %d", currentGold);
     ImGui::End();
+
+    // ==== TOWER SLOTS ====
+    if (m_PlayerActor && m_PlayerActor->HasComponent<Player>() && m_TowerPrefab.IsValid())
+    {
+        auto* world = m_Owner->GetParentWorld();
+        const Termina::Camera camera = world->GetMainCamera();
+        Player& player = m_PlayerActor->GetComponent<Player>();
+
+        for (const auto& actor : worldActors)
+        {
+            if (!actor || !actor->IsActive() || !actor->HasComponent<Termina::Transform>()) continue;
+            if (!IsTowerSlotName(actor->GetName())) continue;
+
+            const bool occupied = IsSlotOccupied(actor.get(), worldActors);
+            const glm::vec3 worldPos = actor->GetComponent<Termina::Transform>().GetPosition() + glm::vec3(0.0f, 0.5f, 0.0f);
+
+            ImVec2 screenPos;
+            if (!WorldToScreen(worldPos, camera, width, height, screenPos)) continue;
+
+            const std::string windowId = "TowerSlotUI##" + std::to_string(actor->GetID());
+            ImGui::SetNextWindowPos(screenPos, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+            ImGui::SetNextWindowBgAlpha(0.25f);
+            ImGui::Begin(windowId.c_str(), nullptr,
+                ImGuiWindowFlags_NoDecoration |
+                ImGuiWindowFlags_NoMove |
+                ImGuiWindowFlags_AlwaysAutoResize |
+                ImGuiWindowFlags_NoSavedSettings);
+
+            if (occupied) {
+                ImGui::Text("Occupe");
+            } else {
+                const bool canAfford = player.getGold() >= kTowerBuildCost;
+                ImGui::BeginDisabled(!canAfford);
+                if (ImGui::Button("Construire (50G)", ImVec2(130.0f, 0.0f)))
+                {
+                    if (player.spendGold(kTowerBuildCost))
+                    {
+                        if (Termina::Actor* newTower = Instantiate(m_TowerPrefab))
+                        {
+                            newTower->GetComponent<Termina::Transform>().SetPosition(actor->GetComponent<Termina::Transform>().GetPosition());
+                            currentGold = player.getGold();
+                        }
+                        else
+                        {
+                            player.addGold(kTowerBuildCost);
+                        }
+                    }
+                }
+                ImGui::EndDisabled();
+            }
+
+            ImGui::End();
+        }
+    }
 
     // ==== WAVE ====
     ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));

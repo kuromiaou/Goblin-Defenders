@@ -3,6 +3,23 @@
 #include <glm/geometric.hpp>
 #include "GameAssembly/Enemy/EnemyQuery.hpp"
 #include "GameAssembly/Enemy/EnemyMovement.hpp"
+#include "GameAssembly/Player/Player.hpp"
+
+namespace
+{
+constexpr int kGoldPerLevel = 10;
+
+Player* FindPlayer(Termina::Actor* owner)
+{
+    if (!owner || !owner->GetParentWorld()) return nullptr;
+    for (const auto& actor : owner->GetParentWorld()->GetActors()) {
+        if (actor && actor->IsActive() && actor->HasComponent<Player>()) {
+            return &actor->GetComponent<Player>();
+        }
+    }
+    return nullptr;
+}
+}
 
 void TowerCC::Start()
 {
@@ -98,7 +115,27 @@ void TowerCC::upgrade()
 
 void TowerCC::Inspect()
 {
-    ImGui::DragInt  ("Level",       &level,       1, 1, 99);
+    int requestedLevel = level;
+    if (ImGui::DragInt("Level", &requestedLevel, 1, 1, 99))
+    {
+        requestedLevel = std::clamp(requestedLevel, 1, 99);
+        if (requestedLevel <= level) {
+            level = requestedLevel;
+        } else if (Player* player = FindPlayer(m_Owner)) {
+            const int levelGain = requestedLevel - level;
+            const int totalCost = levelGain * kGoldPerLevel;
+
+            if (player->spendGold(totalCost)) {
+                level = requestedLevel;
+            } else {
+                const int affordableGain = player->getGold() / kGoldPerLevel;
+                if (affordableGain > 0 && player->spendGold(affordableGain * kGoldPerLevel)) {
+                    level += affordableGain;
+                }
+            }
+        }
+    }
+    ImGui::Text("Upgrade: 10 gold / niveau");
     ImGui::DragFloat("CC Duration", &cc_duration, 0.1f, 0.5f, 10.0f);
 
     const char* cc_names[] = { "Slow", "Shred" };

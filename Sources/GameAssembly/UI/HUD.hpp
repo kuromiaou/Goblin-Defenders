@@ -18,4 +18,5 @@ private:
     Termina::Actor* m_PlayerActor         = nullptr;
     Termina::Actor* m_NexusActor          = nullptr;
     Termina::Actor* m_EntityManagerActor  = nullptr;
+    TerminaScript::Prefab m_TowerPrefab   = TerminaScript::Prefab("Assets/Prefabs/Towers/physic/physic tower single target .trp");
 };
