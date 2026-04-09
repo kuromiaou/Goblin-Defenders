@@ -74,6 +74,18 @@
                     "active": true,
                     "data": {},
                     "type": "Player Controller"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "atk_magique": 10,
+                        "atk_physique": 10,
+                        "gold": 0,
+                        "hp": 100,
+                        "hp_max": 100,
+                        "rsc": 0
+                    },
+                    "type": "Player"
                 }
             ],
             "id": "4928832482900825615",

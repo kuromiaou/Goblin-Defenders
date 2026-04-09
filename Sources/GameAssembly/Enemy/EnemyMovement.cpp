@@ -57,12 +57,9 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
 
     if (!nexusActor) return;
     if (!nexusActor->HasComponent<Nexus>()) {
-        TN_WARN("EnemyMovement: missing Nexus component on '%s', auto-adding it.", nexusActor->GetName().c_str());
-        nexusActor->AddComponent<Nexus>();
-        if (!nexusActor->HasComponent<Nexus>()) {
-            TN_ERROR("EnemyMovement: failed to attach Nexus component on '%s'.", nexusActor->GetName().c_str());
-            return;
-        }
+        // NOTE: Le composant "Nexus" doit être posé dans la scène/prefab (pas d'AddComponent runtime).
+        TN_ERROR("EnemyMovement: missing Nexus component on '%s'.", nexusActor->GetName().c_str());
+        return;
     }
     nexusActor->GetComponent<Nexus>().takeDamage(damage);
 }
