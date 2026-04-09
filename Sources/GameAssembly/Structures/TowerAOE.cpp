@@ -136,7 +136,7 @@ void TowerAOE::Inspect()
             }
         }
     }
-    ImGui::Text("Upgrade: 10 gold / niveau");
+    ImGui::Text("Upgrade: %d gold / niveau", kGoldPerLevel);
     ImGui::DragFloat("AOE Radius", &aoe_radius, 0.1f, 0.5f, 10.0f);
 
     const char* dmg_names[] = { "Physique", "Magique" };

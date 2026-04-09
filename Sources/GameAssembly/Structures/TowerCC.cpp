@@ -135,7 +135,7 @@ void TowerCC::Inspect()
             }
         }
     }
-    ImGui::Text("Upgrade: 10 gold / niveau");
+    ImGui::Text("Upgrade: %d gold / niveau", kGoldPerLevel);
     ImGui::DragFloat("CC Duration", &cc_duration, 0.1f, 0.5f, 10.0f);
 
     const char* cc_names[] = { "Slow", "Shred" };

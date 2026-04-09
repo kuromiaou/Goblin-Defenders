@@ -249,11 +249,12 @@ void HUDComponent::OnRender(float dt)
                 ImGuiWindowFlags_NoSavedSettings);
 
             if (occupied) {
-                ImGui::Text("Occupe");
+                ImGui::Text("Occupé");
             } else {
                 const bool canAfford = player.getGold() >= kTowerBuildCost;
+                const std::string buildLabel = "Construire (" + std::to_string(kTowerBuildCost) + "G)";
                 ImGui::BeginDisabled(!canAfford);
-                if (ImGui::Button("Construire (50G)", ImVec2(130.0f, 0.0f)))
+                if (ImGui::Button(buildLabel.c_str(), ImVec2(130.0f, 0.0f)))
                 {
                     if (player.spendGold(kTowerBuildCost))
                     {

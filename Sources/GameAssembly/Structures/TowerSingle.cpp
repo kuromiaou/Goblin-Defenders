@@ -125,7 +125,7 @@ void TowerSingle::Inspect()
             }
         }
     }
-    ImGui::Text("Upgrade: 10 gold / niveau");
+    ImGui::Text("Upgrade: %d gold / niveau", kGoldPerLevel);
 
     const char* dmg_names[] = { "Physique", "Magique" };
     int dmg_idx = static_cast<int>(damage_type);
