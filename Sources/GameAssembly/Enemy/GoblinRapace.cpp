@@ -52,7 +52,7 @@ void GoblinRapace::handleDeath()
         }
     }
 
-    DestroyMeshHierarchy(m_Owner);
+    DestroyActorHierarchy(m_Owner);
 }
 
 int GoblinRapace::getGoldValue() const

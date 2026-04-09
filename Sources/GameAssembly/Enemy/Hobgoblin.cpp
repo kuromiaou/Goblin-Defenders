@@ -52,7 +52,7 @@ void Hobgoblin::handleDeath()
         }
     }
 
-    DestroyMeshHierarchy(m_Owner);
+    DestroyActorHierarchy(m_Owner);
 }
 
 void Hobgoblin::Inspect()

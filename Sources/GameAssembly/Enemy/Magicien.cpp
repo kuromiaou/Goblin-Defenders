@@ -71,7 +71,7 @@ void Magicien::handleDeath()
         }
     }
 
-    DestroyMeshHierarchy(m_Owner);
+    DestroyActorHierarchy(m_Owner);
 }
 
 float Magicien::getDeathStunDuration() const

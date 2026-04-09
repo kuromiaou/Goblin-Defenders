@@ -118,7 +118,7 @@ void EnemyMovement::Update(float deltaTime)
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
             TN_INFO("Enemy reached the end of the path!");
             ApplyNexusContactEffects(m_Owner);
-            DestroyMeshHierarchy(m_Owner);
+            DestroyActorHierarchy(m_Owner);
             return;
         }
 

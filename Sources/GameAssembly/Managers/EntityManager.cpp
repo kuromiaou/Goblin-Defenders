@@ -53,10 +53,10 @@ void EntityManager::Update(float deltaTime)
         is_wave_spawned = false;
         current_wave++;
 
-        // V�rifier si on a atteint le max des vagues fixes
+        // Vérifier si on a atteint le max des vagues fixes
         if (current_wave > max_fixed_waves) {
             if (is_endless) {
-                // G�n�rer une vague infinie al�atoire
+                // Générer une vague infinie al�atoire
                 state = WaveState::WAITING;
             }
             else {

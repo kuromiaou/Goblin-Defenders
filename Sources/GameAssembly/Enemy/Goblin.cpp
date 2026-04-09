@@ -53,7 +53,7 @@ void Goblin::handleDeath()
         }
     }
 
-    DestroyMeshHierarchy(m_Owner);
+    DestroyActorHierarchy(m_Owner);
 }
 
 void Goblin::Inspect()
