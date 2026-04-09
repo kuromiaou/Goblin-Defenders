@@ -55,6 +55,10 @@ void HUDComponent::OnRender(float dt)
     if (m_PlayerActor && !m_PlayerActor->HasComponent<Player>()) {
         TN_WARN("HUD: missing Player component on '%s', auto-adding it.", m_PlayerActor->GetName().c_str());
         m_PlayerActor->AddComponent<Player>();
+        if (!m_PlayerActor->HasComponent<Player>()) {
+            TN_ERROR("HUD: failed to attach Player component on '%s'.", m_PlayerActor->GetName().c_str());
+            m_PlayerActor = nullptr;
+        }
     }
     if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
         currentGold = m_PlayerActor->GetComponent<Player>().getGold();
@@ -74,6 +78,10 @@ void HUDComponent::OnRender(float dt)
     if (m_NexusActor && !m_NexusActor->HasComponent<Nexus>()) {
         TN_WARN("HUD: missing Nexus component on '%s', auto-adding it.", m_NexusActor->GetName().c_str());
         m_NexusActor->AddComponent<Nexus>();
+        if (!m_NexusActor->HasComponent<Nexus>()) {
+            TN_ERROR("HUD: failed to attach Nexus component on '%s'.", m_NexusActor->GetName().c_str());
+            m_NexusActor = nullptr;
+        }
     }
     if (m_NexusActor && m_NexusActor->HasComponent<Nexus>()) {
         const Nexus& nexus = m_NexusActor->GetComponent<Nexus>();
