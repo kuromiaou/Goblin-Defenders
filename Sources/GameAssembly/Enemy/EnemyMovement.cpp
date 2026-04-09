@@ -2,7 +2,56 @@
 #include <algorithm>
 #include <glm/geometric.hpp>
 #include "ImGui/imgui.h"
+#include "GameAssembly/Enemy/Goblin.hpp"
+#include "GameAssembly/Enemy/GoblinRapace.hpp"
+#include "GameAssembly/Enemy/Hobgoblin.hpp"
+#include "GameAssembly/Enemy/Magicien.hpp"
+#include "GameAssembly/Enemy/Shaman.hpp"
+#include "GameAssembly/Structures/Nexus.hpp"
 #include "GameAssembly/Utils/ActorUtils.hpp"
+
+namespace
+{
+int GetNexusContactDamage(Termina::Actor* enemyActor)
+{
+    if (!enemyActor) return 1;
+
+    if (enemyActor->HasComponent<Goblin>()) {
+        return std::max(1, enemyActor->GetComponent<Goblin>().getATK());
+    }
+    if (enemyActor->HasComponent<Hobgoblin>()) {
+        return std::max(1, enemyActor->GetComponent<Hobgoblin>().getATK());
+    }
+    if (enemyActor->HasComponent<Magicien>()) {
+        return std::max(1, enemyActor->GetComponent<Magicien>().getATK());
+    }
+
+    // Shaman and GoblinRapace don't expose ATK getters: apply minimum guaranteed chip damage.
+    return 1;
+}
+
+void ApplyNexusContactEffects(Termina::Actor* enemyActor)
+{
+    if (!enemyActor) return;
+
+    Termina::World* world = enemyActor->GetParentWorld();
+    if (!world) return;
+
+    if (enemyActor->HasComponent<GoblinRapace>()) {
+        enemyActor->GetComponent<GoblinRapace>().onReachNexus();
+    }
+
+    const int damage = GetNexusContactDamage(enemyActor);
+    for (const auto& actor : world->GetActors())
+    {
+        if (!actor || !actor->IsActive()) continue;
+        if (!actor->HasComponent<Nexus>()) continue;
+
+        actor->GetComponent<Nexus>().takeDamage(damage);
+        return;
+    }
+}
+}
 
 void EnemyMovement::Start()
 {
@@ -56,6 +105,7 @@ void EnemyMovement::Update(float deltaTime)
 
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
             TN_INFO("Enemy reached the end of the path!");
+            ApplyNexusContactEffects(m_Owner);
             DestroyActorHierarchy(m_Owner);
             return;
         }

@@ -14,18 +14,28 @@ inline void CollectDescendantsPostOrder(Termina::Actor* actor, std::vector<Termi
     }
 }
 
+inline Termina::Actor* GetHierarchyRoot(Termina::Actor* actor)
+{
+    if (!actor) return nullptr;
+    while (actor->GetParent())
+        actor = actor->GetParent();
+    return actor;
+}
+
 inline void DestroyActorHierarchy(Termina::Actor* root)
 {
-    if (!root) return;
-    Termina::World* world = root->GetParentWorld();
+    Termina::Actor* hierarchyRoot = GetHierarchyRoot(root);
+    if (!hierarchyRoot) return;
+
+    Termina::World* world = hierarchyRoot->GetParentWorld();
     if (!world) return;
 
     std::vector<Termina::Actor*> descendants;
-    CollectDescendantsPostOrder(root, descendants);
+    CollectDescendantsPostOrder(hierarchyRoot, descendants);
     for (Termina::Actor* child : descendants) {
         if (child)
             world->DestroyActor(child);
     }
 
-    world->DestroyActor(root);
+    world->DestroyActor(hierarchyRoot);
 }
