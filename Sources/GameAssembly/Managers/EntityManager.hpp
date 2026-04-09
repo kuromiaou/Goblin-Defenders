@@ -36,7 +36,7 @@ public:
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
     WaveState  state;
 
-    int        current_wave = 9;
+    int        current_wave = 1;
     bool       hasWon = false;
 
     void CleanupDeadEnemies();

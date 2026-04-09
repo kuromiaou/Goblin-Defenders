@@ -59,7 +59,7 @@ void MainMenuComponent::OnRender(float dt)
 
         if (worldSystem)
         {
-            worldSystem->LoadWorld("Assets/Worlds/Forest"); // won't work with m_WorldToLoad even tho it was completly fine for the past few days and literally none of the code changed but i don't have time to try and fix it
+            worldSystem->LoadWorld("Assets/Worlds/forest_test"); // won't work with m_WorldToLoad even tho it was completly fine for the past few days and literally none of the code changed but i don't have time to try and fix it
             worldSystem->Play();
         }
     }
