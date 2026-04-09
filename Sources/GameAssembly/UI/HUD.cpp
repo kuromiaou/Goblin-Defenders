@@ -1,10 +1,12 @@
 #include "HUD.hpp"
 
+#include <algorithm>
 #include <ImGui/imgui.h>
 #include <Termina/Core/Application.hpp>
 #include <Termina/World/WorldSystem.hpp>
 #include <GameAssembly/Managers/EntityManager.hpp>
 #include <GameAssembly/Player/Player.hpp>
+#include <GameAssembly/Structures/Nexus.hpp>
 
 void HUDComponent::OnRender(float dt)
 {
@@ -48,7 +50,36 @@ void HUDComponent::OnRender(float dt)
         currentGold = m_PlayerActor->GetComponent<Player>().getGold();
     }
 
-    ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    int currentNexusHP = 0;
+    int currentNexusHPMax = 1;
+    if (!m_NexusActor || !m_NexusActor->IsActive() || !m_NexusActor->HasComponent<Nexus>()) {
+        m_NexusActor = nullptr;
+        for (const auto& actor : worldActors) {
+            if (actor->HasComponent<Nexus>()) {
+                m_NexusActor = actor.get();
+                break;
+            }
+        }
+    }
+    if (m_NexusActor && m_NexusActor->HasComponent<Nexus>()) {
+        const Nexus& nexus = m_NexusActor->GetComponent<Nexus>();
+        currentNexusHP = nexus.getHP();
+        currentNexusHPMax = std::max(1, nexus.getHPMax());
+    }
+
+    ImGui::SetNextWindowPos(ImVec2(width * 0.18f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    ImGui::SetNextWindowBgAlpha(0.0f);
+    ImGui::Begin("Nexus Health", nullptr,
+        ImGuiWindowFlags_NoDecoration |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::Text("Nexus: %d / %d", currentNexusHP, currentNexusHPMax);
+    ImGui::ProgressBar(
+        static_cast<float>(currentNexusHP) / static_cast<float>(currentNexusHPMax),
+        ImVec2(220.0f, 18.0f));
+    ImGui::End();
+
+    ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
     ImGui::SetNextWindowBgAlpha(0.0f);
     ImGui::Begin("Gold", nullptr,
         ImGuiWindowFlags_NoDecoration |

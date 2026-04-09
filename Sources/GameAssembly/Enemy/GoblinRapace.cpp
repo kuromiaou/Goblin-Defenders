@@ -46,7 +46,7 @@ void GoblinRapace::handleDeath()
     if (goldPrefab.IsValid() && m_Transform) {
         if (Termina::Actor* drop = Instantiate(goldPrefab)) {
             drop->GetComponent<Termina::Transform>().SetPosition(m_Transform->GetPosition());
-            //drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
+            drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
         }
     }
 
