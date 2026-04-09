@@ -16,20 +16,25 @@ constexpr const char* kNexusActorName = "Nexus";
 
 int GetNexusContactDamage(Termina::Actor* enemyActor)
 {
-    if (!enemyActor) return 1;
+    if (!enemyActor) return 0;
 
     if (enemyActor->HasComponent<Goblin>()) {
-        return std::max(1, enemyActor->GetComponent<Goblin>().getATK());
+        return std::max(0, enemyActor->GetComponent<Goblin>().getATK());
     }
     if (enemyActor->HasComponent<Hobgoblin>()) {
-        return std::max(1, enemyActor->GetComponent<Hobgoblin>().getATK());
+        return std::max(0, enemyActor->GetComponent<Hobgoblin>().getATK());
     }
     if (enemyActor->HasComponent<Magicien>()) {
-        return std::max(1, enemyActor->GetComponent<Magicien>().getATK());
+        return std::max(0, enemyActor->GetComponent<Magicien>().getATK());
+    }
+    if (enemyActor->HasComponent<Shaman>()) {
+        return std::max(0, enemyActor->GetComponent<Shaman>().getATK());
+    }
+    if (enemyActor->HasComponent<GoblinRapace>()) {
+        return std::max(0, enemyActor->GetComponent<GoblinRapace>().getATK());
     }
 
-    // Shaman and GoblinRapace don't expose ATK getters: apply minimum guaranteed chip damage.
-    return 1;
+    return 0;
 }
 
 void ApplyNexusContactEffects(Termina::Actor* enemyActor)
@@ -118,7 +123,7 @@ void EnemyMovement::Update(float deltaTime)
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
             TN_INFO("Enemy reached the end of the path!");
             ApplyNexusContactEffects(m_Owner);
-            DestroyMeshHierarchy(m_Owner);
+            DestroyActorHierarchy(m_Owner);
             return;
         }
 
