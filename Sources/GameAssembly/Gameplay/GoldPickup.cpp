@@ -21,34 +21,28 @@ void GoldPickup::Update(float deltaTime)
     for (const auto& actor : world->GetActors())
     {
         if (!actor || !actor->IsActive() || actor.get() == m_Owner) continue;
+        if (!actor->HasComponent<Termina::Transform>()) continue;
+
+        const glm::vec3 pos = actor->GetComponent<Termina::Transform>().GetPosition();
+        if (glm::distance(pos, goldPos) > m_PickupRadius) continue;
 
         if (actor->HasComponent<GoblinRapace>())
         {
             auto& thief = actor->GetComponent<GoblinRapace>();
-            if (thief.isDead() || !actor->HasComponent<Termina::Transform>()) continue;
-
-            const glm::vec3 pos = actor->GetComponent<Termina::Transform>().GetPosition();
-            if (glm::distance(pos, goldPos) <= m_PickupRadius) {
+            if (!thief.isDead()) {
                 thief.stealGold(m_GoldAmount);
                 m_Consumed = true;
                 DestroyActorHierarchy(m_Owner);
                 return;
             }
         }
-    }
 
-    for (const auto& actor : world->GetActors())
-    {
-        if (!actor || !actor->IsActive() || actor.get() == m_Owner) continue;
-        if (!actor->HasComponent<Player>() || !actor->HasComponent<Termina::Transform>()) continue;
+        if (!actor->HasComponent<Player>()) continue;
 
-        const glm::vec3 playerPos = actor->GetComponent<Termina::Transform>().GetPosition();
-        if (glm::distance(playerPos, goldPos) <= m_PickupRadius) {
-            actor->GetComponent<Player>().addGold(m_GoldAmount);
-            m_Consumed = true;
-            DestroyActorHierarchy(m_Owner);
-            return;
-        }
+        actor->GetComponent<Player>().addGold(m_GoldAmount);
+        m_Consumed = true;
+        DestroyActorHierarchy(m_Owner);
+        return;
     }
 }
 

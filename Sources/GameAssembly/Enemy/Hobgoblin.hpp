@@ -23,7 +23,7 @@ public:
 
     int   getHP()          const override { return hp; }
     int   getHPMax()       const override { return hp_max; }
-    int   getATK()         const { return static_cast<int>(static_cast<float>(static_cast<int>(atk)) * getAttackMultiplier()); }
+    int   getATK()         const { return applyAttackEffects(static_cast<int>(atk)); }
     float getSPD()         const { return static_cast<int>(spd) * 0.1f; }
     int   getGoldValue()   const override { return gold_value; }
     float getNullifyChance()const { return nullify_chance; }

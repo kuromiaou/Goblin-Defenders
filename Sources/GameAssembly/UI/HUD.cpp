@@ -35,11 +35,17 @@ void HUDComponent::OnRender(float dt)
     ImGui::End();
 
     int currentGold = 0;
-    for (const auto& actor : worldActors) {
-        if (actor->HasComponent<Player>()) {
-            currentGold = actor->GetComponent<Player>().getGold();
-            break;
+    if (!m_PlayerActor || !m_PlayerActor->IsActive() || !m_PlayerActor->HasComponent<Player>()) {
+        m_PlayerActor = nullptr;
+        for (const auto& actor : worldActors) {
+            if (actor->HasComponent<Player>()) {
+                m_PlayerActor = actor.get();
+                break;
+            }
         }
+    }
+    if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
+        currentGold = m_PlayerActor->GetComponent<Player>().getGold();
     }
 
     ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));

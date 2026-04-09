@@ -63,6 +63,11 @@ protected:
         return std::max(0, res);
     }
 
+    int applyAttackEffects(int baseAtk) const
+    {
+        return static_cast<int>(static_cast<float>(baseAtk) * getAttackMultiplier());
+    }
+
     float shred_timer = 0.0f;
     float attack_boost_timer = 0.0f;
     float attack_boost_mult  = 1.0f;

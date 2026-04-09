@@ -47,4 +47,5 @@ private:
     ResTier  res_physique = ResTier::RES_MID;
     ResTier  res_magique  = ResTier::RES_MID;
     bool     death_handled = false;
+    float    aura_tick_accumulator = 0.0f;
 };

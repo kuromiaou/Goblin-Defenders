@@ -19,7 +19,11 @@ void Shaman::Update(float deltaTime)
         return;
     }
 
-    applyAura();
+    aura_tick_accumulator += deltaTime;
+    if (aura_tick_accumulator >= 0.1f) {
+        aura_tick_accumulator = 0.0f;
+        applyAura();
+    }
 }
 
 void Shaman::initForWave(int current_wave)
