@@ -2,35 +2,13 @@
 #include <algorithm>
 #include <glm/geometric.hpp>
 #include "ImGui/imgui.h"
-#include "GameAssembly/Enemy/Goblin.hpp"
-#include "GameAssembly/Enemy/GoblinRapace.hpp"
-#include "GameAssembly/Enemy/Hobgoblin.hpp"
-#include "GameAssembly/Enemy/Magicien.hpp"
-#include "GameAssembly/Enemy/Shaman.hpp"
+#include "GameAssembly/Enemy/EnemyQuery.hpp"
 #include "GameAssembly/Structures/Nexus.hpp"
 #include "GameAssembly/Utils/ActorUtils.hpp"
 
 namespace
 {
 constexpr const char* kNexusActorName = "Nexus";
-
-int GetNexusContactDamage(Termina::Actor* enemyActor)
-{
-    if (!enemyActor) return 1;
-
-    if (enemyActor->HasComponent<Goblin>()) {
-        return std::max(1, enemyActor->GetComponent<Goblin>().getATK());
-    }
-    if (enemyActor->HasComponent<Hobgoblin>()) {
-        return std::max(1, enemyActor->GetComponent<Hobgoblin>().getATK());
-    }
-    if (enemyActor->HasComponent<Magicien>()) {
-        return std::max(1, enemyActor->GetComponent<Magicien>().getATK());
-    }
-
-    // Shaman and GoblinRapace don't expose ATK getters: apply minimum guaranteed chip damage.
-    return 1;
-}
 
 void ApplyNexusContactEffects(Termina::Actor* enemyActor)
 {
@@ -43,9 +21,10 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
         enemyActor->GetComponent<GoblinRapace>().onReachNexus();
     }
 
-    const int damage = GetNexusContactDamage(enemyActor);
-    Termina::Actor* nexusActor = nullptr;
+    Enemy* enemy = GetEnemyComponent(enemyActor);
+    const int damage = enemy ? std::max(1, enemy->getATK()) : 1;
 
+    Termina::Actor* nexusActor = nullptr;
     for (const auto& actor : world->GetActors())
     {
         if (!actor || !actor->IsActive()) continue;
@@ -91,6 +70,7 @@ void EnemyMovement::Start()
 
 void EnemyMovement::Update(float deltaTime)
 {
+    if (m_reachedNexus) return;
     if (!m_PathfindingInitialized || !m_CurrentTarget || !m_Transform)
         return;
 
@@ -117,8 +97,9 @@ void EnemyMovement::Update(float deltaTime)
 
         if (m_CurrentCheckpointIndex >= static_cast<int>(checkpoints.size())) {
             TN_INFO("Enemy reached the end of the path!");
+            m_reachedNexus = true;
             ApplyNexusContactEffects(m_Owner);
-            DestroyMeshHierarchy(m_Owner);
+            DestroyActorHierarchy(m_Owner);
             return;
         }
 
@@ -165,6 +146,8 @@ float EnemyMovement::GetDistanceToTarget() const
 
 void EnemyMovement::Inspect()
 {
+    if (m_reachedNexus) return;
+
     ImGui::DragFloat("Speed##enemy", &m_Speed, 0.1f, 0.0f, 50.0f);
     if (m_CurrentTarget) {
         ImGui::Text("Current Target Checkpoint: %d", m_CurrentTarget->getOrder());

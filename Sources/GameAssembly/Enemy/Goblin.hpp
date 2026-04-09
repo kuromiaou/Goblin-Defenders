@@ -24,7 +24,7 @@ public:
     // --- Stats ---
     int  getHP()         const override { return hp; }
     int  getHPMax()      const override { return hp_max; }
-    int  getATK()        const { return applyAttackEffects(static_cast<int>(atk)); }
+    int  getATK()        const override { return applyAttackEffects(static_cast<int>(atk)); }
     float getSPD()       const { return static_cast<int>(spd) * 0.1f; }
     int  getGoldValue()  const override { return gold_value; }
     int  getWave()       const { return wave; }

@@ -23,6 +23,7 @@ public:
 
     int      getHP()        const override { return hp; }
     int      getHPMax()     const override { return hp_max; }
+    int      getATK()       const override { return 0; }  // Shaman n'a pas d'ATK directe
     float    getSPD()       const { return static_cast<int>(spd) * 0.1f; }
     int      getGoldValue() const override { return gold_value; }
     AuraType getAuraType()  const { return aura_type; }

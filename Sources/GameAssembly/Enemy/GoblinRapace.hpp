@@ -23,6 +23,7 @@ public:
 
     int  getHP()           const override { return hp; }
     int  getHPMax()        const override { return hp_max; }
+    int  getATK()          const override { return 0; }  // GoblinRapace n'a pas d'ATK directe
     float getSPD()         const { return static_cast<int>(spd) * 0.1f; }
     int  getStolenGold()   const { return stolen_gold; }
     bool isDead()          const override { return hp <= 0; }

@@ -43,6 +43,7 @@ private:
     Checkpoint* m_CurrentTarget = nullptr;
 
     bool  m_PathfindingInitialized = false;
+    bool  m_reachedNexus = false;
 
     float m_SlowTimer  = 0.0f;
     float m_SlowFactor = 0.5f;   // effective factor while slow is active

@@ -14,6 +14,7 @@ public:
     virtual bool isDead()       const { return false; }
     virtual int  getHP()        const { return 0; }
     virtual int  getHPMax()     const { return 0; }
+    virtual int  getATK()       const { return 0; }
     virtual int  getGoldValue() const { return 0; }
     virtual void takeDamage(int dmg, DamageType type) {}
 
