@@ -90,7 +90,7 @@ void Shaman::handleDeath()
         }
     }
 
-    DestroyActorHierarchy(m_Owner);
+    DestroyMeshHierarchy(m_Owner);
 }
 
 void Shaman::Inspect()
