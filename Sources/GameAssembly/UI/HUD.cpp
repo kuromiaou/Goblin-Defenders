@@ -48,7 +48,7 @@ void HUDComponent::OnRender(float dt)
         currentGold = m_PlayerActor->GetComponent<Player>().getGold();
     }
 
-    ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.08f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
+    ImGui::SetNextWindowPos(ImVec2(width * 0.85f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));
     ImGui::SetNextWindowBgAlpha(0.0f);
     ImGui::Begin("Gold", nullptr,
         ImGuiWindowFlags_NoDecoration |
