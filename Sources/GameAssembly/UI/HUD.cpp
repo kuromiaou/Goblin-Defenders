@@ -41,7 +41,18 @@ void HUDComponent::OnRender(float dt)
         ImGuiWindowFlags_NoMove |
         ImGuiWindowFlags_AlwaysAutoResize);
 
-    ImGui::Text("Wave 1");
+    // Get current wave from EntityManager
+    int currentWave = 1;
+    auto& worldActors = m_Owner->GetParentWorld()->GetActors();
+    for (const auto& actor : worldActors) {
+        if (actor->HasComponent<EntityManager>()) {
+            EntityManager& manager = actor->GetComponent<EntityManager>();
+            currentWave = manager.current_wave;
+            break;
+        }
+    }
+
+    ImGui::Text("Wave %d", currentWave);
 
     ImGui::End();
 
