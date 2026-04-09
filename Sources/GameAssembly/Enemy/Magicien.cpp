@@ -8,6 +8,9 @@ void Magicien::Start()
 
 void Magicien::Update(float deltaTime)
 {
+    tickEffects(deltaTime);
+    if (isDead())
+        Destroy(m_Owner);
 }
 
 void Magicien::initForWave(int current_wave)
@@ -24,6 +27,7 @@ void Magicien::takeDamage(int dmg, DamageType type)
     int res = (type == DamageType::PHYSIQUE)
         ? static_cast<int>(res_physique)
         : static_cast<int>(res_magique);
+    if (isShredded()) res = shredResistance(res);
     float mult = 100.0f / (100.0f + static_cast<float>(res));
     hp = std::max(0, hp - static_cast<int>(dmg * mult));
 }

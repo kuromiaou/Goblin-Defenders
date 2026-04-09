@@ -5,13 +5,11 @@
 
 void EnemyMovement::Start()
 {
-    // Vérifier que m_Transform est bien initialisé
     if (!m_Transform) {
         TN_ERROR("EnemyMovement: m_Transform is nullptr! Skipping pathfinding init.");
         return;
     }
 
-    // Trier les checkpoints par ordre
     auto& checkpoints = Checkpoint::GetAllCheckpoints();
     std::sort(checkpoints.begin(), checkpoints.end(),
         [](Checkpoint* a, Checkpoint* b) {
@@ -31,20 +29,24 @@ void EnemyMovement::Start()
 
 void EnemyMovement::Update(float deltaTime)
 {
-    // Vérifier que tout est initialisé
     if (!m_PathfindingInitialized || !m_CurrentTarget || !m_Transform)
         return;
 
+    // Tick stun timer â€” enemy cannot move while stunned.
+    if (m_StunTimer > 0.0f) {
+        m_StunTimer = std::max(0.0f, m_StunTimer - deltaTime);
+        return;
+    }
+
+    // Tick slow timer.
+    if (m_SlowTimer > 0.0f)
+        m_SlowTimer = std::max(0.0f, m_SlowTimer - deltaTime);
+
     glm::vec3 currentPos = m_Transform->GetLocalPosition();
-    glm::vec3 targetPos = m_CurrentTarget->getPosition();
+    glm::vec3 targetPos  = m_CurrentTarget->getPosition();
+    glm::vec3 direction  = glm::normalize(targetPos - currentPos);
+    float     distance   = GetDistanceToTarget();
 
-    // Direction vers le checkpoint
-    glm::vec3 direction = glm::normalize(targetPos - currentPos);
-
-    // Distance au checkpoint
-    float distance = GetDistanceToTarget();
-
-    // Si on est arrivé au checkpoint
     if (distance < 0.1f) {
         auto& checkpoints = Checkpoint::GetAllCheckpoints();
         m_CurrentCheckpointIndex++;
@@ -60,9 +62,22 @@ void EnemyMovement::Update(float deltaTime)
         return;
     }
 
-    // Déplacer l'ennemi vers le checkpoint
-    glm::vec3 newPos = currentPos + direction * m_Speed * deltaTime;
+    float effectiveSpeed = m_Speed * GetSlowFactor();
+    glm::vec3 newPos = currentPos + direction * effectiveSpeed * deltaTime;
     m_Transform->SetPosition(newPos);
+}
+
+void EnemyMovement::ApplySlow(float duration, float factor)
+{
+    if (duration > m_SlowTimer) {
+        m_SlowTimer  = duration;
+        m_SlowFactor = factor;
+    }
+}
+
+void EnemyMovement::ApplyStun(float duration)
+{
+    m_StunTimer = std::max(m_StunTimer, duration);
 }
 
 float EnemyMovement::GetDistanceToTarget() const
@@ -71,7 +86,7 @@ float EnemyMovement::GetDistanceToTarget() const
         return FLT_MAX;
 
     glm::vec3 currentPos = m_Transform->GetLocalPosition();
-    glm::vec3 targetPos = m_CurrentTarget->getPosition();
+    glm::vec3 targetPos  = m_CurrentTarget->getPosition();
     return glm::distance(currentPos, targetPos);
 }
 
@@ -82,6 +97,10 @@ void EnemyMovement::Inspect()
         ImGui::Text("Current Target Checkpoint: %d", m_CurrentTarget->getOrder());
         ImGui::Text("Distance to Target: %.2f", GetDistanceToTarget());
     }
+    if (m_StunTimer > 0.0f)
+        ImGui::Text("STUNNED: %.2fs remaining", m_StunTimer);
+    if (m_SlowTimer > 0.0f)
+        ImGui::Text("SLOWED (x%.1f): %.2fs remaining", m_SlowFactor, m_SlowTimer);
 }
 
 void EnemyMovement::Serialize(nlohmann::json& out) const
@@ -91,7 +110,6 @@ void EnemyMovement::Serialize(nlohmann::json& out) const
 
 void EnemyMovement::Deserialize(const nlohmann::json& in)
 {
-    if (in.contains("speed")) {
+    if (in.contains("speed"))
         m_Speed = in["speed"];
-    }
 }

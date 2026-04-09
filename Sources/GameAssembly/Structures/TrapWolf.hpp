@@ -28,7 +28,8 @@ public:
     float trigger();
 
 private:
-    bool  triggered = false;
-    float stun_min  = 0.5f;
-    float stun_max  = 1.5f;
+    bool  triggered      = false;
+    float stun_min       = 0.5f;
+    float stun_max       = 1.5f;
+    float trigger_radius = 1.0f;
 };

@@ -26,7 +26,8 @@ public:
     int trigger();
 
 private:
-    int        atk         = static_cast<int>(ATKTier::ATK_HIGH); // 25
-    DamageType damage_type = DamageType::PHYSIQUE;
-    bool       triggered   = false;
+    int        atk            = static_cast<int>(ATKTier::ATK_HIGH); // 25
+    DamageType damage_type    = DamageType::PHYSIQUE;
+    bool       triggered      = false;
+    float      trigger_radius = 1.0f;
 };

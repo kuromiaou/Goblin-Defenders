@@ -33,10 +33,12 @@ public:
     void upgrade();
 
 private:
-    TowerRangeTier atk_range  = TowerRangeTier::TOWER_MID;
-    ATKSPDTier     atk_spd    = ATKSPDTier::ATKSPD_LOW;
-    CCType         cc_type    = CCType::SLOW;
-    AggroMode      aggro      = AggroMode::FIRST;
-    float          stun_timer = 0.0f;
-    int            level      = 1;
+    TowerRangeTier atk_range   = TowerRangeTier::TOWER_MID;
+    ATKSPDTier     atk_spd     = ATKSPDTier::ATKSPD_LOW;
+    CCType         cc_type     = CCType::SLOW;
+    AggroMode      aggro       = AggroMode::FIRST;
+    float          stun_timer  = 0.0f;
+    float          cc_duration = 2.0f;   // seconds the CC effect lasts on the target
+    float          attack_cooldown = 0.0f;
+    int            level       = 1;
 };

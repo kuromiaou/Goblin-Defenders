@@ -22,16 +22,16 @@ public:
     void Deserialize(const nlohmann::json& in) override;
 
     // --- Stats ---
-    int  getHP()         const { return hp; }
-    int  getHPMax()      const { return hp_max; }
+    int  getHP()         const override { return hp; }
+    int  getHPMax()      const override { return hp_max; }
     int  getATK()        const { return static_cast<int>(atk); }
     float getSPD()       const { return static_cast<int>(spd) * 0.1f; }
-    int  getGoldValue()  const { return gold_value; }
+    int  getGoldValue()  const override { return gold_value; }
     int  getWave()       const { return wave; }
-    bool isDead()        const { return hp <= 0; }
+    bool isDead()        const override { return hp <= 0; }
 
     void initForWave(int current_wave);
-    void takeDamage(int dmg, DamageType type);
+    void takeDamage(int dmg, DamageType type) override;
 
     static int getHordeSize() { return 3 + (rand() % 3); } // 3 à 5
 
