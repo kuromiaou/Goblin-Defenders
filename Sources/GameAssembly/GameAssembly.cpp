@@ -27,6 +27,7 @@
 #include "UI/MainMenu.hpp"
 #include "UI/HUD.hpp"
 #include "Enemy/EnemyMovement.hpp"
+#include "Gameplay/GoldPickup.hpp"
 
 COMPONENT_MODULE_BEGIN()
     // Termina
@@ -52,6 +53,7 @@ COMPONENT_MODULE_BEGIN()
     REGISTER_COMPONENT(TrapWolf,               "Piège à Loup")
     REGISTER_COMPONENT(TrapMine,               "Mine")
     REGISTER_COMPONENT(TrapAuraGold,           "Aura Gold")
+    REGISTER_COMPONENT(GoldPickup,             "Gold Pickup")
 
     // Goblin Defenders UI
     REGISTER_COMPONENT(MainMenuComponent,      "MainMenuComponent")
