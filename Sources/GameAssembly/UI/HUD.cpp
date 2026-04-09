@@ -227,6 +227,7 @@ void HUDComponent::OnRender(float dt)
         auto* world = m_Owner->GetParentWorld();
         const Termina::Camera camera = world->GetMainCamera();
         Player& player = m_PlayerActor->GetComponent<Player>();
+        const std::string buildLabel = "Construire (" + std::to_string(kTowerBuildCost) + "G)";
 
         for (const auto& actor : worldActors)
         {
@@ -252,7 +253,6 @@ void HUDComponent::OnRender(float dt)
                 ImGui::Text("Occupé");
             } else {
                 const bool canAfford = player.getGold() >= kTowerBuildCost;
-                const std::string buildLabel = "Construire (" + std::to_string(kTowerBuildCost) + "G)";
                 ImGui::BeginDisabled(!canAfford);
                 if (ImGui::Button(buildLabel.c_str(), ImVec2(130.0f, 0.0f)))
                 {
