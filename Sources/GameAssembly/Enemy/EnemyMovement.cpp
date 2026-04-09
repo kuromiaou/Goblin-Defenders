@@ -12,6 +12,8 @@
 
 namespace
 {
+constexpr const char* kNexusActorName = "Nexus";
+
 int GetNexusContactDamage(Termina::Actor* enemyActor)
 {
     if (!enemyActor) return 1;
@@ -51,8 +53,16 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
             nexusActor = actor.get();
             break;
         }
-        if (!nexusActor && actor->GetName() == "Nexus") {
-            nexusActor = actor.get();
+    }
+
+    if (!nexusActor) {
+        for (const auto& actor : world->GetActors())
+        {
+            if (!actor || !actor->IsActive()) continue;
+            if (actor->GetName() == kNexusActorName) {
+                nexusActor = actor.get();
+                break;
+            }
         }
     }
 

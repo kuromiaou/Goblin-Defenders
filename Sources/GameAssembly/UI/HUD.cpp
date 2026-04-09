@@ -8,6 +8,12 @@
 #include <GameAssembly/Player/Player.hpp>
 #include <GameAssembly/Structures/Nexus.hpp>
 
+namespace
+{
+constexpr const char* kPlayerActorName = "Player";
+constexpr const char* kNexusActorName = "Nexus";
+}
+
 void HUDComponent::OnRender(float dt)
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -40,7 +46,7 @@ void HUDComponent::OnRender(float dt)
     if (!m_PlayerActor || !m_PlayerActor->IsActive() || !m_PlayerActor->HasComponent<Player>()) {
         m_PlayerActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Player>() || actor->GetName() == "Player") {
+            if (actor->HasComponent<Player>() || actor->GetName() == kPlayerActorName) {
                 m_PlayerActor = actor.get();
                 break;
             }
@@ -58,7 +64,7 @@ void HUDComponent::OnRender(float dt)
     if (!m_NexusActor || !m_NexusActor->IsActive() || !m_NexusActor->HasComponent<Nexus>()) {
         m_NexusActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Nexus>() || actor->GetName() == "Nexus") {
+            if (actor->HasComponent<Nexus>() || actor->GetName() == kNexusActorName) {
                 m_NexusActor = actor.get();
                 break;
             }
