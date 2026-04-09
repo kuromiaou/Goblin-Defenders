@@ -8,6 +8,12 @@
 #include <GameAssembly/Player/Player.hpp>
 #include <GameAssembly/Structures/Nexus.hpp>
 
+namespace
+{
+constexpr const char* kPlayerActorName = "Player";
+constexpr const char* kNexusActorName = "Nexus";
+}
+
 void HUDComponent::OnRender(float dt)
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -40,10 +46,18 @@ void HUDComponent::OnRender(float dt)
     if (!m_PlayerActor || !m_PlayerActor->IsActive() || !m_PlayerActor->HasComponent<Player>()) {
         m_PlayerActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Player>()) {
+            if (actor->HasComponent<Player>() || actor->GetName() == kPlayerActorName) {
                 m_PlayerActor = actor.get();
                 break;
             }
+        }
+    }
+    if (m_PlayerActor && !m_PlayerActor->HasComponent<Player>()) {
+        TN_WARN("HUD: missing Player component on '%s', auto-adding it.", m_PlayerActor->GetName().c_str());
+        m_PlayerActor->AddComponent<Player>();
+        if (!m_PlayerActor->HasComponent<Player>()) {
+            TN_ERROR("HUD: failed to attach Player component on '%s'.", m_PlayerActor->GetName().c_str());
+            m_PlayerActor = nullptr;
         }
     }
     if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
@@ -55,10 +69,18 @@ void HUDComponent::OnRender(float dt)
     if (!m_NexusActor || !m_NexusActor->IsActive() || !m_NexusActor->HasComponent<Nexus>()) {
         m_NexusActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Nexus>()) {
+            if (actor->HasComponent<Nexus>() || actor->GetName() == kNexusActorName) {
                 m_NexusActor = actor.get();
                 break;
             }
+        }
+    }
+    if (m_NexusActor && !m_NexusActor->HasComponent<Nexus>()) {
+        TN_WARN("HUD: missing Nexus component on '%s', auto-adding it.", m_NexusActor->GetName().c_str());
+        m_NexusActor->AddComponent<Nexus>();
+        if (!m_NexusActor->HasComponent<Nexus>()) {
+            TN_ERROR("HUD: failed to attach Nexus component on '%s'.", m_NexusActor->GetName().c_str());
+            m_NexusActor = nullptr;
         }
     }
     if (m_NexusActor && m_NexusActor->HasComponent<Nexus>()) {

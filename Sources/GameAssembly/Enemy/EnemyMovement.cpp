@@ -12,6 +12,8 @@
 
 namespace
 {
+constexpr const char* kNexusActorName = "Nexus";
+
 int GetNexusContactDamage(Termina::Actor* enemyActor)
 {
     if (!enemyActor) return 1;
@@ -42,14 +44,27 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
     }
 
     const int damage = GetNexusContactDamage(enemyActor);
+    Termina::Actor* nexusActor = nullptr;
+
     for (const auto& actor : world->GetActors())
     {
         if (!actor || !actor->IsActive()) continue;
-        if (!actor->HasComponent<Nexus>()) continue;
-
-        actor->GetComponent<Nexus>().takeDamage(damage);
-        return;
+        if (actor->HasComponent<Nexus>() || actor->GetName() == kNexusActorName) {
+            nexusActor = actor.get();
+            break;
+        }
     }
+
+    if (!nexusActor) return;
+    if (!nexusActor->HasComponent<Nexus>()) {
+        TN_WARN("EnemyMovement: missing Nexus component on '%s', auto-adding it.", nexusActor->GetName().c_str());
+        nexusActor->AddComponent<Nexus>();
+        if (!nexusActor->HasComponent<Nexus>()) {
+            TN_ERROR("EnemyMovement: failed to attach Nexus component on '%s'.", nexusActor->GetName().c_str());
+            return;
+        }
+    }
+    nexusActor->GetComponent<Nexus>().takeDamage(damage);
 }
 }
 
