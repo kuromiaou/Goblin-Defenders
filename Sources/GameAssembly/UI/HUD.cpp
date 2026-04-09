@@ -95,8 +95,10 @@ void HUDComponent::OnRender(float dt)
         }
     }
 
-    bool isWin  = m_EntityManagerActor && m_EntityManagerActor->HasComponent<EntityManager>()
-                  && m_EntityManagerActor->GetComponent<EntityManager>().hasWon;
+    bool isWin  = false;
+    if (m_EntityManagerActor && m_EntityManagerActor->HasComponent<EntityManager>()) {
+        isWin = m_EntityManagerActor->GetComponent<EntityManager>().hasWon;
+    }
     bool isLose = (currentNexusHP <= 0) && m_NexusActor != nullptr;
 
     // ==== OVERLAY WIN / LOSE ====
