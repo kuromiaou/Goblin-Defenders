@@ -12,6 +12,7 @@ namespace
 {
 constexpr const char* kPlayerActorName = "Player";
 constexpr const char* kNexusActorName = "Nexus";
+constexpr const char* kMenuWorldPath = "Assets/Worlds/Menu";
 }
 
 void HUDComponent::OnRender(float dt)
@@ -81,6 +82,76 @@ void HUDComponent::OnRender(float dt)
         const Nexus& nexus = m_NexusActor->GetComponent<Nexus>();
         currentNexusHP = nexus.getHP();
         currentNexusHPMax = std::max(1, nexus.getHPMax());
+    }
+
+    // Résoudre l'EntityManager
+    if (!m_EntityManagerActor || !m_EntityManagerActor->IsActive() || !m_EntityManagerActor->HasComponent<EntityManager>()) {
+        m_EntityManagerActor = nullptr;
+        for (const auto& actor : worldActors) {
+            if (actor->HasComponent<EntityManager>()) {
+                m_EntityManagerActor = actor.get();
+                break;
+            }
+        }
+    }
+
+    bool isWin  = false;
+    if (m_EntityManagerActor && m_EntityManagerActor->HasComponent<EntityManager>()) {
+        isWin = m_EntityManagerActor->GetComponent<EntityManager>().hasWon;
+    }
+    bool isLose = (currentNexusHP <= 0) && m_NexusActor != nullptr;
+
+    // ==== OVERLAY WIN / LOSE ====
+    if (isWin || isLose)
+    {
+        // Fond semi-transparent
+        ImDrawList* overlayDraw = ImGui::GetForegroundDrawList();
+        overlayDraw->AddRectFilled(ImVec2(0, 0), io.DisplaySize, IM_COL32(0, 0, 0, 160));
+
+        const char* resultText = isWin ? "Victoire" : "Défaite";
+        ImVec4      textColor  = isWin ? ImVec4(0.0f, 1.0f, 0.0f, 1.0f)
+                                       : ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
+
+        // Texte centré au milieu de l'écran
+        ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.45f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+        ImGui::SetNextWindowBgAlpha(0.0f);
+        ImGui::Begin("GameResult", nullptr,
+            ImGuiWindowFlags_NoDecoration |
+            ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_AlwaysAutoResize |
+            ImGuiWindowFlags_NoNav);
+
+        ImGui::PushStyleColor(ImGuiCol_Text, textColor);
+        ImGui::SetWindowFontScale(3.0f);
+        ImGui::Text("%s", resultText);
+        ImGui::SetWindowFontScale(1.0f);
+        ImGui::PopStyleColor();
+
+        ImGui::End();
+
+        // Bouton retour au menu
+        ImGui::SetNextWindowPos(ImVec2(width * 0.5f, height * 0.6f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+        ImGui::SetNextWindowBgAlpha(0.0f);
+        ImGui::Begin("ReturnMenu", nullptr,
+            ImGuiWindowFlags_NoDecoration |
+            ImGuiWindowFlags_NoMove |
+            ImGuiWindowFlags_AlwaysAutoResize |
+            ImGuiWindowFlags_NoNav);
+
+        if (ImGui::Button("Menu Principal", ImVec2(220, 55)))
+        {
+            auto* worldSystem = Termina::Application::GetSystem<Termina::WorldSystem>();
+            if (worldSystem)
+            {
+                worldSystem->LoadWorld(kMenuWorldPath);
+                worldSystem->Play();
+            }
+        }
+
+        ImGui::End();
+
+        // Ne pas afficher le reste du HUD pendant l'écran de résultat
+        return;
     }
 
     ImGui::SetNextWindowPos(ImVec2(width * 0.18f, height * 0.15f), ImGuiCond_Always, ImVec2(0.5f, 0.0f));

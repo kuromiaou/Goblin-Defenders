@@ -15,6 +15,7 @@ public:
     void OnRender(float dt) override;
 
 private:
-    Termina::Actor* m_PlayerActor = nullptr;
-    Termina::Actor* m_NexusActor = nullptr;
+    Termina::Actor* m_PlayerActor         = nullptr;
+    Termina::Actor* m_NexusActor          = nullptr;
+    Termina::Actor* m_EntityManagerActor  = nullptr;
 };
