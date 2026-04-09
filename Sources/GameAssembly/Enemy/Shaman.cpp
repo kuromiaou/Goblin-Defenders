@@ -84,7 +84,9 @@ void Shaman::handleDeath()
     if (goldPrefab.IsValid() && m_Transform) {
         if (Termina::Actor* drop = Instantiate(goldPrefab)) {
             drop->GetComponent<Termina::Transform>().SetPosition(m_Transform->GetPosition());
-            drop->AddComponent<GoldPickup>().SetGoldAmount(getGoldValue());
+            // NOTE: Le composant "Gold Pickup" doit être présent sur le prefab "gold pile.trp" (pas d'AddComponent runtime).
+            if (drop->HasComponent<GoldPickup>())
+                drop->GetComponent<GoldPickup>().SetGoldAmount(getGoldValue());
         }
     }
 

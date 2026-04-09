@@ -34,6 +34,14 @@
                         "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 500,
+                        "hp_max": 500
+                    },
+                    "type": "Nexus"
                 }
             ],
             "id": "10860662857844168957",

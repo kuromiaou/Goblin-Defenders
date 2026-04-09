@@ -139,6 +139,18 @@
                     "active": true,
                     "data": {},
                     "type": "Player Controller"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "atk_magique": 10,
+                        "atk_physique": 10,
+                        "gold": 0,
+                        "hp": 100,
+                        "hp_max": 100,
+                        "rsc": 0
+                    },
+                    "type": "Player"
                 }
             ],
             "id": "12063912732860070588",
@@ -1726,6 +1738,14 @@
                         "model": "Assets\\Models\\Props\\crystal\\crystal.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "hp": 500,
+                        "hp_max": 500
+                    },
+                    "type": "Nexus"
                 }
             ],
             "id": "10860662857844168957",

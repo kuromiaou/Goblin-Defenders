@@ -13,11 +13,8 @@ void PlayerController::Update(float dt)
 void PlayerController::Start()
 {
     if (m_Owner && !m_Owner->HasComponent<Player>()) {
-        TN_WARN("PlayerController: missing Player component on '%s', auto-adding it.", m_Owner->GetName().c_str());
-        m_Owner->AddComponent<Player>();
-        if (!m_Owner->HasComponent<Player>()) {
-            TN_ERROR("PlayerController: failed to attach Player component on '%s'.", m_Owner->GetName().c_str());
-        }
+        // NOTE: Le composant "Player" doit être posé dans la scène/prefab du joueur (pas d'AddComponent runtime).
+        TN_ERROR("PlayerController: missing Player component on '%s'.", m_Owner->GetName().c_str());
     }
     rb = m_Owner->GetComponent<Termina::Rigidbody>();
 }

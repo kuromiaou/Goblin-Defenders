@@ -31,6 +31,14 @@
                         "model": "Assets\\Models\\Functional props\\coins\\gold pile.gltf"
                     },
                     "type": "Mesh Component"
+                },
+                {
+                    "active": true,
+                    "data": {
+                        "gold_amount": 1,
+                        "pickup_radius": 1.0
+                    },
+                    "type": "Gold Pickup"
                 }
             ],
             "id": "11948782336683388541",
