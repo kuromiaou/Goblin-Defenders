@@ -37,7 +37,7 @@ public:
 
 private:
     ATKTier        atk         = ATKTier::ATK_MID;
-    TowerRangeTier atk_range   = TowerRangeTier::TOWER_MID;
+    TowerRangeTier atk_range   = TowerRangeTier::TOWER_LOW;
     ATKSPDTier     atk_spd     = ATKSPDTier::ATKSPD_LOW;
     DamageType     damage_type = DamageType::PHYSIQUE;
     AggroMode      aggro       = AggroMode::FIRST;
