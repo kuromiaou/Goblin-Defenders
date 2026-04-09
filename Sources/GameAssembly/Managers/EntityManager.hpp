@@ -28,7 +28,7 @@ public:
     void Start()  override;
     void Update(float deltaTime) override;
 
-    // Lance le spawn de tous les ennemis de la vague donnée
+    // Lance le spawn de tous les ennemis de la vague donnï¿½e
     void SpawnWave(int waveIndex);
 
     std::vector<Door*> GetDoors();
@@ -37,6 +37,7 @@ public:
     WaveState  state;
 
     int        current_wave = 1;
+    bool       hasWon = false;
 
     void CleanupDeadEnemies();
 
@@ -56,7 +57,7 @@ private:
     int        max_fixed_waves = 10;
     bool       is_endless = false, is_wave_spawned = false;
 
-    // Stocke les acteurs des ennemis spawés (pas les composants)
+    // Stocke les acteurs des ennemis spawï¿½s (pas les composants)
     std::vector<Termina::Actor*> allEnemies;
 
 

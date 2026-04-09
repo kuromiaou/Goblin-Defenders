@@ -60,7 +60,8 @@ void EntityManager::Update(float deltaTime)
                 state = WaveState::WAITING;
             }
             else {
-                TN_INFO("All waves completed! Game Over!");
+                TN_INFO("All waves completed! Victory!");
+                hasWon = true;
                 state = WaveState::WAITING;
             }
         }
