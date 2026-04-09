@@ -40,11 +40,14 @@ void HUDComponent::OnRender(float dt)
     if (!m_PlayerActor || !m_PlayerActor->IsActive() || !m_PlayerActor->HasComponent<Player>()) {
         m_PlayerActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Player>()) {
+            if (actor->HasComponent<Player>() || actor->GetName() == "Player") {
                 m_PlayerActor = actor.get();
                 break;
             }
         }
+    }
+    if (m_PlayerActor && !m_PlayerActor->HasComponent<Player>()) {
+        m_PlayerActor->AddComponent<Player>();
     }
     if (m_PlayerActor && m_PlayerActor->HasComponent<Player>()) {
         currentGold = m_PlayerActor->GetComponent<Player>().getGold();
@@ -55,11 +58,14 @@ void HUDComponent::OnRender(float dt)
     if (!m_NexusActor || !m_NexusActor->IsActive() || !m_NexusActor->HasComponent<Nexus>()) {
         m_NexusActor = nullptr;
         for (const auto& actor : worldActors) {
-            if (actor->HasComponent<Nexus>()) {
+            if (actor->HasComponent<Nexus>() || actor->GetName() == "Nexus") {
                 m_NexusActor = actor.get();
                 break;
             }
         }
+    }
+    if (m_NexusActor && !m_NexusActor->HasComponent<Nexus>()) {
+        m_NexusActor->AddComponent<Nexus>();
     }
     if (m_NexusActor && m_NexusActor->HasComponent<Nexus>()) {
         const Nexus& nexus = m_NexusActor->GetComponent<Nexus>();

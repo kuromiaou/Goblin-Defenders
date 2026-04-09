@@ -12,7 +12,10 @@ void PlayerController::Update(float dt)
 
 void PlayerController::Start()
 {
-	rb = m_Owner->GetComponent<Termina::Rigidbody>();
+    if (m_Owner && !m_Owner->HasComponent<Player>()) {
+        m_Owner->AddComponent<Player>();
+    }
+    rb = m_Owner->GetComponent<Termina::Rigidbody>();
 }
 
 void PlayerController::Move()

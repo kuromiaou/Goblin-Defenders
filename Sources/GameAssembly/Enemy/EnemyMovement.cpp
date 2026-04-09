@@ -42,14 +42,25 @@ void ApplyNexusContactEffects(Termina::Actor* enemyActor)
     }
 
     const int damage = GetNexusContactDamage(enemyActor);
+    Termina::Actor* nexusActor = nullptr;
+
     for (const auto& actor : world->GetActors())
     {
         if (!actor || !actor->IsActive()) continue;
-        if (!actor->HasComponent<Nexus>()) continue;
-
-        actor->GetComponent<Nexus>().takeDamage(damage);
-        return;
+        if (actor->HasComponent<Nexus>()) {
+            nexusActor = actor.get();
+            break;
+        }
+        if (!nexusActor && actor->GetName() == "Nexus") {
+            nexusActor = actor.get();
+        }
     }
+
+    if (!nexusActor) return;
+    if (!nexusActor->HasComponent<Nexus>()) {
+        nexusActor->AddComponent<Nexus>();
+    }
+    nexusActor->GetComponent<Nexus>().takeDamage(damage);
 }
 }
 
