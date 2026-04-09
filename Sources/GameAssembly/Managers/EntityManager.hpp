@@ -36,6 +36,8 @@ public:
     enum class WaveState { WAITING, IN_PROGRESS, COMPLETED };
     WaveState  state;
 
+    int        current_wave = 1;
+
     void CleanupDeadEnemies();
 
     void SpawnEnemyByType(int enemyType, const glm::vec3& position);
@@ -51,7 +53,6 @@ private:
     void SpawnShamanSPD(const glm::vec3& position);
     void SpawnShamanRES(const glm::vec3& position);
 
-    int        current_wave = 1;
     int        max_fixed_waves = 10;
     bool       is_endless = false, is_wave_spawned = false;
 
